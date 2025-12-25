@@ -1,0 +1,74 @@
+// src/components/common/Modal.scss
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  @include flex-center;
+  z-index: $z-modal-backdrop;
+  padding: $sp-4;
+  animation: fadeIn $transition-base;
+}
+
+.modal {
+  @include card;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  z-index: $z-modal;
+  animation: scaleIn $transition-base;
+  box-shadow: $shadow-2xl;
+
+  &--sm {
+    max-width: 400px;
+  }
+
+  &--md {
+    max-width: 600px;
+  }
+
+  &--lg {
+    max-width: 800px;
+  }
+
+  &--xl {
+    max-width: 1000px;
+  }
+
+  &__header {
+    @include flex-between;
+    margin-bottom: $sp-6;
+    padding-bottom: $sp-4;
+    border-bottom: 1px solid var(--border);
+  }
+
+  &__title {
+    @include heading;
+    font-size: $fs-2xl;
+    margin: 0;
+  }
+
+  &__close {
+    @include flex-center;
+    width: 40px;
+    height: 40px;
+    background: var(--bg-tertiary);
+    border: none;
+    border-radius: $radius-md;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all $transition-fast;
+
+    &:hover {
+      background: $danger;
+      color: white;
+    }
+  }
+
+  &__body {
+    @include custom-scrollbar;
+  }
+}

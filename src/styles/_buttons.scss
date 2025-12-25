@@ -1,0 +1,56 @@
+// ============================================
+// BUTTONS
+// ============================================
+
+.btn-primary {
+  @include button-primary;
+}
+
+.btn-secondary {
+  @include button-secondary;
+}
+
+.btn-ghost {
+  @include button-ghost;
+}
+
+.btn-icon {
+  @include button-base;
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+  padding: $sp-2;
+  border-radius: $radius-md;
+  width: 36px;
+  height: 36px;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    color: $primary;
+  }
+
+  &.danger {
+    &:hover {
+      background: linear-gradient(180deg, rgba($danger, 0.18), rgba($danger, 0.12));
+      color: white;
+    }
+  }
+}
+
+.btn-text {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-weight: $fw-medium;
+  cursor: pointer;
+  padding: $sp-2 $sp-4;
+  border-radius: $radius-md;
+  transition: color $transition-base;
+
+  &:hover {
+    color: var(--text-primary);
+    background: var(--bg-tertiary);
+  }
+}

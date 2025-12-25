@@ -1,0 +1,57 @@
+// src/components/common/Tag.scss
+
+.tag {
+  @include tag;
+  
+  &__text {
+    line-height: 1;
+  }
+
+  &__remove {
+    @include flex-center;
+    background: none;
+    border: none;
+    padding: 0;
+    margin-left: $sp-1;
+    cursor: pointer;
+    color: inherit;
+    transition: transform $transition-fast;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &--primary {
+    background: rgba($primary, 0.1);
+    color: $primary;
+    border-color: rgba($primary, 0.3);
+
+    &:hover {
+      background: $primary;
+      color: $light-bg-primary;
+    }
+  }
+
+  &--secondary {
+    background: rgba($secondary, 0.1);
+    color: $secondary;
+    border-color: rgba($secondary, 0.3);
+
+    &:hover {
+      background: $secondary;
+      color: $light-bg-primary;
+    }
+  }
+
+  &--accent {
+    background: rgba($accent, 0.1);
+    color: $accent;
+    border-color: rgba($accent, 0.3);
+
+    &:hover {
+      background: $accent;
+      color: $light-bg-primary;
+    }
+  }
+}

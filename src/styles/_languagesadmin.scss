@@ -1,0 +1,137 @@
+// ============================================
+// LANGUAGES ADMIN
+// ============================================
+
+.languages-admin {
+  .admin-header {
+    @include flex-between;
+    margin-bottom: $sp-2;
+  }
+  &__grid {
+    @include grid-auto(280px);
+    gap: $sp-6;
+    margin-top: $sp-6;
+  }
+}
+
+.language-admin-card {
+  background-color: var(--bg-secondary);
+  border-radius: $radius-lg;
+  padding: $sp-5;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $sp-4;
+
+  &__content {
+    flex: 1;
+  }
+
+  &__header {
+    @include flex-between;
+    margin-bottom: $sp-2;
+  }
+
+  &__name {
+    font-size: $fs-lg;
+    font-weight: $fw-semibold;
+    color: var(--text-primary);
+  }
+
+  &__percentage {
+    font-size: $fs-sm;
+    font-weight: $fw-bold;
+    color: $primary;
+  }
+
+  &__circular {
+    position: relative;
+    width: 140px;
+    height: 140px;
+  }
+  &__svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+  }
+  &__circle-bg {
+    fill: none;
+    stroke: var(--bg-tertiary);
+    stroke-width: 10;
+  }
+  &__circle-progress {
+    fill: none;
+    stroke: $primary;
+    stroke-width: 10;
+    stroke-linecap: round;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: $sp-2;
+  }
+  &__level {
+    font-size: $fs-sm;
+    color: var(--text-secondary);
+    margin-top: $sp-2;
+  }
+}
+
+.form-range {
+  width: 100%;
+  height: 6px;
+  background: var(--bg-tertiary);
+  border-radius: $radius-full;
+  outline: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  margin: $sp-4 0;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background: $primary;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform $transition-fast;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.btn-icon {
+  @include button-base;
+  @include flex-center;
+  width: 36px;
+  height: 36px;
+  transition: all $transition-fast;
+  font-size: $fs-base;
+
+  &.primary {
+    background: linear-gradient(180deg, rgba($primary, 0.12), rgba($primary, 0.06));
+    color: $primary;
+
+    &:hover {
+      background: $primary;
+      color: white;
+      transform: scale(1.05);
+    }
+  }
+
+  &.danger {
+    background: linear-gradient(180deg, rgba($danger, 0.18), rgba($danger, 0.12));
+    color: $danger;
+
+    &:hover {
+      background: $danger;
+      color: white;
+      transform: scale(1.05);
+      border: 1px solid $danger;
+    }
+  }
+}

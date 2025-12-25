@@ -1,0 +1,425 @@
+@import 'variables';
+@import 'mixins';
+@import 'navbar';
+@import 'footer';
+@import 'hero';
+@import 'about';
+@import 'qrcodesection';
+@import 'education';
+@import 'experience';
+@import 'projects';
+@import 'contact';
+@import 'languages';
+@import 'loadmore';
+@import 'tag';
+@import 'modal';
+@import 'emptystate';
+@import 'confirmdialog';
+@import 'dashboard';
+@import 'profileadmin';
+@import 'adminlayout';
+@import 'educationadmin';
+@import 'experienceadmin';
+@import 'languagesadmin';
+@import 'messagesadmin';
+@import 'socialmediaadmin';
+@import 'projectsadmin';
+@import 'contactadmin';
+@import 'login';
+@import 'buttons';
+@import 'mixins';
+
+// ============================================
+// RESET & BASE STYLES
+// ============================================
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-primary;
+  font-size: $fs-base;
+  line-height: $lh-normal;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  transition: background $transition-base, color $transition-base;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  @include flex-center;
+  padding: 0px 200px;
+  @media (max-width: $breakpoint-md) {
+      padding: 0px 0px;
+    }
+}
+
+// ============================================
+// THEME VARIABLES
+// ============================================
+
+[data-theme='light'] {
+  --bg-primary: #{$light-bg-primary};
+  --bg-secondary: #{$light-bg-secondary};
+  --bg-tertiary: #{$light-bg-tertiary};
+  --text-primary: #{$light-text-primary};
+  --text-secondary: #{$light-text-secondary};
+  --text-tertiary: #{$light-text-tertiary};
+  --border: #{$light-border};
+  --shadow-sm: #{$shadow-sm};
+  --shadow-md: #{$shadow-md};
+  --shadow-lg: #{$shadow-lg};
+  --shadow-xl: #{$shadow-xl};
+}
+
+[data-theme='dark'] {
+  --bg-primary: #{$dark-bg-primary};
+  --bg-secondary: #{$dark-bg-secondary};
+  --bg-tertiary: #{$dark-bg-tertiary};
+  --text-primary: #{$dark-text-primary};
+  --text-secondary: #{$dark-text-secondary};
+  --text-tertiary: #{$dark-text-tertiary};
+  --border: #{$dark-border};
+  --shadow-sm: #{$shadow-dark-sm};
+  --shadow-md: #{$shadow-dark-md};
+  --shadow-lg: #{$shadow-dark-lg};
+  --shadow-xl: #{$shadow-dark-xl};
+}
+
+// ============================================
+// TYPOGRAPHY
+// ============================================
+
+h1, h2, h3, h4, h5, h6 {
+  @include heading;
+  margin-bottom: $sp-2;
+}
+
+h1 {
+  font-size: $fs-5xl;
+  
+  @include sm {
+    font-size: $fs-6xl;
+  }
+}
+
+h2 {
+  font-size: $fs-4xl;
+  
+  @include sm {
+    font-size: $fs-5xl;
+  }
+}
+
+h3 {
+  font-size: $fs-3xl;
+  
+  @include sm {
+    font-size: $fs-4xl;
+  }
+}
+
+h4 {
+  font-size: $fs-2xl;
+  
+  @include sm {
+    font-size: $fs-3xl;
+  }
+}
+
+h5 {
+  font-size: $fs-xl;
+  
+  @include sm {
+    font-size: $fs-2xl;
+  }
+}
+
+h6 {
+  font-size: $fs-lg;
+  
+  @include sm {
+    font-size: $fs-xl;
+  }
+}
+
+p {
+  @include body-text;
+  margin-bottom: $sp-4;
+}
+
+a {
+  color: $primary;
+  text-decoration: none;
+  transition: color $transition-base;
+
+  &:hover {
+    color: $primary-hover;
+  }
+}
+
+code {
+  font-family: $font-code;
+  background: var(--bg-tertiary);
+  padding: $sp-1 $sp-2;
+  border-radius: $radius-sm;
+  font-size: $fs-sm;
+}
+
+// ============================================
+// SELECTION
+// ============================================
+
+::selection {
+  background: $primary;
+  color: $light-bg-primary;
+}
+
+::-moz-selection {
+  background: $primary;
+  color: $light-bg-primary;
+}
+
+// ============================================
+// SCROLLBAR
+// ============================================
+
+* {
+  @include custom-scrollbar;
+}
+
+// ============================================
+// UTILITY CLASSES
+// ============================================
+
+.container {
+  @include container;
+}
+
+.section {
+  @include section-spacing;
+  position: relative;
+  z-index: 1;
+}
+
+// Text utilities
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-accent {
+  color: $primary;
+}
+
+// Display utilities
+.d-none {
+  display: none !important;
+}
+
+.d-block {
+  display: block !important;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+.d-grid {
+  display: grid !important;
+}
+
+// Margin utilities
+.mt-1 { margin-top: $sp-1; }
+.mt-2 { margin-top: $sp-2; }
+.mt-3 { margin-top: $sp-3; }
+.mt-4 { margin-top: $sp-4; }
+.mt-5 { margin-top: $sp-5; }
+.mt-6 { margin-top: $sp-6; }
+.mt-8 { margin-top: $sp-8; }
+.mt-10 { margin-top: $sp-10; }
+
+.mb-1 { margin-bottom: $sp-1; }
+.mb-2 { margin-bottom: $sp-2; }
+.mb-3 { margin-bottom: $sp-3; }
+.mb-4 { margin-bottom: $sp-4; }
+.mb-5 { margin-bottom: $sp-5; }
+.mb-6 { margin-bottom: $sp-6; }
+.mb-8 { margin-bottom: $sp-8; }
+.mb-10 { margin-bottom: $sp-10; }
+
+// Padding utilities
+.p-0 { padding: 0; }
+.p-1 { padding: $sp-1; }
+.p-2 { padding: $sp-2; }
+.p-3 { padding: $sp-3; }
+.p-4 { padding: $sp-4; }
+.p-5 { padding: $sp-5; }
+.p-6 { padding: $sp-6; }
+
+// Gap utilities
+.gap-1 { gap: $sp-1; }
+.gap-2 { gap: $sp-2; }
+.gap-3 { gap: $sp-3; }
+.gap-4 { gap: $sp-4; }
+.gap-5 { gap: $sp-5; }
+.gap-6 { gap: $sp-6; }
+
+// ============================================
+// ANIMATIONS
+// ============================================
+
+.fade-in {
+  @include fade-in;
+}
+
+.slide-up {
+  @include slide-up;
+}
+
+.scale-in {
+  @include scale-in;
+}
+
+// ============================================
+// LOADING SPINNER
+// ============================================
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--bg-tertiary);
+  border-top-color: $primary;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// ============================================
+// TOAST NOTIFICATIONS CUSTOM STYLES
+// ============================================
+
+.Toastify__toast {
+  border-radius: $radius-lg;
+  font-family: $font-primary;
+}
+
+.Toastify__toast--success {
+  background: $accent;
+}
+
+.Toastify__toast--error {
+  background: $danger;
+}
+
+.Toastify__toast--info {
+  background: $info;
+}
+
+.Toastify__toast--warning {
+  background: $warning;
+}
+
+// ============================================
+// GLASS UTILITIES
+// ============================================
+.glass-card {
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(30px);
+  transition: transform $transition-base, box-shadow $transition-base;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(224, 192, 255, 0.03));
+}
+
+.glass-panel {
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(30px);
+  transition: transform $transition-base, box-shadow $transition-base;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(224, 192, 255, 0.03));
+}
+
+.glass-outline {
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  background: transparent;
+  backdrop-filter: blur(8px);
+}
+
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ambient-blob {
+  position: absolute;
+  width: min(38vw, 420px);
+  height: min(38vw, 420px);
+  border-radius: 50%;
+  opacity: 0.14;
+  filter: blur(80px) saturate(110%);
+  background: radial-gradient(circle at 30% 30%, $primary 0%, transparent 70%);
+  animation: ambient-float 10s var(--ease-smooth) infinite;
+  -webkit-animation: ambient-float 10s var(--ease-smooth) infinite;
+}
+
+.ambient-blob--a {
+  top: -60px;
+  left: -80px;
+}
+.ambient-blob--b {
+  top: 20%;
+  right: -120px;
+  background: radial-gradient(circle at 30% 30%, $secondary 0%, transparent 70%);
+  animation-duration: 36s;
+}
+.ambient-blob--c {
+  bottom: 100px;
+  left: 20%;
+  background: radial-gradient(circle at 60% 40%, $secondary 0%, transparent 70%);
+  animation-duration: 40s;
+}
+.ambient-blob--d {
+  bottom: -150px;
+  right: 15%;
+  background: radial-gradient(circle at 40% 60%, $primary 0%, transparent 70%);
+  animation-duration: 44s;
+}
+
+@keyframes ambient-float {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(24px, -18px, 0) scale(1.03);
+  }
+}

@@ -1,0 +1,174 @@
+// src/pages/admin/Dashboard.scss
+
+.dashboard {
+  &__header {
+    @include flex-between;
+    margin-bottom: $sp-8;
+    flex-wrap: wrap;
+    gap: $sp-4;
+  }
+
+  &__title {
+    @include heading;
+    font-size: $fs-4xl;
+    margin: 0;
+  }
+
+  &__subtitle {
+    @include body-text;
+    margin: $sp-2 0 0;
+  }
+
+  &__view-site {
+    @include button-primary;
+    gap: $sp-2;
+  }
+
+  &__stats {
+    @include grid-auto(250px, $sp-6);
+    margin-bottom: $sp-10;
+  }
+
+  &__section-title {
+    @include heading;
+    font-size: $fs-2xl;
+    margin-bottom: $sp-6;
+  }
+
+  &__profile {
+    margin-bottom: $sp-10;
+  }
+
+  &__quick-actions {
+    // styles continue below
+  }
+}
+
+.stat-card {
+  @include card-hover;
+  @include flex-start;
+  gap: $sp-4;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--accent-color, #{$primary});
+    transition: width $transition-base;
+  }
+
+  &:hover::before {
+    width: 100%;
+    opacity: 0.1;
+  }
+
+  &__icon {
+    @include flex-center;
+    width: 60px;
+    height: 60px;
+    background: var(--accent-color, #{$primary});
+    color: white;
+    border-radius: $radius-lg;
+    font-size: $fs-2xl;
+    flex-shrink: 0;
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__count {
+    @include heading;
+    font-size: $fs-3xl;
+    margin: 0 0 $sp-1;
+    color: var(--accent-color, #{$primary});
+  }
+
+  &__title {
+    @include body-text;
+    margin: 0;
+    font-size: $fs-lg;
+  }
+}
+
+.profile-preview {
+  @include card;
+  @include flex-start;
+  gap: $sp-6;
+  flex-wrap: wrap;
+
+  &__image {
+    width: 120px;
+    height: 120px;
+    border-radius: $radius-xl;
+    object-fit: cover;
+    border: 3px solid var(--border);
+  }
+
+  &__content {
+    flex: 1;
+    min-width: 250px;
+  }
+
+  &__name {
+    @include heading;
+    font-size: $fs-2xl;
+    margin: 0 0 $sp-2;
+  }
+
+  &__headline {
+    @include body-text;
+    font-size: $fs-lg;
+    font-weight: $fw-medium;
+    margin: 0 0 $sp-3;
+    color: $primary;
+  }
+
+  &__about {
+    @include body-text;
+    margin: 0;
+    @include text-clamp(3);
+  }
+}
+
+.quick-actions {
+  @include grid-auto(200px, $sp-4);
+}
+
+.quick-action {
+  @include card;
+  @include flex-column-center;
+  gap: $sp-3;
+  text-decoration: none;
+  text-align: center;
+  padding: $sp-6;
+  transition: all $transition-base;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: $primary;
+
+    .quick-action__icon {
+      transform: scale(1.2);
+    }
+  }
+
+  &__icon {
+    font-size: $fs-3xl;
+    color: $primary;
+    transition: transform $transition-base;
+  }
+
+  &__text {
+    @include body-text;
+    font-weight: $fw-medium;
+    color: var(--text-primary);
+  }
+}

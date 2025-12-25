@@ -1,0 +1,40 @@
+// src/components/common/EmptyState.scss
+
+.empty-state {
+  @include flex-column-center;
+  padding: $sp-16 $sp-6;
+  text-align: center;
+  gap: $sp-4;
+
+  &__icon {
+    width: 80px;
+    height: 80px;
+    @include flex-center;
+    background: var(--bg-tertiary);
+    border-radius: $radius-full;
+    color: var(--text-tertiary);
+    font-size: 40px;
+    margin-bottom: $sp-2;
+
+    svg {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &__title {
+    @include heading;
+    font-size: $fs-2xl;
+    margin: 0;
+  }
+
+  &__description {
+    @include body-text;
+    max-width: 400px;
+    margin: 0;
+  }
+
+  &__action {
+    margin-top: $sp-4;
+  }
+}

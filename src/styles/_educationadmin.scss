@@ -1,0 +1,244 @@
+// src/pages/admin/EducationAdmin.scss
+
+.education-admin {
+  &__header {
+    @include flex-between;
+    margin-bottom: $sp-8;
+    flex-wrap: wrap;
+    gap: $sp-4;
+  }
+
+  &__title {
+    @include heading;
+    font-size: $fs-4xl;
+    margin: 0;
+  }
+
+  &__subtitle {
+    @include body-text;
+    margin: $sp-2 0 0;
+  }
+
+  &__loading {
+    @include flex-column-center;
+    padding: $sp-16;
+    gap: $sp-4;
+
+    p {
+      @include body-text;
+      margin: 0;
+    }
+  }
+}
+
+.education-list {
+  @include flex-column;
+  gap: $sp-6;
+}
+
+.education-card {
+  @include card;
+  transition: all $transition-base;
+
+  &:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+
+  &__header {
+    @include flex-start;
+    gap: $sp-4;
+    margin-bottom: $sp-4;
+    flex-wrap: wrap;
+  }
+
+  &__logo {
+    width: 60px;
+    height: 60px;
+    border-radius: $radius-md;
+    object-fit: contain;
+    background: var(--bg-tertiary);
+    padding: $sp-2;
+    flex-shrink: 0;
+  }
+
+  &__info {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  &__institution {
+    @include heading;
+    font-size: $fs-xl;
+    margin: 0 0 $sp-1;
+  }
+
+  &__degree {
+    @include body-text;
+    font-weight: $fw-medium;
+    margin: 0 0 $sp-1;
+    color: var(--text-primary);
+  }
+
+  &__date {
+    @include body-text;
+    font-size: $fs-sm;
+    margin: 0;
+    color: var(--text-tertiary);
+  }
+
+  &__actions {
+    @include flex-start;
+    gap: $sp-2;
+  }
+
+  &__description {
+    @include body-text;
+    margin: 0 0 $sp-4;
+    padding-left: 76px;
+
+    @media (max-width: $breakpoint-sm) {
+      padding-left: 0;
+    }
+  }
+
+  &__skills {
+    @include flex-start;
+    flex-wrap: wrap;
+    gap: $sp-2;
+    padding-left: 76px;
+
+    @media (max-width: $breakpoint-sm) {
+      padding-left: 0;
+    }
+  }
+}
+
+.education-form {
+  @include flex-column;
+  gap: $sp-4;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $sp-4;
+
+  @include md {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.form-group {
+  &__label {
+    @include body-text;
+    display: block;
+    margin-bottom: $sp-2;
+    font-weight: $fw-medium;
+    color: var(--text-primary);
+
+    .required {
+      color: $danger;
+    }
+  }
+
+  &__input {
+    @include input-base;
+  }
+
+  &__textarea {
+    @include input-base;
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  &__checkbox {
+    @include flex-start;
+    gap: $sp-2;
+    cursor: pointer;
+    user-select: none;
+
+    input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      accent-color: $primary;
+    }
+
+    span {
+      @include body-text;
+      font-weight: $fw-medium;
+      color: var(--text-primary);
+    }
+  }
+}
+
+.skill-input {
+  @include flex-start;
+  gap: $sp-2;
+}
+
+.skills-list {
+  @include flex-start;
+  flex-wrap: wrap;
+  gap: $sp-2;
+  margin-top: $sp-3;
+  padding: $sp-3;
+  background: var(--bg-tertiary);
+  border-radius: $radius-md;
+}
+
+.form-actions {
+  @include flex-end;
+  gap: $sp-3;
+  margin-top: $sp-4;
+  padding-top: $sp-4;
+  border-top: 1px solid var(--border);
+}
+
+// Button Styles
+.btn-primary {
+  @include button-primary;
+  gap: $sp-2;
+}
+
+.btn-secondary {
+  @include button-secondary;
+  gap: $sp-2;
+}
+
+.btn-sm {
+  padding: $sp-2 $sp-3;
+  font-size: $fs-sm;
+}
+
+.btn-icon {
+  @include button-base;
+  @include flex-center;
+  width: 36px;
+  height: 36px;
+  transition: all $transition-fast;
+  font-size: $fs-base;
+
+  &.primary {
+    background: linear-gradient(180deg, rgba($primary, 0.12), rgba($primary, 0.06));
+    color: $primary;
+
+    &:hover {
+      background: $primary;
+      color: white;
+      transform: scale(1.05);
+    }
+  }
+
+  &.danger {
+    background: linear-gradient(180deg, rgba($danger, 0.18), rgba($danger, 0.12));
+    color: $danger;
+
+    &:hover {
+      background: $danger;
+      color: white;
+      transform: scale(1.05);
+    }
+  }
+}

@@ -1,0 +1,159 @@
+// ============================================
+// CONTACT SECTION
+// ============================================
+
+.contact {
+  border-radius: $radius-2xl;
+  -webkit-border-radius: $radius-2xl;
+  -moz-border-radius: $radius-2xl;
+  -ms-border-radius: $radius-2xl;
+  -o-border-radius: $radius-2xl;
+  padding: 0;
+  .form-group {
+  width: 100%;
+  @include flex-between;
+  gap: $sp-2;
+}
+
+
+  &__content{
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 0 $sp-6;
+    gap: $sp-2;
+    margin: -30px 0;
+
+    @include md {
+      grid-template-columns: 1fr 1.5fr;
+      gap: $sp-16;
+    }
+      @media (max-width: $breakpoint-md) {
+      padding: $sp-2 $sp-2 !important;
+      margin: 0 !important;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__subtitle {
+    font-size: $fs-2xl;
+    font-weight: $fw-bold;
+    margin-bottom: $sp-4;
+    color: var(--text-primary);
+  }
+
+  &__text {
+    font-size: $fs-base;
+    color: var(--text-secondary);
+    margin-bottom: $sp-8;
+    line-height: $lh-relaxed;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: $sp-6;
+  }
+
+  &__item {
+    @extend .glass-card;
+    display: flex;
+    align-items: flex-start;
+    gap: $sp-4;
+    padding: $sp-4;
+    border-radius: $radius-lg;
+
+    &-content {
+      h4 {
+        font-size: $fs-lg;
+        font-weight: $fw-semibold;
+        margin-bottom: 0;
+        color: var(--text-primary);
+      }
+
+      a, p {
+        font-size: $fs-base;
+        color: var(--text-secondary);
+        transition: color $transition-base;
+        text-decoration: none;
+
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
+  }
+
+  &__icon {
+    width: 50px;
+    height: 50px;
+    background-color: rgba($primary, 0.1);
+    border-radius: $radius-md;
+    @include flex-center;
+    font-size: $fs-xl;
+    color: $primary;
+    flex-shrink: 0;
+  }
+
+  &__form-wrapper {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.099), rgba(224, 192, 255, 0.03));
+     box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(16px);
+  transition: transform $transition-base, box-shadow $transition-base;
+    padding: 0px;
+    border-radius: $radius-lg;
+    box-shadow: var(--shadow-md);
+    @include md {
+      padding: $sp-10;
+    
+    }
+      @media (max-width: $breakpoint-md) {
+      padding: $sp-4 $sp-4 !important;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+}
+
+
+
+.form-control {
+  width: 100%;
+  padding: $sp-2 $sp-2;
+  font-family: $font-primary;
+  font-size: $fs-base;
+  color: var(--text-primary);
+  background-color: transparent;
+  border: 1px solid var(--border);
+  border-radius: $radius-md;
+  transition: all $transition-base;
+  outline: none;
+
+  &:focus {
+    border-color: $primary;
+    box-shadow: 0 0 0 3px rgba($primary, 0.1);
+  }
+
+  &::placeholder {
+    color: var(--text-tertiary);
+  }
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.w-full {
+  width: 100%;
+  @include flex-center;
+  gap: $sp-2;
+}

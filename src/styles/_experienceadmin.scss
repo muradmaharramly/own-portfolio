@@ -1,0 +1,171 @@
+// src/pages/admin/ExperienceAdmin.scss
+
+.experience-admin {
+  &__header {
+    @include flex-between;
+    margin-bottom: $sp-8;
+    flex-wrap: wrap;
+    gap: $sp-4;
+  }
+
+  &__title {
+    @include heading;
+    font-size: $fs-4xl;
+    margin: 0;
+  }
+
+  &__subtitle {
+    @include body-text;
+    margin: $sp-2 0 0;
+  }
+
+  &__loading {
+    @include flex-column-center;
+    padding: $sp-16;
+    gap: $sp-4;
+
+    p {
+      @include body-text;
+      margin: 0;
+    }
+  }
+}
+
+.experience-list {
+  @include flex-column;
+  gap: $sp-6;
+}
+
+.experience-card {
+  @include card;
+  transition: all $transition-base;
+
+  &:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+
+  &__header {
+    @include flex-start;
+    gap: $sp-4;
+    margin-bottom: $sp-4;
+    flex-wrap: wrap;
+  }
+
+  &__logo {
+    width: 60px;
+    height: 60px;
+    border-radius: $radius-md;
+    object-fit: contain;
+    background: var(--bg-tertiary);
+    padding: $sp-2;
+    flex-shrink: 0;
+  }
+
+  &__info {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  &__title-row {
+    @include flex-start;
+    gap: $sp-3;
+    flex-wrap: wrap;
+    margin-bottom: $sp-1;
+  }
+
+  &__position {
+    @include heading;
+    font-size: $fs-xl;
+    margin: 0;
+  }
+
+  &__company {
+    @include body-text;
+    font-weight: $fw-medium;
+    margin: 0 0 $sp-1;
+    color: var(--text-primary);
+  }
+
+  &__meta {
+    @include body-text;
+    font-size: $fs-sm;
+    margin: 0;
+    color: var(--text-tertiary);
+  }
+
+  &__actions {
+    @include flex-start;
+    gap: $sp-2;
+  }
+
+  &__description {
+    @include body-text;
+    margin: 0 0 $sp-4;
+    padding-left: 76px;
+
+    @media (max-width: $breakpoint-sm) {
+      padding-left: 0;
+    }
+  }
+
+  &__skills {
+    @include flex-start;
+    flex-wrap: wrap;
+    gap: $sp-2;
+    padding-left: 76px;
+
+    @media (max-width: $breakpoint-sm) {
+      padding-left: 0;
+    }
+  }
+}
+
+.experience-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: $sp-1 $sp-3;
+  border-radius: $radius-full;
+  font-size: $fs-xs;
+  font-weight: $fw-semibold;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.experience-form {
+  @include flex-column;
+  gap: $sp-4;
+}
+.btn-icon {
+  @include flex-center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: $radius-md;
+  cursor: pointer;
+  transition: all $transition-fast;
+  font-size: $fs-base;
+
+  &.primary {
+    background: rgba($primary, 0.1);
+    color: $primary;
+
+    &:hover {
+      background: $primary;
+      color: white;
+      transform: scale(1.05);
+    }
+  }
+
+  &.danger {
+    background: rgba($danger, 0.1);
+    color: $danger;
+
+    &:hover {
+      background: $danger;
+      color: white;
+      transform: scale(1.05);
+    }
+  }
+}

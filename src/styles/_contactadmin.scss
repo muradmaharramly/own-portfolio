@@ -1,0 +1,74 @@
+.contact-admin {
+    .admin-header{
+        @include flex-between;
+    }
+  &__card {
+    @include card;
+    display: flex;
+    flex-direction: column;
+    gap: $sp-4;
+    padding: $sp-6;
+    
+}
+
+  &__item {
+    @extend .glass-card;
+    border-radius:  $radius-lg ;
+    -webkit-border-radius:  $radius-lg ;
+    -moz-border-radius:  $radius-lg ;
+    -ms-border-radius:  $radius-lg ;
+    -o-border-radius:  $radius-lg ;
+    display: flex;
+    align-items: center;
+    gap: $sp-4;
+    padding: $sp-4;
+    transition: transform $transition-fast, box-shadow $transition-fast;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+  }
+
+  &__icon {
+    @include flex-center;
+    width: 44px;
+    height: 44px;
+    border-radius: $radius-full;
+    background: var(--bg-tertiary);
+    color: $primary;
+    border: 1px solid var(--border);
+    flex-shrink: 0;
+
+    svg {
+      font-size: $fs-lg;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $sp-1;
+
+    h4 {
+      @include heading;
+      font-size: $fs-lg;
+      margin: 0;
+    }
+
+    p, a {
+      @include body-text;
+      font-size: $fs-base;
+      color: var(--text-primary);
+      margin: 0;
+      word-break: break-word;
+    }
+
+    a {
+      color: $primary;
+      &:hover {
+        color: $primary-hover;
+      }
+    }
+  }
+}

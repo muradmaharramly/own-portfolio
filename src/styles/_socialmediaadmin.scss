@@ -1,0 +1,68 @@
+// ============================================
+// SOCIAL MEDIA ADMIN
+// ============================================
+
+.social-admin {
+  .admin-header {
+    @include flex-between;
+    margin-bottom: $sp-2;
+  }
+  &__grid {
+    @include grid-auto(300px);
+    gap: $sp-6;
+  }
+}
+
+.media-fl{
+  @include flex-start;
+  gap: $sp-2;
+}
+
+.social-card {
+  background-color: var(--bg-secondary);
+  border-radius: $radius-lg;
+  padding: $sp-5;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $sp-4;
+  transition: transform $transition-base;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &__content {
+    flex: 1;
+    overflow: hidden; // Prevent long URLs from breaking layout
+  }
+
+  &__platform {
+    font-size: $fs-lg;
+    font-weight: $fw-semibold;
+    color: var(--text-primary);
+    margin-bottom: $sp-2;
+  }
+
+  &__link {
+    @include flex-start;
+    gap: $sp-2;
+    font-size: $fs-sm;
+    color: $primary;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: $sp-2;
+  }
+}

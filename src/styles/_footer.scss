@@ -1,0 +1,77 @@
+// ============================================
+// components/Layout/Footer.scss
+// ============================================
+
+
+.footer {
+  
+  padding: $sp-16 0 $sp-8;
+  border-top: 1px solid var(--border);
+  margin-top: $sp-20;
+
+  &__content {
+    @include flex-column-center;
+    gap: $sp-6;
+    text-align: center;
+  }
+
+  &__social {
+    @include flex-center;
+    gap: $sp-4;
+    flex-wrap: wrap;
+  }
+
+  &__social-link {
+    @include flex-center;
+    width: 48px;
+    height: 48px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: $radius-lg;
+    color: var(--text-secondary);
+    font-size: $fs-xl;
+    text-decoration: none;
+    transition: all $transition-base $ease-out;
+
+    &:hover {
+      background: $gradient-primary;
+      border-color: transparent;
+      color: $light-bg-primary;
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+  }
+
+  &__text {
+    color: var(--text-secondary);
+    font-size: $fs-base;
+    @include flex-center;
+    gap: $sp-2;
+  }
+
+  &__heart {
+    color: $danger;
+    animation: heartbeat 1.5s ease-in-out infinite;
+  }
+
+  &__copyright {
+    color: var(--text-tertiary);
+    font-size: $fs-sm;
+    padding-top: $sp-4;
+    border-top: 1px solid var(--border);
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  10%, 30% {
+    transform: scale(1.2);
+  }
+  20%, 40% {
+    transform: scale(1);
+  }
+}

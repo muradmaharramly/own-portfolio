@@ -1,0 +1,143 @@
+// ============================================
+// PROJECTS SECTION
+// ============================================
+
+.projects {
+
+  &__grid {
+    @include grid-auto(300px);
+    gap: $sp-8;
+  }
+
+  &__actions {
+    @include flex-center;
+    margin-top: $sp-10;
+  }
+}
+
+.project-card {
+  @extend .glass-card;
+  background-color: var(--bg-secondary);
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: transform $transition-base, box-shadow $transition-base;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+
+    .project-card__overlay {
+      opacity: 1;
+    }
+
+    .project-card__image img {
+      transform: scale(1.05);
+    }
+  }
+
+  &__image {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background-color: var(--bg-tertiary);
+    border-radius: $radius-lg;
+    
+    -webkit-border-radius: $radius-lg;
+    -moz-border-radius: $radius-lg;
+    -ms-border-radius: $radius-lg;
+    -o-border-radius: $radius-lg;
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform $transition-slow;
+    }
+  }
+
+  &__placeholder {
+    width: 100%;
+    height: 100%;
+    @include flex-center;
+    font-size: $fs-4xl;
+    color: var(--text-tertiary);
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($dark-bg-primary, 0.6);
+    @include flex-center;
+    opacity: 0;
+    transition: opacity $transition-base;
+  }
+
+  &__links {
+    @include flex-center;
+    gap: $sp-4;
+
+    a {
+      @include flex-center;
+      width: 45px;
+      height: 45px;
+      @include button-base;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      color: var(--text-secondary);
+      border-radius: 50%;
+      font-size: $fs-xl;
+      transition: transform $transition-fast, background-color $transition-fast;
+
+      &:hover {
+        transform: scale(1.1);
+        background-color: $primary;
+        color: $light-bg-primary;
+      }
+    }
+  }
+
+  &__content {
+    padding: $sp-6;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    font-size: $fs-xl;
+    font-weight: $fw-bold;
+    margin-bottom: $sp-3;
+    color: var(--text-primary);
+  }
+
+  &__description {
+    font-size: $fs-base;
+    color: var(--text-secondary);
+    margin-bottom: $sp-4;
+    line-height: $lh-relaxed;
+    flex: 1;
+    
+    // Truncate text after 3 lines
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &__tech {
+    @include flex-start;
+    flex-wrap: wrap;
+    gap: $sp-2;
+    margin-top: auto;
+  }
+}
+
+.tech-tag {
+  @include tag;
+}

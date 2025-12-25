@@ -1,0 +1,80 @@
+// ============================================
+// components/Home/About.scss
+// ============================================
+.about {
+  position: relative;
+  padding: 0 0;
+  overflow: hidden;
+}
+.section-header {
+  text-align: center;
+  margin-bottom: $sp-12;
+
+  @include md {
+    margin-bottom: $sp-16;
+  }
+}
+
+.section-title {
+  font-size: clamp($fs-3xl, 4vw, $fs-5xl);
+  font-weight: $fw-bold;
+  margin-bottom: 0;
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: $gradient-primary;
+    border-radius: $radius-full;
+  }
+}
+
+.section-divider {
+  width: 100px;
+  height: 4px;
+  background: $gradient-primary;
+  margin: $sp-6 auto 0;
+  border-radius: $radius-full;
+}
+
+.about {
+  border-radius: $radius-2xl;
+  padding: 0 0;
+
+  &__content {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  &__card {
+    position: relative;
+    padding: $sp-8;
+    border-radius: $radius-2xl;
+    background: linear-gradient(
+      180deg,
+      rgba(255,255,255,0.02),
+      rgba(255,255,255,0.0)
+    );
+    border: 1px solid var(--border);
+    backdrop-filter: blur(18px);
+    box-shadow: var(--shadow-sm);
+  }
+
+
+  &__text {
+    p {
+      font-size: $fs-lg;
+      line-height: $lh-relaxed;
+      color: var(--text-secondary);
+      margin: 0;
+      white-space: pre-wrap;
+    }
+  }
+}

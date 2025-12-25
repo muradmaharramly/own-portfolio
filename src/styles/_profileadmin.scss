@@ -1,0 +1,335 @@
+// src/pages/admin/ProfileAdmin.scss
+
+.profile-admin {
+  max-width: 900px;
+  .section-fl{
+    display: flex;
+    justify-content: left;
+    gap: $sp-4;
+  }
+
+  &__header {
+    margin-bottom: $sp-8;
+  }
+
+  &__title {
+    @include heading;
+    font-size: $fs-4xl;
+    margin: 0;
+  }
+}
+
+.profile-form {
+  @include flex-column;
+  gap: $sp-8;
+
+  &__section {
+    @include card;
+    flex: 1;
+  }
+
+  &__section-title {
+    @include heading;
+    font-size: $fs-xl;
+    margin: 0 0 $sp-6;
+    padding-bottom: $sp-4;
+    border-bottom: 2px solid var(--border);
+  }
+
+  &__actions {
+    @include flex-end;
+    padding-top: $sp-4;
+  }
+}
+
+.image-upload {
+  &__preview {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    border-radius: $radius-xl;
+    overflow: hidden;
+    border: 3px solid var(--border);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &:hover .image-upload__overlay {
+      opacity: 1;
+    }
+  }
+  &__progress {
+    position: absolute;
+    inset: 0;
+    @include flex-column-center;
+    gap: $sp-2;
+    background: rgba($dark-bg-primary, 0.6);
+    color: $light-bg-primary;
+    z-index: 3;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    @include flex-center;
+    gap: $sp-3;
+    background: rgba($dark-bg-primary, 0.7);
+    opacity: 0;
+    transition: opacity $transition-base;
+  }
+
+  &__btn {
+    @include button-base;
+    @include flex-center;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+    color: $primary;
+    font-size: $fs-xl;
+    transition: all $transition-fast;
+
+    input {
+      display: none;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &--danger {
+      @include button-base;
+      background: linear-gradient(180deg, rgba($danger, 0.18), rgba($danger, 0.12));
+      color: $light-bg-primary;
+
+      &:hover {
+        background: $danger-hover;
+      }
+    }
+  }
+
+  &__placeholder {
+    @include flex-column-center;
+    gap: $sp-3;
+    width: 200px;
+    height: 200px;
+    border: 2px dashed var(--border);
+    border-radius: $radius-xl;
+    cursor: pointer;
+    transition: all $transition-base;
+    font-size: $fs-3xl;
+    color: var(--text-tertiary);
+    position: relative;
+
+    input {
+      display: none;
+    }
+
+    span {
+      font-size: $fs-base;
+      font-weight: $fw-medium;
+    }
+
+    &:hover {
+      border-color: $primary;
+      color: $primary;
+      transform: scale(1.02);
+    }
+  }
+}
+ .upload-progress__bar {
+   display: none;
+ }
+ .upload-progress__fill {
+   display: none;
+ }
+ .upload-progress__text {
+   @include heading;
+   font-size: $fs-lg;
+ }
+ .upload-circular {
+   position: relative;
+   width: 120px;
+   height: 120px;
+ }
+ .upload-circular__svg {
+   width: 120px;
+   height: 120px;
+   transform: rotate(-90deg);
+ }
+ .upload-circular__track {
+   fill: none;
+   stroke: rgba($light-bg-primary, 0.3);
+   stroke-width: 12;
+ }
+ .upload-circular__progress {
+   fill: none;
+   stroke: $primary;
+   stroke-width: 12;
+   stroke-linecap: round;
+   transition: stroke-dashoffset $transition-fast linear;
+ }
+ .upload-circular__text {
+   position: absolute;
+   inset: 0;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+ }
+
+.form-group {
+  margin-bottom: $sp-6;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__label {
+    @include body-text;
+    display: block;
+    margin-bottom: $sp-2;
+    font-weight: $fw-medium;
+    color: var(--text-primary);
+
+    .required {
+      color: $danger;
+    }
+  }
+
+  &__input {
+    @include input-base;
+  }
+
+  &__textarea {
+    @include input-base;
+    resize: vertical;
+    min-height: 120px;
+  }
+}
+
+.cv-upload {
+  @include flex-column-center;
+  gap: $sp-3;
+  padding: $sp-8;
+  border: 2px dashed var(--border);
+  border-radius: $radius-lg;
+  cursor: pointer;
+  transition: all $transition-base;
+  font-size: $fs-3xl;
+  color: var(--text-tertiary);
+  z-index: 1001;
+  height: 75%;
+
+  input {
+    display: none;
+  }
+
+  span {
+    font-size: $fs-base;
+    font-weight: $fw-medium;
+  }
+
+  &:hover {
+    border-color: $primary;
+    color: $primary;
+    background: rgba($primary, 0.05);
+  }
+}
+
+.cv-uploaded {
+  @include flex-column;
+  padding: $sp-4;
+  background: var(--bg-tertiary);
+  border-radius: $radius-lg;
+  gap: $sp-4;
+  flex-wrap: wrap;
+  height: 75%;
+  input{
+    display: none
+  }
+  position: relative;
+
+  &__info {
+    @include flex-start;
+    gap: $sp-3;
+    flex: 1;
+    min-width: 200px;
+  }
+
+  &__icon {
+    font-size: $fs-3xl;
+    color: $danger;
+  }
+
+  &__name {
+    @include body-text;
+    font-weight: $fw-medium;
+    margin: 0 0 $sp-1;
+    color: var(--text-primary);
+  }
+
+  &__link {
+    @include body-text;
+    font-size: $fs-sm;
+    color: $primary;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__actions {
+    @include flex-end;
+    gap: $sp-2;
+  }
+  &__progress {
+    position: absolute;
+    inset: 0;
+    @include flex-column-center;
+    gap: $sp-2;
+    background: rgba($dark-bg-primary, 0.6);
+    color: $light-bg-primary;
+    z-index: 3;
+  }
+}
+.cv{
+  flex: 0 0 70%;
+}
+.image{
+  flex: 0 0 30%;
+}
+// Button Styles
+.btn-primary {
+  @include button-primary;
+  gap: $sp-2;
+}
+
+.btn-secondary {
+  @include button-secondary;
+  gap: $sp-2;
+}
+
+.btn-danger {
+  @include button-base;
+  background: $danger;
+  color: white;
+  gap: $sp-2;
+  height: 45px;
+
+  &:hover:not(:disabled) {
+    background: $danger-hover;
+    transform: translateY(-2px);
+  }
+}
+
+.btn-sm {
+  padding: $sp-2 $sp-4;
+  font-size: $fs-sm;
+
+  svg {
+    font-size: $fs-base;
+  }
+}

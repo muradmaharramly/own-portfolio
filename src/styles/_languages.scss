@@ -1,0 +1,112 @@
+// ============================================
+// LANGUAGES SECTION
+// ============================================
+
+.languages {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: $sp-6;
+  }
+}
+.lang-fl{
+  @include flex-between;
+  gap: $sp-16;
+  .info{
+    @include flex-column;
+    gap: $sp-2;
+  }
+}
+.language-circle {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(224, 192, 255, 0.03));
+  padding: $sp-5;
+  border-radius: $radius-lg;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(16px);
+  transition: transform $transition-base, box-shadow $transition-base;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: $sp-4;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  &__ring {
+    position: relative;
+    width: 120px;
+    height: 120px;
+  }
+
+  &__svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+  }
+
+  &__track {
+    fill: none;
+    stroke: var(--bg-tertiary);
+    stroke-width: 12;
+  }
+
+  &__ticks {
+    fill: none;
+    stroke: rgba(127,127,127,0.2);
+    stroke-width: 2;
+    stroke-dasharray: 2 10;
+  }
+
+  &__progress {
+    fill: none;
+    stroke-width: 12;
+    stroke-linecap: round;
+  }
+
+  &__center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    gap: $sp-1;
+  }
+
+  &__percent {
+    font-size: $fs-2xl;
+    font-weight: $fw-bold;
+    color: $primary;
+    line-height: 1;
+  }
+
+  &__name {
+    font-size: $fs-base;
+    font-weight: $fw-semibold;
+    color: var(--text-primary);
+  }
+
+  &__level {
+    font-size: $fs-xs;
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    padding: 4px 10px;
+    border-radius: $radius-full;
+    margin-top: $sp-1;
+  }
+}
+
+.pill {
+  border-radius: $radius-full;
+}
+
+.level-beginner { color: #2563eb; }
+.level-intermediate { color: #0ea5e9; }
+.level-advanced { color: #10b981; }
+.level-fluent { color: #f59e0b; }
+.level-native { color: #ef4444; }

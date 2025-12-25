@@ -1,0 +1,37 @@
+// src/components/common/ConfirmDialog.scss
+.confirm-dialog {
+  &__message {
+    @include body-text;
+    margin-bottom: $sp-6;
+    font-size: $fs-lg;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $sp-3;
+    justify-content: flex-end;
+  }
+
+  &__btn {
+    @include button-base;
+    min-width: 100px;
+
+    &--cancel {
+      @include button-secondary;
+    }
+
+    &--danger {
+      background: $danger;
+      color: white;
+
+      &:hover:not(:disabled) {
+        background: $danger-hover;
+        transform: translateY(-2px);
+      }
+    }
+
+    &--primary {
+      @include button-primary;
+    }
+  }
+}

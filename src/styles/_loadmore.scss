@@ -1,0 +1,30 @@
+// src/components/common/LoadMore.scss
+
+.load-more {
+  @include flex-center;
+  padding: $sp-8 0;
+
+  &__btn {
+    @include button-secondary;
+    gap: $sp-2;
+    min-width: 200px;
+
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    svg {
+      transition: transform $transition-base;
+    }
+
+    &:hover:not(:disabled) svg {
+      transform: translateY(4px);
+    }
+  }
+}

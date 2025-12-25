@@ -1,0 +1,270 @@
+// src/layouts/AdminLayout.scss
+
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg-primary);
+}
+
+.admin-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 280px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  border-right: 1px solid var(--border);
+  backdrop-filter: blur(16px);
+  @include flex-column;
+  z-index: $z-fixed;
+  transition: transform $transition-base;
+
+  @media (max-width: $breakpoint-lg) {
+    transform: translateX(-100%);
+
+    &--open {
+      transform: translateX(0);
+    }
+  }
+
+  &__header {
+    @include flex-between;
+    padding: $sp-6;
+    border-bottom: 1px solid var(--border);
+  }
+
+  &__logo {
+    @include heading;
+    font-size: $fs-xl;
+    margin: 0;
+    background: $gradient-primary;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  &__close {
+    @include flex-center;
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+    border: 1px solid var(--border);
+    backdrop-filter: blur(10px);
+    border: none;
+    border-radius: $radius-md;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all $transition-fast;
+    font-size: $fs-lg;
+
+    @media (min-width: $breakpoint-lg) {
+      display: none;
+    }
+
+    &:hover {
+      background: $danger;
+      color: $light-bg-primary;
+      transform: rotate(90deg);
+    }
+  }
+
+  &__nav {
+    flex: 1;
+    padding: $sp-4;
+    overflow-y: auto;
+    @include custom-scrollbar;
+  }
+
+  &__link {
+    @include flex-start;
+    gap: $sp-3;
+    padding: $sp-3 $sp-4;
+    margin-bottom: $sp-2;
+    border-radius: $radius-lg;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all $transition-fast;
+    font-weight: $fw-medium;
+    border: 1px solid transparent;
+
+    &:hover {
+     background: linear-gradient(180deg, rgba(0, 0, 0, 0.185), rgba(224, 192, 255, 0.03));
+      backdrop-filter: blur(10px);
+      color: var(--text-primary);
+      transform: translateX(4px);
+      border: 1px solid $dark-border;
+       box-shadow: var(--shadow-sm);
+    }
+
+    &--active {
+      background: linear-gradient(180deg, #6365f1b6, #8a5cf6c3);
+      color: $light-bg-primary;
+      border: 1px solid $primary;
+      backdrop-filter: blur(10px);
+       box-shadow: var(--shadow-sm);
+
+      &:hover {
+        transform: translateX(0);
+        background: linear-gradient(180deg, #6365f1, #8a5cf6);
+      }
+    }
+
+    &--danger {
+      width: 100%;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      font-size: $fs-base;
+      font-family: $font-primary;
+      color: $danger;
+      border: 1px solid $danger;
+      svg{
+        margin-bottom: -2px;
+      }
+
+      &:hover {
+        background: rgba($danger, 0.1);
+        color: $danger;
+        border: 1px solid $danger
+      }
+    }
+  }
+
+  &__icon {
+    @include flex-center;
+    font-size: $fs-lg;
+    width: 24px;
+  }
+
+  &__label {
+    font-size: $fs-base;
+  }
+
+  &__footer {
+    padding: $sp-4;
+    border-top: 1px solid var(--border);
+  }
+}
+
+.admin-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  z-index: $z-sticky;
+  animation: fadeIn $transition-base;
+
+  @media (min-width: $breakpoint-lg) {
+    display: none;
+  }
+}
+
+.admin-main {
+  flex: 1;
+  margin-left: 0;
+  min-height: 100vh;
+  width: 1260px;
+  @include flex-column;
+
+  @media (min-width: $breakpoint-lg) {
+    margin-left: 280px;
+  }
+}
+
+.admin-topbar {
+  @include flex-between;
+  padding: $sp-4 $sp-6;
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: $z-sticky;
+  &__menu{
+    @include flex-center;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+    border: 1px solid var(--border);
+    backdrop-filter: blur(10px);
+    border: none;
+    border-radius: $radius-md;
+    cursor: pointer;
+    color: var(--text-primary);
+    transition: all $transition-fast;
+    font-size: $fs-lg;
+
+    @media (min-width: $breakpoint-lg) {
+      display: none;
+    }
+
+    &:hover {
+      background: $primary;
+      color: white;
+      transform: scale(1.05);
+    }
+  }
+
+  &__actions {
+    @include flex-start;
+    gap: $sp-4;
+  }
+
+  &__theme {
+    @include flex-center;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+    border: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+    border-radius: $radius-lg;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all $transition-base $ease-out;
+    font-size: $fs-xl;
+
+    &:hover {
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  &__user {
+    @include flex-start;
+    gap: $sp-3;
+  }
+
+  &__user-name {
+    @include body-text;
+    font-weight: $fw-medium;
+
+    @media (max-width: $breakpoint-sm) {
+      display: none;
+    }
+  }
+
+  &__user-avatar {
+    @include flex-center;
+    width: 40px;
+    height: 40px;
+    background: $gradient-primary;
+    color: white;
+    border-radius: $radius-full;
+    font-weight: $fw-bold;
+    font-size: $fs-lg;
+  }
+}
+
+.admin-content {
+  flex: 1;
+  padding: $sp-6;
+
+  @include md {
+    padding: $sp-8;
+  }
+}

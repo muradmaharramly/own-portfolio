@@ -1,0 +1,123 @@
+// ============================================
+// MESSAGES ADMIN
+// ============================================
+
+.messages-list {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-4;
+}
+
+.message-card {
+  background-color: var(--bg-secondary);
+  border-radius: $radius-lg;
+  padding: $sp-6;
+  box-shadow: var(--shadow-sm);
+  border-left: 4px solid transparent;
+  transition: all $transition-base;
+
+  &.unread {
+    border-left-color: $primary;
+    background-color: rgba($primary, 0.02);
+
+    .message-card__name {
+      font-weight: $fw-bold;
+    }
+  }
+
+  &__header {
+    @include flex-between;
+    margin-bottom: $sp-4;
+    flex-wrap: wrap;
+    gap: $sp-4;
+  }
+
+  &__sender {
+    @include flex-start;
+    gap: $sp-4;
+  }
+
+  &__avatar {
+    width: 40px;
+    height: 40px;
+    background-color: $primary;
+    color: $light-bg-primary;
+    border-radius: 50%;
+    @include flex-center;
+    font-weight: $fw-bold;
+    font-size: $fs-lg;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__name {
+    font-size: $fs-base;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+  }
+
+  &__email {
+    font-size: $fs-sm;
+    color: var(--text-secondary);
+    text-decoration: none;
+
+    &:hover {
+      color: $primary;
+      text-decoration: underline;
+    }
+  }
+
+  &__date {
+    font-size: $fs-sm;
+    color: var(--text-tertiary);
+    white-space: nowrap;
+  }
+
+  &__content {
+    margin-bottom: $sp-6;
+    padding-left: $sp-12; 
+
+    @include sm {
+      padding-left: 56px;
+    }
+  }
+
+  &__subject {
+    font-size: $fs-lg;
+    font-weight: $fw-semibold;
+    color: var(--text-primary);
+    margin-bottom: $sp-2;
+  }
+
+  &__body {
+    font-size: $fs-base;
+    color: var(--text-secondary);
+    line-height: $lh-relaxed;
+    white-space: pre-wrap;
+  }
+
+  &__actions {
+    @include flex-end;
+    gap: $sp-3;
+    padding-top: $sp-4;
+    border-top: 1px solid var(--border);
+  }
+}
+
+.btn-sm {
+  padding: $sp-2 $sp-3;
+  font-size: $fs-sm;
+}
+
+.btn-danger-outline {
+  color: $danger;
+  border-color: $danger;
+
+  &:hover {
+    background-color: $danger;
+    color: $light-bg-primary;
+  }
+}
