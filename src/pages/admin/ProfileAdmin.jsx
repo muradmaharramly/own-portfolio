@@ -225,7 +225,7 @@ const ProfileAdmin = () => {
                   </div>
                 )}
                 <div className="image-upload__overlay">
-                  <label className="image-upload__btn">
+                  <label className="image-upload__btn btn-sm">
                     <GoUpload />
                     <input 
                       type="file" 
@@ -236,7 +236,7 @@ const ProfileAdmin = () => {
                   </label>
                   <div 
                     type="button"
-                    className="image-upload__btn image-upload__btn--danger"
+                    className="image-upload__btn image-upload__btn--danger btn-sm"
                     onClick={handleDeleteImage}
                     disabled={uploadingImage}
                   >

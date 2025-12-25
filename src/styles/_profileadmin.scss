@@ -76,9 +76,11 @@
     inset: 0;
     @include flex-center;
     gap: $sp-3;
-    background: rgba($dark-bg-primary, 0.7);
+    background: rgba($dark-bg-primary, 0.55);
+    backdrop-filter: blur(8px);
     opacity: 0;
     transition: opacity $transition-base;
+    z-index: 2;
   }
 
   &__btn {
@@ -87,7 +89,7 @@
     width: 50px;
     height: 50px;
     background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-    color: $primary;
+    color: $light-bg-primary;
     font-size: $fs-xl;
     transition: all $transition-fast;
 
@@ -239,9 +241,9 @@
 }
 
 .cv-uploaded {
+  @include card;
   @include flex-column;
   padding: $sp-4;
-  background: var(--bg-tertiary);
   border-radius: $radius-lg;
   gap: $sp-4;
   flex-wrap: wrap;

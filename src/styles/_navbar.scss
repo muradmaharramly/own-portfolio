@@ -58,11 +58,14 @@
 
     @media (max-width: $breakpoint-md) {
       position: fixed;
+      z-index: 1001;
       top: 0;
       right: -100%;
       width: 280px;
       height: 100vh;
-      background: var(--bg-primary);
+       background: linear-gradient(180deg, rgba(0, 0, 0, 0.847), rgba(6, 2, 9, 0.852));
+      backdrop-filter: blur(40px);
+      border-left: 1px solid $dark-border;
       flex-direction: column;
       padding: $sp-20 $sp-6;
       box-shadow: var(--shadow-xl);

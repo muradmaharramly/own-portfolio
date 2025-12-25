@@ -9,6 +9,9 @@
   -moz-border-radius:$radius-2xl ;
   -ms-border-radius:$radius-2xl ;
   -o-border-radius:$radius-2xl ;
+    @media (max-width: $breakpoint-md) {
+      padding-top: $sp-24 !important;
+    }
   
 
   &__content {
