@@ -81,6 +81,7 @@
       background-color: transparent !important;
       position: relative;
       transition: transform $transition-base $ease-out;
+      padding: $sp-2;
 
       &::before {
         content: '';
@@ -95,6 +96,9 @@
           display: none;
         }
       }
+      &:hover  {
+          transform: translate(4px, -4px);
+        }
 
       
     }
@@ -114,6 +118,7 @@
             border-right: none;
             border-left: 12px solid var(--bg-secondary);
           }
+          
         }
 
         .experience-card__marker {

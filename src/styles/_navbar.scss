@@ -12,6 +12,34 @@
    @media (max-width: $breakpoint-md) {
       padding: $sp-3 0px;
     }
+  &__link{
+    position: relative;
+    text-decoration: none;
+    font-weight: 500;
+    padding-bottom: $sp-2;
+    background: $gradient-primary;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      height: 2px;
+      background: $gradient-primary;
+      transition: width 0.3s ease;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+
+    &.active::after {
+      width: 100%;
+    }
+  }
   
   [data-theme='light'] & {
     background: linear-gradient(180deg, rgba($light-bg-primary, 0.06), rgba($light-bg-primary, 0.03));
