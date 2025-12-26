@@ -10,12 +10,13 @@
 .login-card {
   @include card;
   width: 100%;
-  max-width: 440px;
+  max-width: 600px;
   padding: $sp-8;
 }
 
 .login-header {
   margin-bottom: $sp-6;
+  @include flex-column-center;
 
   h2 {
     @include heading;

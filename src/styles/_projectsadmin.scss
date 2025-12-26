@@ -61,7 +61,7 @@
   &__overlay {
     position: absolute;
     inset: 0;
-    background: rgba($dark-bg-primary, 0.5);
+    background: rgba($dark-bg-primary, 0.6);
     opacity: 0;
     transition: opacity $transition-fast;
     display: flex;
@@ -80,19 +80,24 @@
   }
 
   &__link {
-    @include button-base;
+    // remove glass styles for clear visibility
     @include flex-center;
     width: 40px;
     height: 40px;
     border-radius: $radius-full;
-    background: linear-gradient(180deg, rgba($primary, 0.22), rgba($secondary, 0.18));
-    color: $light-bg_primary;
+    border: none;
+    background: $primary;
+    color: $light-bg-primary;
     transition: all $transition-fast;
     text-decoration: none;
     font-size: $fs-lg;
+    
+    svg {
+      color: inherit;
+    }
 
     &:hover {
-      background: $primary;
+      background: $primary-hover;
       color: $light-bg-primary;
       transform: scale(1.06);
     }

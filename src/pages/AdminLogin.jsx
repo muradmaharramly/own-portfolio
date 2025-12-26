@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { signIn } from '../redux/slices/authSlice';
 import { toast } from 'react-toastify';
 import { FaLock, FaUser } from 'react-icons/fa';
+import { FiUser } from 'react-icons/fi';
+import { CiLock } from 'react-icons/ci';
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
@@ -44,7 +46,7 @@ const AdminLogin = () => {
           <div className="form-group">
             <label htmlFor="email">Email</label>
             <div className="input-icon-wrapper">
-              <FaUser className="input-icon" />
+              <FiUser className="input-icon" />
               <input
                 type="email"
                 id="email"
@@ -58,7 +60,7 @@ const AdminLogin = () => {
           <div className="form-group">
             <label htmlFor="password">Şifrə</label>
             <div className="input-icon-wrapper">
-              <FaLock className="input-icon" />
+              <CiLock className="input-icon" />
               <input
                 type="password"
                 id="password"

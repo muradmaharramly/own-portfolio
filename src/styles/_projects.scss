@@ -88,16 +88,20 @@
       @include flex-center;
       width: 45px;
       height: 45px;
-      @include button-base;
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border: none;
+      background-color: $primary;
       color: $light-bg-primary;
       border-radius: 50%;
       font-size: $fs-xl;
       transition: transform $transition-fast, background-color $transition-fast;
+      
+      svg {
+        color: inherit;
+      }
 
       &:hover {
         transform: scale(1.1);
-        background-color: $primary;
+        background-color: $primary-hover;
         color: $light-bg-primary;
       }
     }
@@ -142,4 +146,3 @@
 .tech-tag {
   @include tag;
 }
-
