@@ -39,6 +39,7 @@
     @extend .glass-card;
     transition: transform $transition-base, box-shadow $transition-base;
     position: relative;
+    overflow: visible;
     margin-bottom: $sp-8;
     @include md {
       width: calc(50% - $sp-6);
@@ -57,13 +58,13 @@
       position: absolute;
       top: 30px;
       left: 22px;
-      width: 16px;
-      height: 16px;
+      width: 18px;
+      height: 18px;
       border-radius: 50%;
       background: $gradient-primary;
       border: 3px solid var(--bg-primary);
       box-shadow: 0 0 0 4px var(--border);
-      z-index: 2;
+      z-index: 5;
 
       @include md {
         left: auto;
