@@ -20,20 +20,29 @@ import {
 import { toggleTheme } from '../../redux/slices/themeSlice';
 import { signOut } from '../../redux/slices/authSlice';
 import { IoMdLogOut } from 'react-icons/io';
-import { FiMoon, FiSun, FiUser, FiDownload } from 'react-icons/fi';
+import { FiMoon, FiSun, FiUser, FiDownload, FiMenu } from 'react-icons/fi';
 import { HiOutlineChartBar } from 'react-icons/hi';
 import { PiGraduationCap } from 'react-icons/pi';
 import { IoBriefcaseOutline, IoRocketOutline, IoShareSocialOutline } from 'react-icons/io5';
 import { HiMiniLanguage } from 'react-icons/hi2';
 import { CiMail } from 'react-icons/ci';
-import { LuQrCode } from 'react-icons/lu';
+import { LuPhone, LuQrCode } from 'react-icons/lu';
+import { fetchContactMessages } from '../../redux/slices/contactSlice';
 
 const AdminLayout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { mode } = useSelector((state) => state.theme);
+ const { mode } = useSelector((state) => state.theme);
   const { user } = useSelector((state) => state.auth);
+  const { messages = [] } = useSelector((state) => state.contact);
+  const unreadCount = Array.isArray(messages) ? messages.filter(m => !m.is_read).length : 0;
+
+  React.useEffect(() => {
+    dispatch(fetchContactMessages());
+  }, [dispatch]);
+
+  
 
   const handleLogout = () => {
     dispatch(signOut());
@@ -41,14 +50,15 @@ const AdminLayout = ({ children }) => {
   };
 
   const menuItems = [
-    { path: '/admin', icon: <HiOutlineChartBar />, label: 'Dashboard', end: true },
+    { path: '/admin', icon: <HiOutlineChartBar />, label: 'İdarə Paneli', end: true },
     { path: '/admin/profile', icon: <FiUser />, label: 'Profil' },
     { path: '/admin/education', icon: <PiGraduationCap />, label: 'Təhsil' },
     { path: '/admin/experience', icon: <IoBriefcaseOutline />, label: 'Təcrübə' },
     { path: '/admin/projects', icon: <IoRocketOutline />, label: 'Proyektlər' },
     { path: '/admin/languages', icon: <HiMiniLanguage />, label: 'Dillər' },
     { path: '/admin/social-media', icon: <IoShareSocialOutline />, label: 'Sosial Media' },
-    { path: '/admin/contact', icon: <CiMail />, label: 'Əlaqə' },
+    { path: '/admin/contact', icon: <LuPhone />, label: 'Əlaqə' },
+    { path: '/admin/messages', icon: <CiMail />, label: 'Mesajlar', badge: unreadCount },
     { path: '/admin/qr', icon: <LuQrCode />, label: 'QR' },
   ];
 
@@ -80,6 +90,9 @@ const AdminLayout = ({ children }) => {
             >
               <span className="admin-sidebar__icon">{item.icon}</span>
               <span className="admin-sidebar__label">{item.label}</span>
+              {item.badge > 0 && (
+                <span className="admin-sidebar__badge">{item.badge}</span>
+              )}
             </NavLink>
           ))}
         </nav>
@@ -103,7 +116,7 @@ const AdminLayout = ({ children }) => {
         />
       )}
 
-      {/* Main Content */}
+           {/* Main Content */}
       <div className="admin-main">
         {/* Top Bar */}
         <header className="admin-topbar">

@@ -142,7 +142,7 @@
   border-radius: $radius-lg;
   padding: $sp-6;
   background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(5px);
   box-shadow: var(--shadow-sm);
 }
 
@@ -267,7 +267,7 @@
 
   &.primary {
     background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
     color: $primary;
 
     &:hover {
@@ -278,7 +278,7 @@
 
   &.danger {
     background: linear-gradient(180deg, rgba($danger,0.12), rgba($danger,0.06));
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
     color: $danger;
 
     &:hover {

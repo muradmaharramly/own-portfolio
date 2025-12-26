@@ -16,8 +16,12 @@ import { fetchEducation } from '../../redux/slices/educationSlice';
 import { fetchExperience } from '../../redux/slices/experienceSlice';
 import { fetchProjects } from '../../redux/slices/projectsSlice';
 import { fetchLanguages } from '../../redux/slices/languageSlice';
+import { fetchContactMessages } from '../../redux/slices/contactSlice';
 import { FiEdit2, FiExternalLink } from 'react-icons/fi';
 import { IoBriefcaseOutline } from 'react-icons/io5';
+import { CiMail } from 'react-icons/ci';
+import { BiStats } from 'react-icons/bi';
+import { HiMiniLanguage } from 'react-icons/hi2';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -26,6 +30,7 @@ const Dashboard = () => {
   const { items: experience } = useSelector((state) => state.experience);
   const { items: projects } = useSelector((state) => state.projects);
   const { items: languages } = useSelector((state) => state.languages);
+  const { messages = [] } = useSelector((state) => state.contact);
 
   useEffect(() => {
     dispatch(fetchProfile());
@@ -33,7 +38,32 @@ const Dashboard = () => {
     dispatch(fetchExperience({ page: 1, limit: 100 }));
     dispatch(fetchProjects({ page: 1, limit: 100 }));
     dispatch(fetchLanguages());
+    dispatch(fetchContactMessages());
   }, [dispatch]);
+
+  // Calculate stats
+  const calculateAverage = (items, type) => {
+    if (!items || !items.length) return 0;
+    const dates = items.map(i => new Date(i.created_at));
+    const minDate = new Date(Math.min(...dates));
+    const now = new Date();
+    const diffTime = Math.abs(now - minDate);
+    const diffDays = Math.max(1, Math.ceil(diffTime / (1000 * 60 * 60 * 24))); 
+    
+    if (type === 'week') {
+        const weeks = Math.max(1, diffDays / 7);
+        return (items.length / weeks).toFixed(1);
+    }
+    if (type === 'month') {
+        const months = Math.max(1, diffDays / 30);
+        return (items.length / months).toFixed(1);
+    }
+    return 0;
+  };
+
+  const avgMessagesPerWeek = calculateAverage(messages, 'week');
+  const avgProjectsPerMonth = calculateAverage(projects, 'month');
+  const unreadMessages = Array.isArray(messages) ? messages.filter(m => !m.is_read).length : 0;
 
   const stats = [
     {
@@ -60,9 +90,16 @@ const Dashboard = () => {
     {
       title: 'Dillər',
       count: languages.length,
-      icon: <FaGlobe />,
+      icon: <HiMiniLanguage />,
       color: '#3b82f6',
       link: '/admin/languages'
+    },
+    {
+      title: 'Mesajlar',
+      count: messages.length,
+      icon: <CiMail />,
+      color: '#3fbef4ff',
+      link: '/admin/messages'
     }
   ];
 

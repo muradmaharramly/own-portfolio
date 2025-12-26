@@ -3,12 +3,13 @@
 // ============================================
 
 .messages-list {
-  display: flex;
-  flex-direction: column;
+  @include flex-start;
+  flex-wrap: wrap;
   gap: $sp-4;
 }
 
 .message-card {
+  flex: 0 0 45%;
   background-color: var(--bg-secondary);
   border-radius: $radius-lg;
   padding: $sp-6;
@@ -99,7 +100,7 @@
     white-space: pre-wrap;
   }
 
-  &__actions {
+  &__footer {
     @include flex-end;
     gap: $sp-3;
     padding-top: $sp-4;

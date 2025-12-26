@@ -25,33 +25,39 @@
   &--primary {
     background: rgba($primary, 0.1);
     color: $primary;
-    border-color: rgba($primary, 0.3);
+    border-color: rgba($primary, 0.2);
 
     &:hover {
-      background: $primary;
-      color: $light-bg-primary;
+      background: rgba($primary, 0.2);
+      color: $primary;
+      border-color: $primary;
+      box-shadow: 0 0 20px rgba($primary, 0.2);
     }
   }
 
   &--secondary {
     background: rgba($secondary, 0.1);
     color: $secondary;
-    border-color: rgba($secondary, 0.3);
+    border-color: rgba($secondary, 0.2);
 
     &:hover {
-      background: $secondary;
-      color: $light-bg-primary;
+      background: rgba($secondary, 0.2);
+      color: $secondary;
+      border-color: $secondary;
+      box-shadow: 0 0 20px rgba($secondary, 0.2);
     }
   }
 
   &--accent {
     background: rgba($accent, 0.1);
     color: $accent;
-    border-color: rgba($accent, 0.3);
+    border-color: rgba($accent, 0.2);
 
     &:hover {
-      background: $accent;
-      color: $light-bg-primary;
+      background: rgba($accent, 0.2);
+      color: $accent;
+      border-color: $accent;
+      box-shadow: 0 0 20px rgba($accent, 0.2);
     }
   }
 }

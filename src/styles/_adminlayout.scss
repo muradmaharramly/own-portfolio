@@ -14,7 +14,7 @@
   width: 280px;
   background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
   border-right: 1px solid var(--border);
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(5px);
   @include flex-column;
   z-index: $z-fixed;
   transition: transform $transition-base;
@@ -49,7 +49,7 @@
     height: 36px;
     background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
     border: 1px solid var(--border);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
     border: none;
     border-radius: $radius-md;
     cursor: pointer;
@@ -76,6 +76,7 @@
   }
 
   &__link {
+    width: 100%;
     @include flex-start;
     gap: $sp-3;
     padding: $sp-3 $sp-4;
@@ -89,7 +90,7 @@
 
     &:hover {
      background: linear-gradient(180deg, rgba(0, 0, 0, 0.185), rgba(224, 192, 255, 0.03));
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(5px);
       color: var(--text-primary);
       transform: translateX(4px);
       border: 1px solid $dark-border;
@@ -98,36 +99,41 @@
 
     &--active {
       background: linear-gradient(180deg, #6365f1b6, #8a5cf6c3);
-      color: $light-bg-primary;
-      border: 1px solid $primary;
-      backdrop-filter: blur(10px);
-       box-shadow: var(--shadow-sm);
+      color: white;
+      box-shadow: var(--shadow-md);
 
       &:hover {
-        transform: translateX(0);
-        background: linear-gradient(180deg, #6365f1, #8a5cf6);
+        transform: none;
+        background: linear-gradient(180deg, #6365f1b6, #8a5cf6c3);
+        color: white;
       }
     }
 
     &--danger {
-      width: 100%;
-      border: none;
-      background: transparent;
-      cursor: pointer;
-      font-size: $fs-base;
-      font-family: $font-primary;
-      color: $danger;
       border: 1px solid $danger;
-      svg{
-        margin-bottom: -2px;
-      }
+      margin-top: auto;
+      color: $danger;
 
       &:hover {
         background: rgba($danger, 0.1);
-        color: $danger;
-        border: 1px solid $danger
+        color: $danger-hover;
+        border-color: rgba($danger, 0.2);
       }
     }
+  }
+
+  &__badge {
+    margin-left: auto;
+    background: $gradient-primary;
+    color: white;
+    font-size: $fs-xs;
+    font-weight: $fw-bold;
+    padding: 2px 6px;
+    border-radius: $radius-full;
+    min-width: 20px;
+    text-align: center;
+    line-height: 1.2;
+    box-shadow: 0 2px 4px rgba($danger, 0.3);
   }
 
   &__icon {
@@ -138,6 +144,8 @@
 
   &__label {
     font-size: $fs-base;
+    @include flex-start;
+    gap: $sp-2;
   }
 
   &__footer {
@@ -175,7 +183,7 @@
   @include flex-between;
   padding: $sp-4 $sp-6;
   background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(5px);
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
@@ -186,7 +194,7 @@
     height: 40px;
     background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
     border: 1px solid var(--border);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
     border: none;
     border-radius: $radius-md;
     cursor: pointer;
@@ -210,27 +218,58 @@
     gap: $sp-4;
   }
 
-  &__theme {
+  &__lang {
+    position: relative;
     @include flex-center;
+  }
+
+
+  &__theme {
     width: 40px;
     height: 40px;
-    border: none;
-    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-    border: 1px solid var(--border);
-    backdrop-filter: blur(12px);
-    border-radius: $radius-lg;
-    color: var(--text-primary);
+    border-radius: $radius-full;
+    @extend .glass-card;
+    @include flex-center;
     cursor: pointer;
-    transition: all $transition-base $ease-out;
+    color: var(--text-primary);
     font-size: $fs-xl;
+    transition: all $transition-base $ease-out;
+    position: relative;
+    overflow: hidden;
 
     &:hover {
-      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      background: transparent;
       transform: translateY(-2px);
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.2);
+      
+      svg {
+        transform: rotate(15deg) scale(1.1);
+        color: var(--primary);
+      }
     }
 
-    &:active {
-      transform: translateY(0);
+    svg {
+      transition: all $transition-base $ease-out;
+      z-index: 1;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(var(--primary-rgb), 0.1);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s ease, height 0.3s ease;
+    }
+
+    &:active::after {
+      width: 100%;
+      height: 100%;
     }
   }
 

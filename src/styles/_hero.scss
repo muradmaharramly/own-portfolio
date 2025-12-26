@@ -159,7 +159,7 @@
   border: 1px solid var(--border);
 
   &:hover:not(:disabled) {
-    backdrop-filter: blur(30px);
+    backdrop-filter: blur(5px);
     background: transparent;
     border-color: $primary;
     color: $primary;

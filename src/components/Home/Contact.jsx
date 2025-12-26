@@ -15,8 +15,8 @@ const Contact = () => {
   const [loading, setLoading] = useState(false);
   
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
+    sender_name: '',
+    sender_email: '',
     subject: '',
     message: '',
   });
@@ -34,20 +34,20 @@ const Contact = () => {
   };
 
   const validateForm = () => {
-    if (!formData.name.trim()) {
-      toast.error('Zəhmət olmasa adınızı daxil edin');
+    if (!formData.sender_name.trim()) {
+      toast.error('Please enter your name');
       return false;
     }
-    if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      toast.error('Zəhmət olmasa düzgün e-poçt ünvanı daxil edin');
+    if (!formData.sender_email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.sender_email)) {
+      toast.error('Please enter a valid email address');
       return false;
     }
     if (!formData.subject.trim()) {
-      toast.error('Zəhmət olmasa mövzu daxil edin');
+      toast.error('Please enter a subject');
       return false;
     }
     if (!formData.message.trim()) {
-      toast.error('Zəhmət olmasa mesajınızı daxil edin');
+      toast.error('Please enter your message');
       return false;
     }
     return true;
@@ -61,15 +61,15 @@ const Contact = () => {
     setLoading(true);
     try {
       await dispatch(createContactMessage(formData)).unwrap();
-      toast.success('Mesaj uğurla göndərildi! Tezliklə cavab verəcəyəm.');
+      toast.success('Message sent successfully! I will reply soon.');
       setFormData({
-        name: '',
-        email: '',
+        sender_name: '',
+        sender_email: '',
         subject: '',
         message: '',
       });
     } catch (error) {
-      toast.error('Mesaj göndərilə bilmədi. Zəhmət olmasa sonra yenidən cəhd edin.');
+      toast.error('Failed to send message. Please try again later.');
       console.error(error);
     } finally {
       setLoading(false);
@@ -86,7 +86,7 @@ const Contact = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="section-title">Əlaqə</h2>
+          <h2 className="section-title">Contact</h2>
           <div className="section-divider"></div>
         </motion.div>
 
@@ -98,10 +98,9 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h3 className="contact__subtitle">Gəlin danışaq</h3>
+            <h3 className="contact__subtitle">Let's Talk</h3>
             <p className="contact__text">
-              Hal-hazırda yeni imkanlara və əməkdaşlıqlara açığam. 
-              Sualınız varsa və ya sadəcə salam demək istəyirsinizsə, ən qısa zamanda cavab verəcəyəm.
+              I am currently open to new opportunities and collaborations. If you have a question or just want to say hi, I will reply as soon as possible.
             </p>
 
             <div className="contact__details">
@@ -110,7 +109,7 @@ const Contact = () => {
                   <FiMail />
                 </div>
                 <div className="contact__item-content">
-                  <h4>E-poçt</h4>
+                  <h4>Email</h4>
                   <a href={`mailto:${contactInfo?.email || 'example@email.com'}`}>
                     {contactInfo?.email || 'example@email.com'}
                   </a>
@@ -123,7 +122,7 @@ const Contact = () => {
                     <FiPhone />
                   </div>
                   <div className="contact__item-content">
-                    <h4>Telefon</h4>
+                    <h4>Phone</h4>
                     <a href={`tel:${contactInfo.phone}`}>
                       {contactInfo.phone}
                     </a>
@@ -137,7 +136,7 @@ const Contact = () => {
                     <FiMapPin />
                   </div>
                   <div className="contact__item-content">
-                    <h4>Məkan</h4>
+                    <h4>Location</h4>
                     <p>{contactInfo.location}</p>
                   </div>
                 </div>
@@ -156,17 +155,17 @@ const Contact = () => {
               <div className="form-group">
                 <input
                   type="text"
-                  name="name"
-                  placeholder="Adınız"
-                  value={formData.name}
+                  name="sender_name"
+                  placeholder="Your Name"
+                  value={formData.sender_name}
                   onChange={handleChange}
                   className="form-control"
                 />
                 <input
                   type="email"
-                  name="email"
-                  placeholder="E-poçtunuz"
-                  value={formData.email}
+                  name="sender_email"
+                  placeholder="Your Email"
+                  value={formData.sender_email}
                   onChange={handleChange}
                   className="form-control"
                 />
@@ -176,7 +175,7 @@ const Contact = () => {
                 <input
                   type="text"
                   name="subject"
-                  placeholder="Mövzu"
+                  placeholder="Subject"
                   value={formData.subject}
                   onChange={handleChange}
                   className="form-control"
@@ -186,7 +185,7 @@ const Contact = () => {
               <div className="form-group">
                 <textarea
                   name="message"
-                  placeholder="Mesajınız"
+                  placeholder="Your Message"
                   value={formData.message}
                   onChange={handleChange}
                   className="form-control"
@@ -200,11 +199,11 @@ const Contact = () => {
                 disabled={loading}
               >
                 {loading ? (
-                  <span className="spinner-sm"></span>
+                  <span className="spinner"></span>
                 ) : (
                   <>
                     <FiSend />
-                    Mesajı göndər
+                    Send Message
                   </>
                 )}
               </button>

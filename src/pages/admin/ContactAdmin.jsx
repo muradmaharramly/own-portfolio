@@ -43,15 +43,15 @@ const ContactAdmin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.email.trim()) {
-      toast.error('Email daxil edin');
+      toast.error('Email is required');
       return;
     }
     try {
       await dispatch(updateContactInfo(formData)).unwrap();
-      toast.success('Əlaqə məlumatları yadda saxlandı');
+      toast.success('Contact info saved successfully');
       closeModal();
     } catch (error) {
-      toast.error(error?.message || 'Əməliyyat alınmadı');
+      toast.error(error?.message || 'Operation failed');
     }
   };
 
@@ -60,23 +60,23 @@ const ContactAdmin = () => {
       <div className="admin-header">
         <div>
           <h1 className="admin-title">Əlaqə Məlumatları</h1>
-          <p className="admin-subtitle">Email, telefon və məkan məlumatlarını idarə edin</p>
+          <p className="admin-subtitle">Əlaqə məlumatlarınızı idarə edin</p>
         </div>
         <button className="btn-primary" onClick={openModal}>
           {info ? <FiEdit2 /> : <FiPlus />}
-          {info ? 'Redaktə et' : 'Əlavə et'}
+          {info ? 'Məlumatı Düzəlt' : 'Məlumat Əlavə Et'}
         </button>
       </div>
 
       {!info ? (
         <EmptyState
           icon={<FiMail />}
-          title="Əlaqə məlumatı yoxdur"
-          description="Email, telefon və məkan məlumatı əlavə etmək üçün düyməyə klikləyin."
+          title="Əlaqə məlumatı tapılmadı"
+          description="Əlaqə məlumatlarınızı əlavə edin."
           action={
             <button className="btn-primary" onClick={openModal}>
               <FiPlus />
-              Əlavə et
+              Məlumat Əlavə Et
             </button>
           }
         />
@@ -85,7 +85,7 @@ const ContactAdmin = () => {
           <div className="contact-admin__item">
             <div className="contact-admin__icon"><FiMail /></div>
             <div className="contact-admin__content">
-              <h4>Email</h4>
+              <h4>E-poçt</h4>
               <a href={`mailto:${info.email}`}>{info.email}</a>
             </div>
           </div>
@@ -102,7 +102,7 @@ const ContactAdmin = () => {
             <div className="contact-admin__item">
               <div className="contact-admin__icon"><FiMapPin /></div>
               <div className="contact-admin__content">
-                <h4>Məkan</h4>
+                <h4>Ünvan</h4>
                 <p>{info.location}</p>
               </div>
             </div>
@@ -113,14 +113,14 @@ const ContactAdmin = () => {
       <Modal
         isOpen={modalOpen}
         onClose={closeModal}
-        title="Əlaqə Məlumatlarını Redaktə et"
+        title={info ? 'Əlaqə Məlumatlarını Düzəlt' : 'Əlaqə Məlumatı Əlavə Et'}
       >
         <form onSubmit={handleSubmit} className="admin-form">
           <div className="form-group">
-            <label className="form-group__label">Email</label>
+            <label className="form-group__label">E-poçt</label>
             <input
               type="email"
-              className="form-control form-group__input"
+              className="form-group__input"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               required
@@ -130,28 +130,27 @@ const ContactAdmin = () => {
             <label className="form-group__label">Telefon</label>
             <input
               type="tel"
-              className="form-control form-group__input"
+              className="form-group__input"
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
             />
           </div>
           <div className="form-group">
-            <label className="form-group__label">Məkan</label>
+            <label className="form-group__label">Ünvan</label>
             <input
               type="text"
-              className="form-control form-group__input"
+              className="form-group__input"
               value={formData.location}
               onChange={(e) => setFormData({ ...formData, location: e.target.value })}
             />
           </div>
+
           <div className="form-actions">
-            <button type="button" className="btn-secondary" onClick={closeModal}>
-              <FaTimes />
-              Ləğv et
+            <button type="button" onClick={closeModal} className="btn-secondary">
+              <FaTimes /> Ləğv et
             </button>
             <button type="submit" className="btn-primary">
-              <FiSave />
-              Yadda saxla
+              <FiSave /> Yadda saxla
             </button>
           </div>
         </form>

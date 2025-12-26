@@ -24,6 +24,7 @@ const AdminDashboard = () => {
         <Route path="languages" element={<LanguagesAdmin />} />
         <Route path="qr" element={<QRAdmin />} />
         <Route path="contact" element={<ContactAdmin />} />
+        <Route path="messages" element={<MessagesAdmin />} />
         <Route path="social-media" element={<SocialMediaAdmin />} />
       </Routes>
     </AdminLayout>
