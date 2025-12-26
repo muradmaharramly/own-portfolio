@@ -6,6 +6,7 @@ export const EMPLOYMENT_TYPES = [
   { value: 'part-time', label: 'Part-time' },
   { value: 'self-employed', label: 'Self-employed' },
   { value: 'freelance', label: 'Freelance' },
+  { value: 'remote', label: 'Remote' },
   { value: 'contract', label: 'Contract' },
   { value: 'internship', label: 'Internship' }
 ];

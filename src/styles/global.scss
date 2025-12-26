@@ -209,7 +209,30 @@ code {
   background: $primary;
   color: $light-bg-primary;
 }
+select{
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 15px;
+  color: #333;
+  background-color: var(--bg-secondary) !important;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg fill='none' stroke='%23333' stroke-width='2' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 16px;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
 
+select:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
 // ============================================
 // SCROLLBAR
 // ============================================
