@@ -152,11 +152,9 @@
   overflow: hidden;
   background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
   border: 1px solid var(--border);
-  backdrop-filter: blur(12px);
   box-shadow: var(--shadow-sm);
 
   img {
-    width: 20%;
     border-radius: $radius-lg;
     height: auto;
     display: block;
@@ -202,33 +200,34 @@
   }
 
   &__overlay {
+    @include flex-center;
     position: absolute;
     inset: 0;
     background: rgba($dark-bg-primary, 0.5);
-    backdrop-filter: blur(8px);
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
     gap: $sp-2;
     padding: $sp-3;
   }
 
   &__btn {
     @include button-secondary;
+    width: 50px;
+    height: 50px;
     display: inline-flex;
     align-items: center;
     gap: $sp-2;
+    input {
+      display: none;
+    }
 
     &--danger {
       @include button-base;
-      background: linear-gradient(180deg, rgba($danger, 0.8), rgba($danger, 0.1));
+      background: linear-gradient(180deg, rgba($danger, 0.8), rgba($danger, 0.1)) !important;
       color: $light-bg-primary;
       border: 1px solid rgba($danger, 0.5);
-      height: 48px;
 
       &:hover {
-        background: linear-gradient(180deg, rgba($danger, 1), rgba($danger, 0.6));
-        border: 1px solid rgba($danger, 0.5);
+        background: linear-gradient(180deg, rgba($danger, 1), rgba($danger, 0.6)) !important;
+        border: 1px solid rgba($danger, 0.5) !important;
       }
     }
   }
@@ -286,5 +285,34 @@
       transform: translateY(-2px);
       box-shadow: var(--shadow-md);
     }
+  }
+}
+
+.projects-fl{
+  @include flex-start;
+  gap: $sp-4;
+  .image-area{
+    flex: 0 0 28%;
+    .image-preview{
+      height: 150px;
+      img{
+        width: 100%;
+      }
+    }
+    .image-upload-area{
+      height: 200px;
+    }
+  }
+  .form-row{
+    flex: 0 0 70%;
+    @include flex-column;
+  }
+}
+.btn-sm {
+  padding: $sp-2 $sp-4;
+  font-size: $fs-sm;
+
+  svg {
+    font-size: $fs-base;
   }
 }

@@ -350,7 +350,9 @@ const ProjectsAdmin = () => {
         <form onSubmit={handleSubmit} className="project-form">
           {/* Project Image */}
           <div className="form-group">
-            <label className="form-group__label">Proyekt Şəkli</label>
+            <div className='projects-fl'>
+              <div className='image-area'>
+                <label className="form-group__label">Proyekt Şəkli</label>
             <div className="image-upload-area">
               {imagePreview ? (
                 <div className="image-preview">
@@ -376,7 +378,7 @@ const ProjectsAdmin = () => {
                     </div>
                   )}
                   <div className="image-preview__overlay">
-                    <label className="image-preview__btn">
+                    <label className="image-preview__btn btn-sm">
                       <FaUpload />
                       <input 
                         type="file" 
@@ -385,14 +387,14 @@ const ProjectsAdmin = () => {
                         disabled={uploading}
                       />
                     </label>
-                    <button 
+                    <div 
                       type="button"
-                      className="image-preview__btn image-preview__btn--danger"
+                      className="image-preview__btn image-preview__btn--danger btn-sm"
                       onClick={handleDeleteImage}
                       disabled={uploading}
                     >
                       <FaTrash />
-                    </button>
+                    </div>
                   </div>
                 </div>
               ) : (
@@ -429,6 +431,34 @@ const ProjectsAdmin = () => {
                 </label>
               )}
             </div>
+              </div>
+              <div className="form-row">
+            <div className="form-group">
+              <label className="form-group__label">GitHub URL</label>
+              <input
+                type="url"
+                name="github_url"
+                value={formData.github_url}
+                onChange={handleChange}
+                className="form-group__input"
+                placeholder="https://github.com/username/repo"
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-group__label">Live Demo URL</label>
+              <input
+                type="url"
+                name="live_url"
+                value={formData.live_url}
+                onChange={handleChange}
+                className="form-group__input"
+                placeholder="https://demo.example.com"
+              />
+            </div>
+          </div>
+            </div>
+             
           </div>
 
           <div className="form-group">
@@ -461,31 +491,7 @@ const ProjectsAdmin = () => {
             />
           </div>
 
-          <div className="form-row">
-            <div className="form-group">
-              <label className="form-group__label">GitHub URL</label>
-              <input
-                type="url"
-                name="github_url"
-                value={formData.github_url}
-                onChange={handleChange}
-                className="form-group__input"
-                placeholder="https://github.com/username/repo"
-              />
-            </div>
-
-            <div className="form-group">
-              <label className="form-group__label">Live Demo URL</label>
-              <input
-                type="url"
-                name="live_url"
-                value={formData.live_url}
-                onChange={handleChange}
-                className="form-group__input"
-                placeholder="https://demo.example.com"
-              />
-            </div>
-          </div>
+         
 
           <div className="form-group">
             <label className="form-group__label">Texnologiyalar</label>

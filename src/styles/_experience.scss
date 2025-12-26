@@ -35,12 +35,9 @@
   // ========================================
 
   .experience-card {
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(224, 192, 255, 0.03));
-  border-radius: $radius-lg;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border);
-  backdrop-filter: blur(16px);
-  transition: transform $transition-base, box-shadow $transition-base;
+    @include bento-card;
+    @extend .glass-card;
+    transition: transform $transition-base, box-shadow $transition-base;
     position: relative;
     margin-bottom: $sp-8;
     @include md {
