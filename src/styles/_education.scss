@@ -93,6 +93,9 @@
     padding-top: $sp-2;
     border-top: 1px solid var(--border);
     margin-left: -75px !important;
+     @media (max-width: $breakpoint-md) {
+      margin-left: 0 !important;
+    }
   }
 
   &__skills {
@@ -102,6 +105,9 @@
     margin-top: auto;
     padding-top: $sp-3;
     margin-left: -75px;
+      @media (max-width: $breakpoint-md) {
+      margin-left: 0 !important;
+    }
   }
 }
 

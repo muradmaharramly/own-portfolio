@@ -9,7 +9,6 @@ import Experience from '../components/Home/Experience';
 import Projects from '../components/Home/Projects';
 import Contact from '../components/Home/Contact';
 import Languages from '../components/Home/Languages';
-import QRCodeSection from '../components/Home/QRCodeSection';
 import Footer from '../components/Layout/Footer';
 
 const Home = () => {
@@ -30,7 +29,6 @@ const Home = () => {
         <Projects />
         <Languages />
         <Contact />
-        <QRCodeSection />
       </main>
       <Footer />
     </div>

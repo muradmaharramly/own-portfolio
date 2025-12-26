@@ -28,6 +28,7 @@ import { uploadFile, deleteFile, validateFile } from '../../utils/fileUpload';
 import { ITEMS_PER_PAGE } from '../../utils/constants';
 import { toast } from 'react-toastify';
 import { FiEdit2, FiExternalLink, FiGithub, FiTrash } from 'react-icons/fi';
+import { IoRocketOutline } from 'react-icons/io5';
 
 const ProjectsAdmin = () => {
   const dispatch = useDispatch();
@@ -246,7 +247,7 @@ const ProjectsAdmin = () => {
         </div>
       ) : items.length === 0 ? (
         <EmptyState
-          icon={<FaRocket />}
+          icon={<IoRocketOutline />}
           title="Proyekt yoxdur"
           description="Proyektlərinizi əlavə edin"
           action={

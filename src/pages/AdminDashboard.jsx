@@ -10,6 +10,7 @@ import LanguagesAdmin from './admin/LanguagesAdmin';
 import MessagesAdmin from './admin/MessagesAdmin';
 import SocialMediaAdmin from './admin/SocialMediaAdmin';
 import ContactAdmin from './admin/ContactAdmin';
+import QRAdmin from './admin/QRAdmin';
 
 const AdminDashboard = () => {
   return (
@@ -21,6 +22,7 @@ const AdminDashboard = () => {
         <Route path="experience" element={<ExperienceAdmin />} />
         <Route path="projects" element={<ProjectsAdmin />} />
         <Route path="languages" element={<LanguagesAdmin />} />
+        <Route path="qr" element={<QRAdmin />} />
         <Route path="contact" element={<ContactAdmin />} />
         <Route path="social-media" element={<SocialMediaAdmin />} />
       </Routes>

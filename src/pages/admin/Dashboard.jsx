@@ -17,6 +17,7 @@ import { fetchExperience } from '../../redux/slices/experienceSlice';
 import { fetchProjects } from '../../redux/slices/projectsSlice';
 import { fetchLanguages } from '../../redux/slices/languageSlice';
 import { FiEdit2, FiExternalLink } from 'react-icons/fi';
+import { IoBriefcaseOutline } from 'react-icons/io5';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ const Dashboard = () => {
     {
       title: 'Təcrübə',
       count: experience.length,
-      icon: <FaBriefcase />,
+      icon: <IoBriefcaseOutline />,
       color: '#8b5cf6',
       link: '/admin/experience'
     },

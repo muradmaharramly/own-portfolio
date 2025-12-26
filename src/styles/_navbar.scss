@@ -13,6 +13,12 @@
       padding: $sp-3 0px;
     }
   
+  [data-theme='light'] & {
+    background: linear-gradient(180deg, rgba($light-bg-primary, 0.06), rgba($light-bg-primary, 0.03));
+  }
+  [data-theme='dark'] & {
+    background: linear-gradient(180deg, rgba($dark-bg-primary, 0.18), rgba($dark-bg-primary, 0.09));
+  }
 
   &.scrolled {
     background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
@@ -29,6 +35,12 @@
       [data-theme='dark'] & {
         background: rgba($dark-bg-primary, 0.08);
       }
+    }
+    [data-theme='light'] & {
+      background: linear-gradient(180deg, rgba($light-bg-primary, 0.10), rgba($light-bg-primary, 0.06));
+    }
+    [data-theme='dark'] & {
+      background: linear-gradient(180deg, rgba($dark-bg-primary, 0.22), rgba($dark-bg-primary, 0.12));
     }
   }
   .container.navbar__container{
@@ -63,15 +75,22 @@
       right: -100%;
       width: 280px;
       height: 100vh;
-       background: linear-gradient(180deg, rgba(0, 0, 0, 0.847), rgba(6, 2, 9, 0.852));
+      background: linear-gradient(180deg, rgba(7, 7, 7, 0.701), rgba(0, 0, 0, 0.647));
       backdrop-filter: blur(40px);
-      border-left: 1px solid $dark-border;
+      border-left: 1px solid var(--border);
       flex-direction: column;
       padding: $sp-20 $sp-6;
       box-shadow: var(--shadow-xl);
       transition: right $transition-base $ease-out;
       align-items: flex-start;
       gap: $sp-6;
+
+      [data-theme='light'] & {
+        background: linear-gradient(180deg, rgba(221, 221, 221, 0.768), rgba(255, 255, 255, 0.796));
+      }
+      [data-theme='dark'] & {
+        background: linear-gradient(180deg, rgba(7, 7, 7, 0.701), rgba(0, 0, 0, 0.647));
+      }
 
       &.active {
         right: 0;
@@ -132,6 +151,13 @@
     cursor: pointer;
     transition: all $transition-base $ease-out;
     font-size: $fs-xl;
+
+    [data-theme='light'] & {
+      background: linear-gradient(180deg, rgba($light-bg-primary, 0.06), rgba($light-bg-primary, 0.03));
+    }
+    [data-theme='dark'] & {
+      background: linear-gradient(180deg, rgba($dark-bg-primary, 0.18), rgba($dark-bg-primary, 0.09));
+    }
 
     &:hover {
       background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));

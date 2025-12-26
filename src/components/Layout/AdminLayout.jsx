@@ -20,7 +20,13 @@ import {
 import { toggleTheme } from '../../redux/slices/themeSlice';
 import { signOut } from '../../redux/slices/authSlice';
 import { IoMdLogOut } from 'react-icons/io';
-import { FiMoon, FiSun } from 'react-icons/fi';
+import { FiMoon, FiSun, FiUser, FiDownload } from 'react-icons/fi';
+import { HiOutlineChartBar } from 'react-icons/hi';
+import { PiGraduationCap } from 'react-icons/pi';
+import { IoBriefcaseOutline, IoRocketOutline, IoShareSocialOutline } from 'react-icons/io5';
+import { HiMiniLanguage } from 'react-icons/hi2';
+import { CiMail } from 'react-icons/ci';
+import { LuQrCode } from 'react-icons/lu';
 
 const AdminLayout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -35,14 +41,15 @@ const AdminLayout = ({ children }) => {
   };
 
   const menuItems = [
-    { path: '/admin', icon: <FaChartBar />, label: 'Dashboard', end: true },
-    { path: '/admin/profile', icon: <FaUser />, label: 'Profil' },
-    { path: '/admin/education', icon: <FaGraduationCap />, label: 'Təhsil' },
-    { path: '/admin/experience', icon: <FaBriefcase />, label: 'Təcrübə' },
-    { path: '/admin/projects', icon: <FaRocket />, label: 'Proyektlər' },
-    { path: '/admin/languages', icon: <FaGlobe />, label: 'Dillər' },
-    { path: '/admin/social-media', icon: <FaShareAlt />, label: 'Sosial Media' },
-    { path: '/admin/contact', icon: <FaEnvelope />, label: 'Əlaqə' },
+    { path: '/admin', icon: <HiOutlineChartBar />, label: 'Dashboard', end: true },
+    { path: '/admin/profile', icon: <FiUser />, label: 'Profil' },
+    { path: '/admin/education', icon: <PiGraduationCap />, label: 'Təhsil' },
+    { path: '/admin/experience', icon: <IoBriefcaseOutline />, label: 'Təcrübə' },
+    { path: '/admin/projects', icon: <IoRocketOutline />, label: 'Proyektlər' },
+    { path: '/admin/languages', icon: <HiMiniLanguage />, label: 'Dillər' },
+    { path: '/admin/social-media', icon: <IoShareSocialOutline />, label: 'Sosial Media' },
+    { path: '/admin/contact', icon: <CiMail />, label: 'Əlaqə' },
+    { path: '/admin/qr', icon: <LuQrCode />, label: 'QR' },
   ];
 
   return (

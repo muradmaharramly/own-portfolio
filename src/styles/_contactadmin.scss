@@ -3,15 +3,14 @@
         @include flex-between;
     }
   &__card {
-    @include card;
-    display: flex;
-    flex-direction: column;
+    @include flex-start;
     gap: $sp-4;
     padding: $sp-6;
     
 }
 
   &__item {
+    flex: 1;
     @extend .glass-card;
     border-radius:  $radius-lg ;
     -webkit-border-radius:  $radius-lg ;

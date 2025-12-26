@@ -11,6 +11,7 @@ import Modal from '../../components/Common/Modal';
 import ConfirmDialog from '../../components/Common/ConfirmDialog';
 import EmptyState from '../../components/Common/EmptyState';
 import { toast } from 'react-toastify';
+import { HiMiniLanguage } from 'react-icons/hi2';
 
 const LanguagesAdmin = () => {
   const dispatch = useDispatch();
@@ -123,7 +124,7 @@ const LanguagesAdmin = () => {
 
       {languages.length === 0 ? (
         <EmptyState
-          icon={<FaLanguage />}
+          icon={<HiMiniLanguage />}
           title="Dil yoxdur"
           description="Hələ dil əlavə edilməyib. Aşağıdakı düymə ilə əlavə edin."
           action={

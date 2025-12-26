@@ -67,6 +67,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 2;
   }
 
   &:hover .project-card__overlay {
@@ -84,8 +85,8 @@
     width: 40px;
     height: 40px;
     border-radius: $radius-full;
-    background: linear-gradient(180deg, rgba($primary, 0.12), rgba($primary, 0.06));
-    color: $primary;
+    background: linear-gradient(180deg, rgba($primary, 0.22), rgba($secondary, 0.18));
+    color: $light-bg_primary;
     transition: all $transition-fast;
     text-decoration: none;
     font-size: $fs-lg;
@@ -213,8 +214,17 @@
     align-items: center;
     gap: $sp-2;
 
-    &__danger {
-      background-color: $danger
+    &--danger {
+      @include button-base;
+      background: linear-gradient(180deg, rgba($danger, 0.8), rgba($danger, 0.1));
+      color: $light-bg-primary;
+      border: 1px solid rgba($danger, 0.5);
+      height: 48px;
+
+      &:hover {
+        background: linear-gradient(180deg, rgba($danger, 1), rgba($danger, 0.6));
+        border: 1px solid rgba($danger, 0.5);
+      }
     }
   }
 }

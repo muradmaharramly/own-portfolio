@@ -43,26 +43,28 @@ const QRCodeSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h3 className="qr-card__title">Scan to Visit</h3>
-          <p className="qr-card__description">
-            Scan this QR code to visit my portfolio on your mobile device
-          </p>
-          
-          <div className="qr-card__code" ref={qrRef}>
-            <QRCodeSVG
-              value={portfolioUrl}
-              size={200}
-              level="H"
-              includeMargin={true}
-              bgColor="var(--bg-primary)"
-              fgColor="var(--text-primary)"
-            />
+          <div className="qr-card__left">
+            <h3 className="qr-card__title">Scan to Visit</h3>
+            <p className="qr-card__description">
+              Scan this QR code to visit my portfolio on your mobile device
+            </p>
+            <button onClick={downloadQR} className="qr-card__download btn-primary">
+              <FiDownload />
+              Download QR Code
+            </button>
           </div>
-
-          <button onClick={downloadQR} className="qr-card__download">
-            <FiDownload />
-            Download QR Code
-          </button>
+          <div className="qr-card__right">
+            <div className="qr-card__code" ref={qrRef}>
+              <QRCodeSVG
+                value={portfolioUrl}
+                size={220}
+                level="H"
+                includeMargin={true}
+                bgColor="var(--bg-primary)"
+                fgColor="var(--text-primary)"
+              />
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

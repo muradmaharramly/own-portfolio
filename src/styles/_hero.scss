@@ -134,12 +134,13 @@
     cursor: pointer;
     transition: all $transition-base $ease-out;
     animation: bounce 2s infinite;
-
     &:hover {
       border-color: $primary;
       color: $primary;
       transform: translateX(-50%) translateY(-4px);
     }
+     
+
   }
 }
 
@@ -185,3 +186,8 @@
     transform: translateX(-50%) translateY(-5px);
   }
 }
+@media (max-width: $breakpoint-md) {
+      .hero__scroll{
+        display: none;
+      }
+    }

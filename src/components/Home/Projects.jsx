@@ -63,7 +63,7 @@ const Projects = () => {
                   </div>
                 )}
                 <div className="project-card__overlay">
-                  <div className="project-card__links">
+                  <div className="project-card__links btn">
                     {project.github_url && (
                       <a 
                         href={project.github_url} 

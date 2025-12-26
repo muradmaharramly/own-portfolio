@@ -139,7 +139,7 @@ const Experience = () => {
           >
             <button
               onClick={() => setShowAll(!showAll)}
-              className="btn-secondary"
+              className="btn-primary"
             >
               {showAll ? 'Show Less' : `Load More (${experience.length - 3})`}
             </button>

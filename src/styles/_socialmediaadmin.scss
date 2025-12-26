@@ -35,7 +35,12 @@
 
   &__content {
     flex: 1;
-    overflow: hidden; // Prevent long URLs from breaking layout
+    overflow: hidden; 
+    display: flex;
+    justify-content: left;
+    align-items: start;
+    gap: $sp-4;
+    flex-direction: column;
   }
 
   &__platform {

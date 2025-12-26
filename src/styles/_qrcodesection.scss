@@ -3,17 +3,41 @@
 // ============================================
 
 .qr-section {
-  padding: $sp-16 0;
+  display: none;
 }
 
-.qr-card {
+.admin-layout .qr-section {
+  padding: $sp-16 0;
+  display: block;
+}
+
+.qr-admin {
+  .admin-header {
+    @include flex-between;
+    margin-bottom: $sp-2;
+  }
+
+  &__grid {
+    @include grid-auto(300px);
+    gap: $sp-6;
+  }
+}
+
+.admin-layout .qr-card {
   @include bento-card;
-  @include flex-column-center;
-  gap: $sp-6;
-  max-width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $sp-8;
+  max-width: 800px;
   margin: 0 auto;
-  padding: $sp-10;
-  text-align: center;
+  padding: $sp-8;
+  text-align: left;
+
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+    text-align: center;
+  }
 
   &__title {
     font-size: $fs-3xl;
@@ -48,7 +72,19 @@
 
   &__download {
     @include button-secondary;
-    width: 100%;
-    max-width: 250px;
+    width: auto;
+    max-width: none;
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: $sp-4;
+    flex: 1;
+  }
+
+  &__right {
+    @include flex-center;
+    min-width: 240px;
   }
 }

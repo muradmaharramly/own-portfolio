@@ -24,6 +24,7 @@ import { formatDateRange } from '../../utils/formatters';
 import { ITEMS_PER_PAGE, EMPLOYMENT_TYPES, EXPERIENCE_TYPES } from '../../utils/constants';
 import { toast } from 'react-toastify';
 import { FiEdit2, FiTrash } from 'react-icons/fi';
+import { IoBriefcaseOutline } from 'react-icons/io5';
 
 const ExperienceAdmin = () => {
   const dispatch = useDispatch();
@@ -205,7 +206,7 @@ const ExperienceAdmin = () => {
         </div>
       ) : items.length === 0 ? (
         <EmptyState
-          icon={<FaBriefcase />}
+          icon={<IoBriefcaseOutline />}
           title="Təcrübə məlumatı yoxdur"
           description="İş təcrübələrinizi əlavə edin"
           action={

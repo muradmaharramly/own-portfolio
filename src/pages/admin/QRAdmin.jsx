@@ -1,0 +1,17 @@
+// src/pages/admin/QRAdmin.jsx
+import React from 'react';
+import QRCodeSection from '../../components/Common/QRCodeSection';
+
+const QRAdmin = () => {
+  return (
+    <div className="qr-admin">
+      <div className="admin-header">
+      </div>
+      <div className="qr-admin__grid">
+        <QRCodeSection />
+      </div>
+    </div>
+  );
+};
+
+export default QRAdmin;

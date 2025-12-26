@@ -109,7 +109,7 @@ const Education = () => {
           >
             <button
               onClick={() => setShowAll(!showAll)}
-              className="btn-secondary"
+              className="btn-primary"
             >
               {showAll ? 'Show Less' : `Load More (${education.length - 3})`}
             </button>

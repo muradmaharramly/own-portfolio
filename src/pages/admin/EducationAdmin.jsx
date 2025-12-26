@@ -24,6 +24,7 @@ import { formatDateRange } from '../../utils/formatters';
 import { ITEMS_PER_PAGE } from '../../utils/constants';
 import { toast } from 'react-toastify';
 import { FiEdit2, FiTrash } from 'react-icons/fi';
+import { PiGraduationCap } from 'react-icons/pi';
 
 const EducationAdmin = () => {
   const dispatch = useDispatch();
@@ -190,7 +191,7 @@ const EducationAdmin = () => {
         </div>
       ) : items.length === 0 ? (
         <EmptyState
-          icon={<FaGraduationCap />}
+          icon={<PiGraduationCap />}
           title="Təhsil məlumatı yoxdur"
           description="Təhsil məlumatlarınızı əlavə edin"
           action={

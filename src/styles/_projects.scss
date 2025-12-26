@@ -77,6 +77,7 @@
     @include flex-center;
     opacity: 0;
     transition: opacity $transition-base;
+    z-index: 2;
   }
 
   &__links {
@@ -89,7 +90,7 @@
       height: 45px;
       @include button-base;
       background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-      color: var(--text-secondary);
+      color: $light-bg-primary;
       border-radius: 50%;
       font-size: $fs-xl;
       transition: transform $transition-fast, background-color $transition-fast;
@@ -141,3 +142,4 @@
 .tech-tag {
   @include tag;
 }
+
