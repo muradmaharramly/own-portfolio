@@ -180,6 +180,7 @@
     }
 
     &__badge {
+      text-transform: capitalize;
       display: flex;
       align-items: center;
       gap: $sp-1;

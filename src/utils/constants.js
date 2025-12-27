@@ -8,7 +8,7 @@ export const EMPLOYMENT_TYPES = [
   { value: 'freelance', label: 'Freelance' },
   { value: 'remote', label: 'Remote' },
   { value: 'contract', label: 'Contract' },
-  { value: 'internship', label: 'Internship' }
+   { value: 'hybrid', label: 'Hybrid' }
 ];
 
 export const EXPERIENCE_TYPES = [
