@@ -78,14 +78,14 @@
   }
 
   &__image-container {
+    @extend .glass-card;
     position: relative;
     width: 100%;
     max-width: 400px;
     aspect-ratio: 1;
     border-radius: $radius-2xl;
     overflow: hidden;
-    border: 4px solid var(--border);
-    background: var(--bg-secondary);
+   
 
     img {
       width: 100%;

@@ -383,10 +383,10 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   
-  color: var(--text-primary);
+  color: var(--text-secondary);
   border-radius: $radius-full;
-  font-size: $fs-sm;
-  font-weight: $fw-medium;
+  font-size: $fs-xs;
+  font-weight: $fw-normal;
   transition: all $transition-base $ease-smooth;
 
   &:hover {

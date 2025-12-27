@@ -33,6 +33,17 @@
     border-bottom: 1px solid var(--border);
   }
 
+  &__logo-container {
+    display: flex;
+    align-items: center;
+    gap: $sp-3;
+  }
+
+  &__logo-img {
+    height: 32px;
+    width: auto;
+  }
+
   &__logo {
     @include heading;
     font-size: $fs-xl;

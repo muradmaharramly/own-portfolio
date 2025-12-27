@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleTheme } from '../../redux/slices/themeSlice';
 import { FiSun, FiMoon, FiMenu, FiX } from 'react-icons/fi';
+import Logo  from '../../assets/images/MM-Logo.png';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -41,6 +42,9 @@ const Navbar = () => {
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container navbar__container">
         <Link to="/" className="navbar__logo">
+          <div className="navbar__logo-wrapper">
+            <img src={Logo} alt="Logo" className="navbar__logo-img" />
+          </div>
           <span className="gradient-text">Portfolio</span>
         </Link>
 

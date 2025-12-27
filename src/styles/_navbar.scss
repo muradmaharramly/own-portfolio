@@ -76,11 +76,47 @@
   }
 
   &__logo {
+    display: flex;
+    align-items: center;
+    gap: $sp-2;
     font-size: $fs-2xl;
     font-weight: $fw-bold;
     text-decoration: none;
     position: relative;
     z-index: $z-dropdown + 1;
+
+    &-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        border: 1px solid $dark-border;
+        z-index: -1;
+        background-image: 
+          linear-gradient(var(--grid-pattern) 1px, transparent 1px),
+          linear-gradient(90deg, var(--grid-pattern) 1px, transparent 1px);
+        background-size: 10px 10px; // Smaller size for small circle
+        background-position: center;
+        opacity: 0.8;
+      }
+    }
+
+    &-img {
+      height: 35px;
+      width: auto;
+      position: relative; // Ensure image is above pattern
+      z-index: 1;
+    }
 
     .gradient-text {
       background: $gradient-primary;
@@ -88,6 +124,8 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
+
+    
   }
 
   &__menu {

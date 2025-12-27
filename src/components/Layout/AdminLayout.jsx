@@ -28,6 +28,7 @@ import { HiMiniLanguage } from 'react-icons/hi2';
 import { CiMail } from 'react-icons/ci';
 import { LuPhone, LuQrCode } from 'react-icons/lu';
 import { fetchContactMessages } from '../../redux/slices/contactSlice';
+import Logo from '../../assets/react.svg';
 
 const AdminLayout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
