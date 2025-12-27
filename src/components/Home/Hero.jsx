@@ -2,19 +2,49 @@
 // components/Home/Hero.jsx
 // ============================================
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProfile } from '../../redux/slices/profileSlice';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { FiDownload, FiArrowDown } from 'react-icons/fi';
 
 const Hero = () => {
   const dispatch = useDispatch();
   const { data: profile } = useSelector((state) => state.profile);
+  const [currentHeadlineIndex, setCurrentHeadlineIndex] = useState(0);
 
   useEffect(() => {
     dispatch(fetchProfile());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (!profile) return;
+    
+    const headlines = [
+      profile.headline,
+      profile.headline_2,
+      profile.headline_3
+    ].filter(Boolean);
+
+    if (headlines.length <= 1) return;
+
+    const interval = setInterval(() => {
+      setCurrentHeadlineIndex((prev) => (prev + 1) % headlines.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [profile]);
+
+  const headlines = profile ? [
+    profile.headline,
+    profile.headline_2,
+    profile.headline_3
+  ].filter(Boolean) : ['Developer'];
+
+  if (headlines.length === 0) headlines.push('Developer');
+
+  const currentHeadline = headlines[currentHeadlineIndex];
+  const gradientClass = `gradient-text-${(currentHeadlineIndex % 3) + 1}`;
 
   const downloadCV = () => {
     if (profile?.cv_url) {
@@ -48,9 +78,18 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <span>
-                {profile?.headline || 'Developer'}
-              </span>
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={currentHeadlineIndex}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5 }}
+                  className={`gradient-text ${gradientClass}`}
+                >
+                  {currentHeadline}
+                </motion.span>
+              </AnimatePresence>
             </motion.h2>
 
             <motion.p

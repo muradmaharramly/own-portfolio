@@ -258,6 +258,7 @@
   }
 
   &__mobile-toggle {
+    @extend .glass-card;
     display: none;
     font-size: $fs-2xl;
     cursor: pointer;
@@ -267,12 +268,12 @@
     transition: all $transition-base;
 
     &:hover {
-      background: var(--bg-secondary);
+      background: transparent;
       color: var(--primary);
     }
 
     @media (max-width: $breakpoint-md) {
-      display: block;
+      @include flex-center;
       z-index: 1002;
     }
   }

@@ -414,6 +414,34 @@ const ProfileAdmin = () => {
 
           <div className="form-group">
             <label className="form-group__label">
+              Başlıq 2
+            </label>
+            <input
+              type="text"
+              name="headline_2"
+              value={formData.headline_2}
+              onChange={handleChange}
+              className="form-group__input"
+              placeholder="Məsələn: UI/UX Designer"
+            />
+          </div>
+
+          <div className="form-group">
+            <label className="form-group__label">
+              Başlıq 3
+            </label>
+            <input
+              type="text"
+              name="headline_3"
+              value={formData.headline_3}
+              onChange={handleChange}
+              className="form-group__input"
+              placeholder="Məsələn: Freelancer"
+            />
+          </div>
+
+          <div className="form-group">
+            <label className="form-group__label">
               Haqqımda
             </label>
             <textarea

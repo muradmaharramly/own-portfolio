@@ -1,0 +1,62 @@
+// src/styles/_backtotop.scss
+
+.back-to-top {
+  position: fixed;
+  bottom: $sp-8;
+  right: $sp-24;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:transparent !important;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  color: var(--text-primary);
+  font-size: $fs-xl;
+  transition: all 0.3s ease-in-out;
+  animation: bounce 2s infinite;
+ 
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+    @media(max-width: $breakpoint-md) {
+    bottom: $sp-4;
+    right: $sp-4;
+    width: 40px;
+    height: 40px;
+    font-size: $fs-lg;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+    animation: none; // Stop bounce on hover
+  }
+
+  // Dark mode specific adjustments if needed
+  [data-theme='dark'] & {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}

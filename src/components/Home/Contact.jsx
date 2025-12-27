@@ -199,7 +199,7 @@ const Contact = () => {
                 disabled={loading}
               >
                 {loading ? (
-                  <span className="spinner"></span>
+                  <span className="spinner-sm"></span>
                 ) : (
                   <>
                     <FiSend />

@@ -18,6 +18,7 @@ import NotFound from './pages/NotFound';
 
 // Components
 import ProtectedRoute from './components/Auth/ProtectedRoute';
+import BackToTop from './components/Common/BackToTop';
 
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/global.scss';
@@ -56,6 +57,7 @@ function AppContent() {
         />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <BackToTop />
       <ToastContainer
         position="bottom-right"
         autoClose={3000}

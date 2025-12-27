@@ -31,6 +31,27 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
       display: inline-block;
+      
+      &-1 {
+        background: $gradient-primary;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      &-2 {
+        background: $gradient-secondary;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      &-3 {
+        background: $gradient-tertiary;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
     }
 
   &__text {
@@ -49,7 +70,7 @@
 
   &__subtitle {
     font-size: clamp($fs-xl, 3vw, $fs-3xl);
-    font-weight: $fw-semibold;
+    font-weight: $fw-bold;
     color: var(--text-secondary);
     margin: 0;
   }
