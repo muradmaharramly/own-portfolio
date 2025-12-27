@@ -1,0 +1,88 @@
+// src/styles/_skills.scss
+
+.skills {
+  .section-subtitle{
+    margin-top: $sp-4;
+  }
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    gap: $sp-6;
+    
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    }
+  }
+
+  &__card {
+    flex: 1;
+    max-width: 600px;
+    @extend .glass-card;
+    border-radius: $radius-xl;
+    padding: $sp-6;
+    overflow: hidden;
+    transition: transform $transition-base, box-shadow $transition-base;
+    display: flex;
+    flex-direction: column;
+    @media (max-width: $breakpoint-md) {
+      width: 100%; 
+      max-width: 380px;
+    
+      
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.15);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    [data-theme='light'] & {
+      background: rgba($light-bg-secondary, 0.6);
+      border-color: rgba($light-border, 0.5);
+    }
+
+    [data-theme='dark'] & {
+      background: rgba(255, 255, 255, 0.03);
+      border-color: rgba(255, 255, 255, 0.05);
+    }
+
+    &-title {
+      font-size: $fs-xl;
+      font-weight: $fw-bold;
+      margin-bottom: $sp-6;
+      text-align: center;
+      background: $gradient-light;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      gap: $sp-4;
+      justify-content: center;
+      flex: 1;
+    }
+  }
+
+  &__marquee {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    
+    &-content {
+      display: flex;
+      gap: $sp-3;
+      width: max-content;
+      padding: $sp-2 0;
+    }
+  }
+
+  &__tag-wrapper {
+    flex-shrink: 0;
+  }
+}
