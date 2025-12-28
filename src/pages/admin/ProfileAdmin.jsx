@@ -16,6 +16,8 @@ const ProfileAdmin = () => {
     id: null,
     full_name: '',
     headline: '',
+    headline_2: '',
+    headline_3: '',
     about: '',
     profile_image: '',
     cv_file: ''
@@ -39,6 +41,8 @@ const ProfileAdmin = () => {
         id: profile.id,
         full_name: profile.full_name || '',
         headline: profile.headline || '',
+        headline_2: profile.headline_2 || '',
+        headline_3: profile.headline_3 || '',
         about: profile.about || '',
         profile_image: profile.profile_image || '',
         cv_file: profile.cv_file || ''
