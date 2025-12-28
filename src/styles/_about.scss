@@ -44,6 +44,7 @@
     }
 
     &::before {
+      @extend .glass-card;
       content: '';
       position: absolute;
       inset: -15px;
@@ -51,13 +52,25 @@
       border-radius: $radius-2xl;
       z-index: -1;
       transform: rotate(-5deg);
-      transition: transform 0.3s ease;
-    }
+      transition: transform 0.5s ease;
+      -webkit-transform: rotate(-5deg);
+      -moz-transform: rotate(-5deg);
+      -ms-transform: rotate(-5deg);
+      -o-transform: rotate(-5deg);
+      -webkit-transition: transform 0.5s ease;
+      -moz-transition: transform 0.5s ease;
+      -ms-transition: transform 0.5s ease;
+      -o-transition: transform 0.5s ease;
+}
 
     &:hover::before {
-      transform: rotate(-8deg) scale(1.02);
+      transform: rotate(0deg) scale(1.02);
       border-color: rgba($primary, 0.6);
-    }
+      -webkit-transform: rotate(0deg) scale(1.02);
+      -moz-transform: rotate(0deg) scale(1.02);
+      -ms-transform: rotate(0deg) scale(1.02);
+      -o-transform: rotate(0deg) scale(1.02);
+}
   }
 
   &__image {
@@ -65,52 +78,51 @@
     height: 100%;
     object-fit: cover;
     border-radius: $radius-2xl;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    filter: grayscale(20%);
-    transition: filter 0.3s ease, transform 0.3s ease;
-
-    &:hover {
+    transition: filter 0.5s ease, transform 0.5s ease;
+    -webkit-transition: filter 0.5s ease, transform 0.5s ease;
+    -moz-transition: filter 0.5s ease, transform 0.5s ease;
+    -ms-transition: filter 0.5s ease, transform 0.5s ease;
+    -o-transition: filter 0.5s ease, transform 0.5s ease;
+    &:hover{
       filter: grayscale(0%);
       transform: scale(1.02);
     }
   }
-
-  &__image-backdrop {
-    position: absolute;
-    inset: 0;
-    background: $gradient-primary;
-    border-radius: $radius-2xl;
-    transform: rotate(5deg);
-    z-index: -2;
-    opacity: 0.2;
-    filter: blur(20px);
-  }
-
   &__image-placeholder {
+    @include flex-center;
     width: 100%;
     height: 100%;
-    background: var(--surface);
-    border-radius: $radius-2xl;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: $fs-6xl;
+    font-size: 120px;
     font-weight: $fw-bold;
     color: var(--text-tertiary);
-    border: 1px dashed var(--border);
+    background: $gradient-primary;
+    color: white;
+    border-radius: $radius-2xl;
   }
+  &__image-decoration {
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    width: 150px;
+    height: 150px;
+    background: $gradient-primary;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.3;
+    z-index: -2;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  
 
   &__badge {
     position: absolute;
     bottom: 30px;
     right: -20px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    @extend .glass-card;
     padding: $sp-3 $sp-6;
     border-radius: $radius-full;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    
     z-index: 2;
 
     &-text {
@@ -209,30 +221,7 @@
     }
   }
 
-  // Decorations
-  &__decoration {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    z-index: -1;
-    opacity: 0.4;
-
-    &--1 {
-      top: -10%;
-      right: -5%;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba($primary, 0.2), transparent 70%);
-    }
-
-    &--2 {
-      bottom: -10%;
-      left: -5%;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba($secondary, 0.15), transparent 70%);
-    }
-  }
+ 
   .section-title{
     margin-left:  -500px;
     @media (max-width: $breakpoint-md) {

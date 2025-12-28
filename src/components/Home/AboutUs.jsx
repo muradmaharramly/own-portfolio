@@ -60,6 +60,7 @@ const About = () => {
                   <span>{profile?.full_name?.[0] || 'A'}</span>
                 </div>
               )}
+              <div className="about__image-decoration"></div>
               
               {/* Floating Badge */}
               <motion.div 

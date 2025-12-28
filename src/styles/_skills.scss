@@ -32,20 +32,9 @@
     }
 
     &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.15);
-      border-color: rgba(255, 255, 255, 0.1);
+      box-shadow: var(--shadow-xl);
     }
 
-    [data-theme='light'] & {
-      background: rgba($light-bg-secondary, 0.6);
-      border-color: rgba($light-border, 0.5);
-    }
-
-    [data-theme='dark'] & {
-      background: rgba(255, 255, 255, 0.03);
-      border-color: rgba(255, 255, 255, 0.05);
-    }
 
     &-title {
       font-size: $fs-xl;
@@ -56,6 +45,19 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      [data-theme='light'] & {
+        background: $gradient-dark;
+        -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    [data-theme='dark'] & {
+      background: $gradient-light;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
     }
 
     &-content {

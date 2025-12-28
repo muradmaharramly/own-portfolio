@@ -136,6 +136,15 @@ const Hero = () => {
                 </div>
               )}
               <div className="hero__image-decoration"></div>
+              
+              {/* Floating Badge */}
+              <motion.div 
+                className="hero__badge"
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <span className="hero__badge-text">Focused</span>
+              </motion.div>
             </div>
           </motion.div>
         </div>
