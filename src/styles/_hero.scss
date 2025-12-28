@@ -122,11 +122,11 @@
       border-radius: $radius-2xl;
       z-index: -1;
       transform: rotate(5deg);
-      transition: transform 0.3s ease;
       -webkit-transform: rotate(5deg);
       -moz-transform: rotate(5deg);
       -ms-transform: rotate(5deg);
       -o-transform: rotate(5deg);
+      transition: transform 0.3s ease;
 }
 
     &:hover::before {
@@ -163,6 +163,11 @@
     background: $gradient-primary;
     color: white;
     border-radius: $radius-2xl;
+    transform: rotate(5deg);
+      -webkit-transform: rotate(5deg);
+      -moz-transform: rotate(5deg);
+      -ms-transform: rotate(5deg);
+      -o-transform: rotate(5deg);
   }
 
   &__image-decoration {
