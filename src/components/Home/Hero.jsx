@@ -46,9 +46,38 @@ const Hero = () => {
   const currentHeadline = headlines[currentHeadlineIndex];
   const gradientClass = `gradient-text-${(currentHeadlineIndex % 3) + 1}`;
 
-  const downloadCV = () => {
-    if (profile?.cv_url) {
-      window.open(profile.cv_url, '_blank');
+  const handleDownloadCV = async (e) => {
+    e.preventDefault();
+    
+    // Check if CV exists
+    if (!profile?.cv_file) {
+      console.warn("No CV file available");
+      return;
+    }
+
+    try {
+      // Fetch the file as a blob to control the filename
+      const response = await fetch(profile.cv_file);
+      if (!response.ok) throw new Error('Download failed');
+      
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      
+      // Create temporary link to force download with custom name
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = "MuradMaharramliCV.pdf"; // Custom filename as requested
+      document.body.appendChild(a);
+      a.click();
+      
+      // Cleanup
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    } catch (error) {
+      console.error('Download error:', error);
+      // Fallback: Try to open/download using the direct link with query param
+      // This is a safety net if fetch fails (e.g. CORS issues)
+      window.open(`${profile.cv_file}?download=MuradMaharramliCV.pdf`, '_blank');
     }
   };
 
@@ -110,10 +139,16 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.5 }}
             >
               {profile?.cv_file && (
-                <button onClick={downloadCV} className="btn-primary">
+                <a 
+                  href={`${profile.cv_file}?download=MuradMaharramliCV.pdf`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary"
+                  onClick={handleDownloadCV}
+                >
                   <FiDownload />
                   Download CV
-                </button>
+                </a>
               )}
               <a href="#contact" className="btn-secondary hero-btn">
                 Get In Touch

@@ -117,14 +117,22 @@ const ProfileAdmin = () => {
         setCvProgress((p) => (p < 95 ? Math.min(95, p + Math.floor(Math.random() * 12) + 3) : p));
       }, 120);
 
-      // Delete old CV if exists
-      if (formData.cv_file) {
-        const oldPath = formData.cv_file.split('/').slice(-2).join('/');
-        await deleteFile('cv-files', oldPath);
-      }
+      // Upload new CV FIRST
+      const { url } = await uploadFile(file, 'cv-files'); // Upload to root
 
-      // Upload new CV
-      const { url } = await uploadFile(file, 'cv-files', 'resumes');
+      // Delete old CV if exists (after successful upload)
+      if (formData.cv_file) {
+        try {
+          const oldPath = formData.cv_file.includes('/cv-files/') 
+            ? formData.cv_file.split('/cv-files/')[1] 
+            : formData.cv_file.split('/').pop();
+            
+          await deleteFile('cv-files', oldPath);
+        } catch (delErr) {
+          console.error('Old CV deletion failed:', delErr);
+          // Continue even if delete fails
+        }
+      }
       
       setFormData(prev => ({ ...prev, cv_file: url }));
       setCvProgress(100);
@@ -133,6 +141,7 @@ const ProfileAdmin = () => {
       toast.success('CV yükləndi');
     } catch (error) {
       toast.error(error.message || 'CV yüklənərkən xəta baş verdi');
+      setUploadingCv(false); // Ensure loading state is reset
     } finally {
       // handled above
     }
@@ -157,7 +166,10 @@ const ProfileAdmin = () => {
     if (!formData.cv_file) return;
 
     try {
-      const path = formData.cv_file.split('/').slice(-2).join('/');
+      const path = formData.cv_file.includes('/cv-files/') 
+        ? formData.cv_file.split('/cv-files/')[1] 
+        : formData.cv_file.split('/').pop();
+        
       await deleteFile('cv-files', path);
       
       setFormData(prev => ({ ...prev, cv_file: '' }));

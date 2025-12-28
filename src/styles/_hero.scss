@@ -218,5 +218,8 @@
       color: $primary;
       transform: translateX(-50%) translateY(5px);
     }
+    @media (max-width: $breakpoint-md) {
+      display: none !important;
+    }
   }
 }
