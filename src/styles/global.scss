@@ -28,6 +28,7 @@
 @import 'contactadmin';
 @import 'login';
 @import 'buttons';
+@import 'hireme';
 @import 'backtotop';
 @import 'mixins';
 
@@ -56,6 +57,46 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   position: relative;
+  .section-header {
+  text-align: center;
+  margin-bottom: $sp-12;
+
+  @include md {
+    margin-bottom: $sp-16;
+  }
+}
+  .section-title {
+  font-size: clamp($fs-3xl, 4vw, $fs-5xl);
+  font-weight: $fw-bold;
+  margin-bottom: 20px;
+  position: relative;
+ 
+  text-align: center !important;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: $gradient-primary;
+    border-radius: $radius-full;
+  }
+}
+
+.section-divider {
+  width: 100px;
+  height: 4px;
+  margin-bottom: 20px;
+  background: $gradient-primary;
+  margin: $sp-6 auto 0;
+  border-radius: $radius-full;
+}
+.section-subtitle{
+  text-align: center !important;
+}
   
   // Background Pattern
   &::before {
@@ -83,6 +124,7 @@ body {
       padding: 0px 0px;
     }
 }
+
 
 // ============================================
 // THEME VARIABLES

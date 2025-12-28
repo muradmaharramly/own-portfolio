@@ -40,7 +40,7 @@ const Projects = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="section-project_name">Featured Projects</h2>
+          <h2 className="section-title">Featured Projects</h2>
           <div className="section-divider"></div>
         </motion.div>
 

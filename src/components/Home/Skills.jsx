@@ -131,6 +131,7 @@ const Skills = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="section-title">Skills & Technologies</h2>
+          <div className="section-divider"></div>
           <p className="section-subtitle">
             Overview of my technical expertise and professional capabilities.
           </p>
