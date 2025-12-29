@@ -169,8 +169,8 @@ const AboutDetailed = () => {
               </div>
               <h3 className="bento-card__title">Coding Hours</h3>
             </div>
-            <div className="bento-card__value">{codingHours.toLocaleString()}+</div>
-            <p className="bento-card__subtitle">Hours spent coding</p>
+            <div className="bento-card__value">{codingHours.toLocaleString()}</div>
+            <p className="bento-card__subtitle">Hands-on coding experience, growing and learning continuously.</p>
           </motion.div>
 
           {/* Favorite Framework Card */}
