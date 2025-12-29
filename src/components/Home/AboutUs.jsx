@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import { HiOutlineLocationMarker, HiOutlineMail, HiOutlineDownload } from 'react-icons/hi';
 import AvatarComp from '../../assets/images/my-avatar-comp.png';
+import AboutDetailed from './AboutDetailed';
 
 const About = () => {
   const { data: profile } = useSelector((state) => state.profile);
@@ -84,6 +85,9 @@ const About = () => {
             </motion.div>
           </div>
         </motion.div>
+        
+        {/* Detailed Section */}
+        <AboutDetailed />
       </div>
       
       {/* Decorative Background Elements */}

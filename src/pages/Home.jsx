@@ -10,7 +10,6 @@ import Projects from '../components/Home/Projects';
 import Contact from '../components/Home/Contact';
 import Languages from '../components/Home/Languages';
 import Footer from '../components/Layout/Footer';
-import Skills from '../components/Home/Skills';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -28,7 +27,6 @@ const Home = () => {
         <Education />
         <Experience />
         <Projects />
-        <Skills />
         <Languages />
         <Contact />
       </main>
