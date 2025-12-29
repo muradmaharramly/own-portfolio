@@ -6,7 +6,7 @@
   &__grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: $sp-6;
+    gap: $sp-2;
   }
 }
 .lang-fl{
@@ -26,7 +26,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: $sp-4;
+  gap: $sp-2;
 
   &:hover {
     transform: translateY(-4px);
@@ -35,8 +35,8 @@
 
   &__ring {
     position: relative;
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
   }
 
   &__svg {
