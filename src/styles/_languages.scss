@@ -89,12 +89,21 @@
   }
 
   &__level {
+    align-self: flex-start;
     font-size: $fs-xs;
     background: var(--bg-tertiary);
     color: var(--text-primary);
     padding: 4px 10px;
     border-radius: $radius-full;
     margin-top: $sp-1;
+  }
+
+  &__description {
+    font-size: $fs-xs;
+    color: var(--text-secondary);
+    margin-top: $sp-1;
+    line-height: $lh-relaxed;
+    max-width: 200px;
   }
 }
 

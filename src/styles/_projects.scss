@@ -14,6 +14,9 @@
     margin-top: $sp-10;
   }
 }
+.project-card__project_name{
+  font-size: $fs-lg
+}
 
 .project-card {
   @extend .glass-card;
@@ -113,6 +116,7 @@
     display: flex;
     flex-direction: column;
   }
+  
 
   &__title {
     font-size: $fs-xl;

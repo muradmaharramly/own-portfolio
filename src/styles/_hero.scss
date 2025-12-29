@@ -79,6 +79,13 @@
     margin: 0;
   }
 
+  &__static-subtitle {
+    font-size: clamp($fs-sm, 2.5vw, $fs-xl);
+    font-weight: $fw-medium;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
   &__description {
     font-size: $fs-lg;
     color: var(--text-secondary);

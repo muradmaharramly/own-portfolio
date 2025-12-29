@@ -282,6 +282,7 @@
     color: $danger;
 
     &:hover {
+      background-color: $danger !important;
       transform: translateY(-2px);
       box-shadow: var(--shadow-md);
     }

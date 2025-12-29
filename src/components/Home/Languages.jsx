@@ -19,6 +19,15 @@ const Languages = () => {
     if (p >= 41) return 'Intermediate';
     return 'Beginner';
   };
+
+  const levelDescriptions = {
+    Native: "I speak this language fluently and naturally.",
+    Fluent: "I can communicate confidently in most situations.",
+    Advanced: "I can express myself clearly in complex conversations.",
+    Intermediate: "I can handle everyday conversations with ease.",
+    Beginner: "I understand basic words and simple phrases."
+  };
+
   const levelSlug = (p) => levelFor(p).toLowerCase();
   const sorted = [...languages].sort((a, b) => b.proficiency_percentage - a.proficiency_percentage);
 
@@ -65,9 +74,12 @@ const Languages = () => {
             <div className='lang-fl'>
               <div className='info'>
                 <div className="language-circle__name">{lang.language_name}</div>
-              <div className={`language-circle__level pill level-${levelSlug(lang.proficiency_percentage)}`}>
-                {levelFor(lang.proficiency_percentage)}
-              </div>
+                <div className={`language-circle__level pill level-${levelSlug(lang.proficiency_percentage)}`}>
+                  {levelFor(lang.proficiency_percentage)}
+                </div>
+                <p className="language-circle__description">
+                  {levelDescriptions[levelFor(lang.proficiency_percentage)]}
+                </p>
               </div>
               <div className="language-circle__ring">
                 <svg className="language-circle__svg" viewBox="0 0 140 140" aria-label={`${lang.language_name} ${lang.proficiency_percentage}%`}>

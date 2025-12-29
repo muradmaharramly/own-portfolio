@@ -18,6 +18,7 @@ const ProfileAdmin = () => {
     headline: '',
     headline_2: '',
     headline_3: '',
+    subtitle: '',
     about: '',
     profile_image: '',
     cv_file: ''
@@ -43,6 +44,7 @@ const ProfileAdmin = () => {
         headline: profile.headline || '',
         headline_2: profile.headline_2 || '',
         headline_3: profile.headline_3 || '',
+        subtitle: profile.subtitle || '',
         about: profile.about || '',
         profile_image: profile.profile_image || '',
         cv_file: profile.cv_file || ''
@@ -453,6 +455,20 @@ const ProfileAdmin = () => {
               onChange={handleChange}
               className="form-group__input"
               placeholder="Məsələn: Freelancer"
+            />
+          </div>
+
+          <div className="form-group">
+            <label className="form-group__label">
+              Alt Başlıq (Subtitle)
+            </label>
+            <input
+              type="text"
+              name="subtitle"
+              value={formData.subtitle}
+              onChange={handleChange}
+              className="form-group__input"
+              placeholder="Məsələn: I build things for the web"
             />
           </div>
 

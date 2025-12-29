@@ -121,16 +121,16 @@ const Hero = () => {
               </AnimatePresence>
             </motion.h2>
 
-            <motion.p
-              className="hero__description"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              {profile?.about?.substring(0, 150) || 
-                'Passionate about creating beautiful and functional web experiences'}
-              {profile?.about && profile.about.length > 150 && '...'}
-            </motion.p>
+            {profile?.subtitle && (
+              <motion.p
+                className="hero__static-subtitle"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.35 }}
+              >
+                {profile.subtitle}
+              </motion.p>
+            )}
 
             <motion.div
               className="hero__actions"
