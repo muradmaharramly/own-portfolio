@@ -29,7 +29,7 @@
 
   &__header {
     @include flex-between;
-    padding: $sp-6;
+    padding: $sp-4;
     border-bottom: 1px solid var(--border);
   }
 
@@ -160,7 +160,7 @@
   }
 
   &__footer {
-    padding: $sp-4;
+    padding: $sp-2 $sp-2 0px $sp-2;
     border-top: 1px solid var(--border);
   }
 }
@@ -192,7 +192,7 @@
 
 .admin-topbar {
   @include flex-between;
-  padding: $sp-4 $sp-6;
+  padding: $sp-2;
   background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
   backdrop-filter: blur(5px);
   border-bottom: 1px solid var(--border);
@@ -225,7 +225,8 @@
   }
 
   &__actions {
-    @include flex-start;
+    @include flex-between;
+    width: 100%;
     gap: $sp-4;
   }
 
