@@ -1,5 +1,5 @@
 // src/pages/admin/Dashboard.jsx
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { 
@@ -9,7 +9,10 @@ import {
   FaGlobe, 
   FaEdit, 
   FaPlus,
-  FaExternalLinkAlt 
+  FaExternalLinkAlt,
+  FaTools,
+  FaUsers,
+  FaShareAlt
 } from 'react-icons/fa';
 import { fetchProfile } from '../../redux/slices/profileSlice';
 import { fetchEducation } from '../../redux/slices/educationSlice';
@@ -18,10 +21,25 @@ import { fetchProjects } from '../../redux/slices/projectsSlice';
 import { fetchLanguages } from '../../redux/slices/languageSlice';
 import { fetchContactMessages } from '../../redux/slices/contactSlice';
 import { FiEdit2, FiExternalLink } from 'react-icons/fi';
-import { IoBriefcaseOutline } from 'react-icons/io5';
+import { IoBriefcaseOutline, IoRocketOutline, IoShareSocialOutline } from 'react-icons/io5';
 import { CiMail } from 'react-icons/ci';
 import { BiStats } from 'react-icons/bi';
 import { HiMiniLanguage } from 'react-icons/hi2';
+import { GrTechnology } from 'react-icons/gr';
+import { BsPersonCheck } from 'react-icons/bs';
+import { PiGraduationCap } from 'react-icons/pi';
+
+const SOFT_SKILLS_KEYWORDS = [
+  'Communication', 'Networking', 'Teamwork', 'Team Player', 'Leadership', 'Problem Solving',
+  'Time Management', 'Critical Thinking', 'Adaptability', 'Creativity',
+  'Work Ethic', 'Interpersonal', 'Management', 'Mentoring', 'Teaching',
+  'Public Speaking', 'Collaboration', 'Decision Making', 'Emotional Intelligence',
+  'Negotiation', 'Conflict Resolution', 'Active Listening', 'Agile', 'Scrum', 'Kanban',
+  'Presentation', 'Analytical', 'Organizational', 'Detail-oriented', 'Attention to Detail',
+  'Strategic', 'Planning', 'Research', 'Writing', 'Empathy', 'Flexibility',
+  'Self-motivation', 'Self-starter', 'Fast Learner', 'Quick Learner', 'Responsibility',
+  'Accountability', 'Patience', 'Open-mindedness'
+];
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -30,6 +48,7 @@ const Dashboard = () => {
   const { items: experience } = useSelector((state) => state.experience);
   const { items: projects } = useSelector((state) => state.projects);
   const { items: languages } = useSelector((state) => state.languages);
+  const { items: socialMedia } = useSelector((state) => state.socialMedia);
   const { messages = [] } = useSelector((state) => state.contact);
 
   useEffect(() => {
@@ -65,41 +84,103 @@ const Dashboard = () => {
   const avgProjectsPerMonth = calculateAverage(projects, 'month');
   const unreadMessages = Array.isArray(messages) ? messages.filter(m => !m.is_read).length : 0;
 
+  // Skill Extraction Logic
+  const { toolsCount, softSkillsCount, toolsList, softSkillsList } = useMemo(() => {
+    const uniqueTagsMap = new Map();
+    const normalize = (str) => str.toLowerCase().replace(/[\s-]/g, '');
+
+    const processTag = (tag) => {
+      if (!tag) return;
+      const trimmed = tag.trim();
+      const normalized = normalize(trimmed);
+      
+      if (uniqueTagsMap.has(normalized)) return;
+
+      let isSoft = false;
+      let display = trimmed;
+      const matchedKeyword = SOFT_SKILLS_KEYWORDS.find(keyword => {
+        const normKeyword = normalize(keyword);
+        return normalized === normKeyword || trimmed.toLowerCase().includes(keyword.toLowerCase());
+      });
+
+      if (matchedKeyword) {
+        isSoft = true;
+        if (normalize(matchedKeyword) === normalized) {
+          display = matchedKeyword;
+        }
+      }
+
+      uniqueTagsMap.set(normalized, { display, isSoft });
+    };
+
+    education.forEach(item => item.skills?.forEach(s => s.skill_name && processTag(s.skill_name)));
+    experience.forEach(item => item.skills?.forEach(s => s.skill_name && processTag(s.skill_name)));
+    projects.forEach(item => item.technologies?.forEach(t => t.technology_name && processTag(t.technology_name)));
+
+    const tools = [];
+    const soft = [];
+
+    uniqueTagsMap.forEach(({ display, isSoft }) => {
+      if (isSoft) soft.push(display);
+      else tools.push(display);
+    });
+
+    return {
+      toolsCount: tools.length,
+      softSkillsCount: soft.length,
+      toolsList: tools.sort((a, b) => a.localeCompare(b)),
+      softSkillsList: soft.sort((a, b) => a.localeCompare(b))
+    };
+  }, [education, experience, projects]);
+
   const stats = [
     {
       title: 'Təhsil',
       count: education.length,
-      icon: <FaGraduationCap />,
+      icon: <PiGraduationCap />,
       color: '#6366f1',
-      link: '/admin/education'
+      link: '/admin/education',
+      action: 'Əlavə et'
     },
     {
       title: 'Təcrübə',
       count: experience.length,
       icon: <IoBriefcaseOutline />,
       color: '#8b5cf6',
-      link: '/admin/experience'
+      link: '/admin/experience',
+      action: 'Əlavə et'
     },
     {
       title: 'Proyektlər',
       count: projects.length,
-      icon: <FaRocket />,
+      icon: <IoRocketOutline />,
       color: '#10b981',
-      link: '/admin/projects'
+      link: '/admin/projects',
+      action: 'Əlavə et'
     },
     {
       title: 'Dillər',
       count: languages.length,
       icon: <HiMiniLanguage />,
       color: '#3b82f6',
-      link: '/admin/languages'
+      link: '/admin/languages',
+      action: 'Əlavə et'
+    },
+    {
+      title: 'Sosial Media',
+      count: socialMedia?.length || 0,
+      icon: <IoShareSocialOutline />,
+      color: '#ec4899',
+      link: '/admin/social-media',
+      action: 'Əlavə et'
     },
     {
       title: 'Mesajlar',
       count: messages.length,
       icon: <CiMail />,
       color: '#3fbef4ff',
-      link: '/admin/messages'
+      link: '/admin/messages',
+      action: 'Bax'
     }
   ];
 
@@ -118,19 +199,65 @@ const Dashboard = () => {
 
       <div className="dashboard__stats">
         {stats.map((stat) => (
-          <Link 
+          <div 
             key={stat.title} 
-            to={stat.link}
             className="stat-card"
             style={{ '--accent-color': stat.color }}
           >
-            <div className="stat-card__icon">{stat.icon}</div>
-            <div className="stat-card__content">
-              <h3 className="stat-card__count">{stat.count}</h3>
-              <p className="stat-card__title">{stat.title}</p>
-            </div>
-          </Link>
+            <Link to={stat.link} className="stat-card__main">
+              <div className="stat-card__icon">{stat.icon}</div>
+              <div className="stat-card__content">
+                <h3 className="stat-card__count">{stat.count}</h3>
+                <p className="stat-card__title">{stat.title}</p>
+              </div>
+            </Link>
+            <Link to={stat.link} className="stat-card__action">
+              {stat.action === 'Əlavə et' ? <FaPlus /> : <FaExternalLinkAlt />}
+              <span>{stat.action}</span>
+            </Link>
+          </div>
         ))}
+      </div>
+
+      <div className="dashboard__section">
+        <h2 className="dashboard__section-title">Tags</h2>
+        <div className="dashboard__tags-grid">
+          {/* Tools & Technologies */}
+          <div className="tag-category-card">
+            <div className="tag-category-header">
+              <div className="tag-category-icon" style={{ background: '#6365f139', color: '#6366f1' }}>
+                <GrTechnology />
+              </div>
+              <div className="tag-category-info">
+                <h3>Tools & Technologies</h3>
+                <span className="count">{toolsCount} items</span>
+              </div>
+            </div>
+            <div className="tag-list">
+              {toolsList.map(tag => (
+                <span key={tag} className="tag-item">{tag}</span>
+              ))}
+            </div>
+          </div>
+
+          {/* Soft Skills */}
+          <div className="tag-category-card">
+            <div className="tag-category-header">
+              <div className="tag-category-icon" style={{ background: '#8a5cf637', color: '#8b5cf6' }}>
+                <BsPersonCheck />
+              </div>
+              <div className="tag-category-info">
+                <h3>Soft Skills</h3>
+                <span className="count">{softSkillsCount} items</span>
+              </div>
+            </div>
+            <div className="tag-list">
+              {softSkillsList.map(tag => (
+                <span key={tag} className="tag-item tag-item--soft">{tag}</span>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
 
       {profile && (
@@ -149,31 +276,12 @@ const Dashboard = () => {
               <p className="profile-preview__headline">{profile.headline}</p>
               <p className="profile-preview__about">{profile.about}</p>
             </div>
+            <Link to="/admin/profile" className="btn-icon">
+              <FiEdit2 />
+            </Link>
           </div>
         </div>
       )}
-
-      <div className="dashboard__quick-actions">
-        <h2 className="dashboard__section-title">Sürətli Əməliyyatlar</h2>
-        <div className="quick-actions">
-          <Link to="/admin/profile" className="quick-action">
-            <FiEdit2 className="quick-action__icon" />
-            <span className="quick-action__text">Profili Redaktə et</span>
-          </Link>
-          <Link to="/admin/education" className="quick-action">
-            <FaPlus className="quick-action__icon" />
-            <span className="quick-action__text">Təhsil əlavə et</span>
-          </Link>
-          <Link to="/admin/experience" className="quick-action">
-            <FaPlus className="quick-action__icon" />
-            <span className="quick-action__text">Təcrübə əlavə et</span>
-          </Link>
-          <Link to="/admin/projects" className="quick-action">
-            <FaPlus className="quick-action__icon" />
-            <span className="quick-action__text">Proyekt əlavə et</span>
-          </Link>
-        </div>
-      </div>
     </div>
   );
 };

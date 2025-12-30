@@ -1,0 +1,81 @@
+// ============================================
+// pages/NotFound.scss
+// ============================================
+
+.not-found-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: 50px;
+
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.not-found {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $sp-6;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+
+  &__content {
+    @extend .glass-card;
+    padding: $sp-10;
+    border-radius: $radius-2xl;
+    max-width: 480px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $sp-4;
+  }
+
+  &__code {
+    font-size: 8rem;
+    font-weight: $fw-bold;
+    line-height: 1;
+    background: $gradient-primary;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: -10px;
+    opacity: 0.9;
+  }
+
+  &__title {
+    font-size: $fs-2xl;
+    font-weight: $fw-bold;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  &__text {
+    font-size: $fs-base;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: $sp-4;
+  }
+
+  &__button {
+    @extend .btn-primary;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $sp-2;
+    text-decoration: none;
+    padding: $sp-3 $sp-6;
+    font-weight: $fw-medium;
+    transition: transform $transition-base, box-shadow $transition-base;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: $shadow-lg;
+    }
+  }
+}
