@@ -81,7 +81,7 @@
 
   &__nav {
     flex: 1;
-    padding: $sp-4;
+    padding: $sp-3;
     overflow-y: auto;
     @include custom-scrollbar;
   }
@@ -192,7 +192,7 @@
 
 .admin-topbar {
   @include flex-between;
-  padding: $sp-2;
+  padding: $sp-2 $sp-6;
   background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
   backdrop-filter: blur(5px);
   border-bottom: 1px solid var(--border);

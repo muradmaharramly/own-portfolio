@@ -12,7 +12,8 @@ import {
   FaExternalLinkAlt,
   FaTools,
   FaUsers,
-  FaShareAlt
+  FaShareAlt,
+  FaRegEye
 } from 'react-icons/fa';
 import { fetchProfile } from '../../redux/slices/profileSlice';
 import { fetchEducation } from '../../redux/slices/educationSlice';
@@ -212,7 +213,7 @@ const Dashboard = () => {
               </div>
             </Link>
             <Link to={stat.link} className="stat-card__action">
-              {stat.action === 'Əlavə et' ? <FaPlus /> : <FaExternalLinkAlt />}
+              {stat.action === 'Əlavə et' ? <FaPlus /> : <FaRegEye />}
               <span>{stat.action}</span>
             </Link>
           </div>
