@@ -40,10 +40,10 @@ export const createContactMessage = createAsyncThunk('contact/createMessage', as
   // Use RPC function to bypass RLS policies for public insertion
   const { data, error } = await supabase
     .rpc('send_contact_message', {
-      sender_name: messageData.sender_name,
-      sender_email: messageData.sender_email,
-      subject: messageData.subject,
-      message: messageData.message
+      p_sender_name: messageData.sender_name,
+      p_sender_email: messageData.sender_email,
+      p_subject: messageData.subject,
+      p_message: messageData.message
     });
   
   if (error) throw error;
