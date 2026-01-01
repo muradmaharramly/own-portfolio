@@ -88,11 +88,16 @@ const Education = () => {
 
                 {edu.skills && edu.skills.length > 0 && (
                   <div className="education-card__skills">
-                    {edu.skills.map((skill) => (
+                    {edu.skills.slice(0, 4).map((skill) => (
                       <span key={skill.id} className="skill-tag">
                         {skill.skill_name}
                       </span>
                     ))}
+                    {edu.skills.length > 4 && (
+                      <span className="skill-tag">
+                        +{edu.skills.length - 4} more
+                      </span>
+                    )}
                   </div>
                 )}
               </div>

@@ -51,6 +51,12 @@ const AboutDetailed = () => {
       
       if (uniqueTagsMap.has(normalized)) return;
 
+      // Explicitly exclude certain technical terms that might partially match soft skills
+      if (normalized === 'statemanagement') {
+        uniqueTagsMap.set(normalized, { display: trimmed, isSoft: false });
+        return;
+      }
+
       let isSoft = false;
       let display = trimmed;
 
@@ -131,12 +137,12 @@ const AboutDetailed = () => {
             <h3 className="bento-card__title">Tools & Technologies</h3>
           </div>
           <div className="bento-card__tags">
-            {toolsAndTech.length > 0 ? toolsAndTech.slice(0, 15).map(skill => (
+            {toolsAndTech.length > 0 ? toolsAndTech.slice(0, 10).map(skill => (
               <span key={skill} className="skill-tag">{skill}</span>
             )) : (
               <span className="skill-tag">Loading...</span>
             )}
-            {toolsAndTech.length > 15 && <span className="skill-tag">+{toolsAndTech.length - 15} more</span>}
+            {toolsAndTech.length > 10 && <span className="skill-tag">+{toolsAndTech.length - 10} more</span>}
           </div>
         </motion.div>
 
@@ -149,11 +155,12 @@ const AboutDetailed = () => {
             <h3 className="bento-card__title">Soft Skills</h3>
           </div>
           <div className="bento-card__tags">
-            {softSkills.length > 0 ? softSkills.map(skill => (
+            {softSkills.length > 0 ? softSkills.slice(0, 10).map(skill => (
               <span key={skill} className="skill-tag skill-tag--soft">{skill}</span>
             )) : (
               <span className="skill-tag">Loading...</span>
             )}
+            {softSkills.length > 10 && <span className="skill-tag skill-tag--soft">+{softSkills.length - 10} more</span>}
           </div>
         </motion.div>
       </div>
