@@ -69,8 +69,8 @@ const Contact = () => {
         message: '',
       });
     } catch (error) {
-      toast.error('Failed to send message. Please try again later.');
-      console.error(error);
+      console.error('Contact form error:', error);
+      toast.error(error.message || 'Failed to send message. Please try again later.');
     } finally {
       setLoading(false);
     }
