@@ -37,11 +37,14 @@ export const fetchContactMessages = createAsyncThunk('contact/fetchMessages', as
 });
 
 export const createContactMessage = createAsyncThunk('contact/createMessage', async (messageData) => {
+  // Use RPC function to bypass RLS policies for public insertion
   const { data, error } = await supabase
-    .from('contact_messages')
-    .insert(messageData)
-    .select()
-    .single();
+    .rpc('send_contact_message', {
+      sender_name: messageData.sender_name,
+      sender_email: messageData.sender_email,
+      subject: messageData.subject,
+      message: messageData.message
+    });
   
   if (error) throw error;
   return data;
