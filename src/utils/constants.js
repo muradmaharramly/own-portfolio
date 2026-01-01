@@ -2,27 +2,27 @@
 export const ITEMS_PER_PAGE = 6;
 
 export const EMPLOYMENT_TYPES = [
-  { value: 'full-time', label: 'Full-time' },
-  { value: 'part-time', label: 'Part-time' },
-  { value: 'self-employed', label: 'Self-employed' },
-  { value: 'freelance', label: 'Freelance' },
-  { value: 'remote', label: 'Remote' },
-  { value: 'contract', label: 'Contract' },
-   { value: 'hybrid', label: 'Hybrid' }
+  { value: 'full-time', label: 'Tam ştat' },
+  { value: 'part-time', label: 'Yarım ştat' },
+  { value: 'self-employed', label: 'Fərdi sahibkar' },
+  { value: 'freelance', label: 'Frilans' },
+  { value: 'remote', label: 'Məsafədən' },
+  { value: 'contract', label: 'Müqaviləli' },
+   { value: 'hybrid', label: 'Hibrid' }
 ];
 
 export const EXPERIENCE_TYPES = [
-  { value: 'work', label: 'Work' },
-  { value: 'intern', label: 'Internship' },
-  { value: 'volunteer', label: 'Volunteer' }
+  { value: 'work', label: 'İş' },
+  { value: 'intern', label: 'Təcrübə' },
+  { value: 'volunteer', label: 'Könüllü' }
 ];
 
 export const LANGUAGE_LEVELS = [
-  { value: 'native', label: 'Native' },
-  { value: 'fluent', label: 'Fluent' },
-  { value: 'advanced', label: 'Advanced' },
-  { value: 'intermediate', label: 'Intermediate' },
-  { value: 'beginner', label: 'Beginner' }
+  { value: 'native', label: 'Ana dili' },
+  { value: 'fluent', label: 'Səlis' },
+  { value: 'advanced', label: 'Qabaqcıl' },
+  { value: 'intermediate', label: 'Orta' },
+  { value: 'beginner', label: 'Başlanğıc' }
 ];
 
 export const SOCIAL_MEDIA_PLATFORMS = [

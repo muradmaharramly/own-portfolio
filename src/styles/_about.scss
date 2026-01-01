@@ -48,7 +48,7 @@
       content: '';
       position: absolute;
       inset: -15px;
-      border: 2px solid rgba($primary, 0.3);
+      border: 2px solid rgba(var(--primary-rgb), 0.3);
       border-radius: $radius-2xl;
       z-index: -1;
       transform: rotate(-5deg);
@@ -65,7 +65,7 @@
 
     &:hover::before {
       transform: rotate(0deg) scale(1.02);
-      border-color: rgba($primary, 0.6);
+      border-color: rgba(var(--primary-rgb), 0.6);
       -webkit-transform: rotate(0deg) scale(1.02);
       -moz-transform: rotate(0deg) scale(1.02);
       -ms-transform: rotate(0deg) scale(1.02);
@@ -188,7 +188,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 12px;
-    background: rgba($primary, 0.1);
+    background: rgba(var(--primary-rgb), 0.1);
     color: $primary;
     font-size: $fs-xl;
   }
@@ -278,7 +278,7 @@
   &:hover {
     box-shadow: $shadow-lg;
     transform: translateY(-5px);
-    border-color: rgba($primary, 0.3);
+    border-color: rgba(var(--primary-rgb), 0.3);
   }
 
   &__header {
@@ -291,7 +291,7 @@
     width: 48px;
     height: 48px;
     border-radius: 12px;
-    background: linear-gradient(135deg, rgba($primary, 0.2), rgba($secondary, 0.2));
+    background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.2), rgba(var(--secondary-rgb), 0.2));
     color: $primary;
     display: flex;
     align-items: center;
@@ -314,14 +314,14 @@
 
   .skill-tag {
     padding: $sp-1 $sp-3;
-    background: rgba($primary, 0.1);
+    background: rgba(var(--primary-rgb), 0.1);
     color: $primary;
     border-radius: $radius-full;
     font-size: $fs-sm;
     font-weight: $fw-medium;
 
     &--soft {
-      background: rgba($secondary, 0.1);
+      background: rgba(var(--secondary-rgb), 0.1);
       color: $secondary;
     }
     &:hover{

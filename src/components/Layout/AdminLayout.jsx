@@ -15,7 +15,8 @@ import {
   FaMoon,
   FaBars,
   FaTimes,
-  FaSignOutAlt
+  FaSignOutAlt,
+  FaPalette
 } from 'react-icons/fa';
 import { toggleTheme } from '../../redux/slices/themeSlice';
 import { signOut } from '../../redux/slices/authSlice';
@@ -29,6 +30,7 @@ import { CiMail } from 'react-icons/ci';
 import { LuPhone, LuQrCode } from 'react-icons/lu';
 import { fetchContactMessages } from '../../redux/slices/contactSlice';
 import Logo from '../../assets/images/MM-Logo.png';
+import { VscSymbolColor } from 'react-icons/vsc';
 
 const AdminLayout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -61,6 +63,7 @@ const AdminLayout = ({ children }) => {
     { path: '/admin/contact', icon: <LuPhone />, label: 'Əlaqə' },
     { path: '/admin/messages', icon: <CiMail />, label: 'Mesajlar', badge: unreadCount },
     { path: '/admin/qr', icon: <LuQrCode />, label: 'QR' },
+    { path: '/admin/design', icon: <VscSymbolColor />, label: 'Dizayn' },
   ];
 
   return (

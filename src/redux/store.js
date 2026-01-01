@@ -12,6 +12,7 @@ import languagesReducer from './slices/languageSlice';
 import socialMediaReducer from './slices/socialMediaSlice';
 import contactReducer from './slices/contactSlice';
 import authReducer from './slices/authSlice';
+import designReducer from './slices/designSlice';
 
 export const store = configureStore({
   reducer: {
@@ -24,6 +25,7 @@ export const store = configureStore({
     socialMedia: socialMediaReducer,
     contact: contactReducer,
     auth: authReducer,
+    design: designReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

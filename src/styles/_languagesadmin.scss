@@ -113,7 +113,7 @@
   font-size: $fs-base;
 
   &.primary {
-    background: linear-gradient(180deg, rgba($primary, 0.12), rgba($primary, 0.06));
+    background: linear-gradient(180deg, rgba(var(--primary-rgb), 0.12), rgba(var(--primary-rgb), 0.06));
     color: $primary;
 
     &:hover {
@@ -124,7 +124,7 @@
   }
 
   &.danger {
-    background: linear-gradient(180deg, rgba($danger, 0.18), rgba($danger, 0.12));
+    background: linear-gradient(180deg, rgba(var(--danger-rgb), 0.18), rgba(var(--danger-rgb), 0.12));
     color: $danger;
 
     &:hover {

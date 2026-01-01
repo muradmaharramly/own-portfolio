@@ -33,7 +33,7 @@
 
   &.danger {
     &:hover {
-      background: linear-gradient(180deg, rgba($danger, 0.18), rgba($danger, 0.12));
+      background: linear-gradient(180deg, rgba(var(--danger-rgb), 0.18), rgba(var(--danger-rgb), 0.12));
       color: white;
     }
   }

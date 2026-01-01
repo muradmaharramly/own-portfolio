@@ -229,7 +229,7 @@
       font-weight: $fw-medium;
       transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       cursor: default;
-      background: rgba($primary, 0.1);
+      background: rgba(var(--primary-rgb), 0.1);
       color: $primary;
       border: 1px solid $primary; 
       -webkit-border-radius: $radius-xl;
@@ -242,7 +242,7 @@
       }
 
       &--soft {
-        background: rgba($secondary, 0.1);
+        background: rgba(var(--secondary-rgb), 0.1);
         color: $secondary; 
         border: 1px solid $secondary;
 

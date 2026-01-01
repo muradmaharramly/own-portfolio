@@ -148,7 +148,7 @@
   font-size: $fs-base;
 
   &.primary {
-    background: rgba($primary, 0.1);
+    background: rgba(var(--primary-rgb), 0.1);
     color: $primary;
 
     &:hover {
@@ -159,7 +159,7 @@
   }
 
   &.danger {
-    background: rgba($danger, 0.1);
+    background: rgba(var(--danger-rgb), 0.1);
     color: $danger;
 
     &:hover {

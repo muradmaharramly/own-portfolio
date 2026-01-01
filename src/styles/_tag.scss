@@ -23,41 +23,41 @@
   }
 
   &--primary {
-    background: rgba($primary, 0.1);
+    background: rgba(var(--primary-rgb), 0.1);
     color: $primary;
-    border-color: rgba($primary, 0.2);
+    border-color: rgba(var(--primary-rgb), 0.2);
 
     &:hover {
-      background: rgba($primary, 0.2);
+      background: rgba(var(--primary-rgb), 0.2);
       color: $primary;
       border-color: $primary;
-      box-shadow: 0 0 20px rgba($primary, 0.2);
+      box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.2);
     }
   }
 
   &--secondary {
-    background: rgba($secondary, 0.1);
+    background: rgba(var(--secondary-rgb), 0.1);
     color: $secondary;
-    border-color: rgba($secondary, 0.2);
+    border-color: rgba(var(--secondary-rgb), 0.2);
 
     &:hover {
-      background: rgba($secondary, 0.2);
+      background: rgba(var(--secondary-rgb), 0.2);
       color: $secondary;
       border-color: $secondary;
-      box-shadow: 0 0 20px rgba($secondary, 0.2);
+      box-shadow: 0 0 20px rgba(var(--secondary-rgb), 0.2);
     }
   }
 
   &--accent {
-    background: rgba($accent, 0.1);
+    background: rgba(var(--accent-rgb), 0.1);
     color: $accent;
-    border-color: rgba($accent, 0.2);
+    border-color: rgba(var(--accent-rgb), 0.2);
 
     &:hover {
-      background: rgba($accent, 0.2);
+      background: rgba(var(--accent-rgb), 0.2);
       color: $accent;
       border-color: $accent;
-      box-shadow: 0 0 20px rgba($accent, 0.2);
+      box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.2);
     }
   }
 }

@@ -85,8 +85,8 @@ const Languages = () => {
                 <svg className="language-circle__svg" viewBox="0 0 140 140" aria-label={`${lang.language_name} ${lang.proficiency_percentage}%`}>
                   <defs>
                     <linearGradient id={`grad-${lang.id}`} x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#6366f1" />
-                      <stop offset="100%" stopColor="#8b5cf6" />
+                      <stop offset="0%" stopColor="var(--primary)" />
+                      <stop offset="100%" stopColor="var(--secondary)" />
                     </linearGradient>
                   </defs>
                   <circle

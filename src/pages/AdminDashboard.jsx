@@ -8,8 +8,9 @@ import ExperienceAdmin from './admin/ExperienceAdmin';
 import ProjectsAdmin from './admin/ProjectsAdmin';
 import LanguagesAdmin from './admin/LanguagesAdmin';
 import MessagesAdmin from './admin/MessagesAdmin';
-import SocialMediaAdmin from './admin/SocialMediaAdmin';
 import ContactAdmin from './admin/ContactAdmin';
+import SocialMediaAdmin from './admin/SocialMediaAdmin';
+import DesignSettings from './admin/DesignSettings';
 import QRAdmin from './admin/QRAdmin';
 
 const AdminDashboard = () => {
@@ -22,10 +23,11 @@ const AdminDashboard = () => {
         <Route path="experience" element={<ExperienceAdmin />} />
         <Route path="projects" element={<ProjectsAdmin />} />
         <Route path="languages" element={<LanguagesAdmin />} />
-        <Route path="qr" element={<QRAdmin />} />
         <Route path="contact" element={<ContactAdmin />} />
         <Route path="messages" element={<MessagesAdmin />} />
         <Route path="social-media" element={<SocialMediaAdmin />} />
+        <Route path="qr" element={<QRAdmin />} />
+        <Route path="design" element={<DesignSettings />} />
       </Routes>
     </AdminLayout>
   );

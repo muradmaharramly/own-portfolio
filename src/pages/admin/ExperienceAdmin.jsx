@@ -179,9 +179,9 @@ const ExperienceAdmin = () => {
 
   const getExperienceTypeBadge = (type) => {
     const badges = {
-      work: { label: 'Work', color: '#10b981' },
-      intern: { label: 'Intern', color: '#3b82f6' },
-      volunteer: { label: 'Volunteer', color: '#8b5cf6' }
+      work: { label: 'İş', color: '#10b981' },
+      intern: { label: 'Təcrübə', color: '#3b82f6' },
+      volunteer: { label: 'Könüllü', color: '#8b5cf6' }
     };
     return badges[type] || badges.work;
   };

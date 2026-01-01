@@ -153,14 +153,14 @@
 
 @mixin button-primary {
   @include button-base;
-  background: linear-gradient(180deg, #6365f1b6, #8a5cf6c3);
+  background: linear-gradient(180deg, rgba(var(--primary-rgb), 0.7), rgba(var(--secondary-rgb), 0.75));
   color: $light-bg-primary;
   border: 1px solid var(--border);
 
   &:hover:not(:disabled) {
     transform: translateY(-2px);
     box-shadow: $shadow-lg;
-    background: linear-gradient(180deg, #6365f1, #8a5cf6);
+    background: linear-gradient(180deg, $primary, $secondary);
     border-color: $primary;
   }
 
@@ -262,10 +262,10 @@
   -moz-border-radius: $radius-lg;
   -ms-border-radius: $radius-lg;
   -o-border-radius: $radius-lg;
-   &:focus {
+  &:focus {
     outline: none;
     border-color: $primary;
-    box-shadow: 0 0 0 3px rgba($primary, 0.1);
+    box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.1);
   }
 
   &::placeholder {

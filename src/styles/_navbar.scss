@@ -266,7 +266,10 @@
     padding: $sp-2;
     border-radius: $radius-md;
     transition: all $transition-base;
-
+    -webkit-transition: all $transition-base;
+    -moz-transition: all $transition-base;
+    -ms-transition: all $transition-base;
+    -o-transition: all $transition-base;
     &:hover {
       background: transparent;
       color: var(--primary);

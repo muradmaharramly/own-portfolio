@@ -9,6 +9,7 @@ import { ToastContainer } from 'react-toastify';
 import { store } from './redux/store';
 import { checkAuth } from './redux/slices/authSlice';
 import { setTheme } from './redux/slices/themeSlice';
+import { fetchDesignSettings } from './redux/slices/designSlice';
 
 // Pages
 import Home from './pages/Home';
@@ -31,6 +32,7 @@ function AppContent() {
   useEffect(() => {
     dispatch(checkAuth());
     dispatch(setTheme(mode));
+    dispatch(fetchDesignSettings());
   }, [dispatch, mode]);
 
   return (

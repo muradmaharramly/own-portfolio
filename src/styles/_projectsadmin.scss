@@ -221,13 +221,13 @@
 
     &--danger {
       @include button-base;
-      background: linear-gradient(180deg, rgba($danger, 0.8), rgba($danger, 0.1)) !important;
+      background: linear-gradient(180deg, rgba(var(--danger-rgb), 0.8), rgba(var(--danger-rgb), 0.1)) !important;
       color: $light-bg-primary;
-      border: 1px solid rgba($danger, 0.5);
+      border: 1px solid rgba(var(--danger-rgb), 0.5);
 
       &:hover {
-        background: linear-gradient(180deg, rgba($danger, 1), rgba($danger, 0.6)) !important;
-        border: 1px solid rgba($danger, 0.5) !important;
+        background: linear-gradient(180deg, rgba(var(--danger-rgb), 1), rgba(var(--danger-rgb), 0.6)) !important;
+        border: 1px solid rgba(var(--danger-rgb), 0.5) !important;
       }
     }
   }
@@ -277,7 +277,7 @@
   }
 
   &.danger {
-    background: linear-gradient(180deg, rgba($danger,0.12), rgba($danger,0.06));
+    background: linear-gradient(180deg, rgba(var(--danger-rgb),0.12), rgba(var(--danger-rgb),0.06));
     backdrop-filter: blur(5px);
     color: $danger;
 

@@ -43,15 +43,15 @@ const ContactAdmin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.email.trim()) {
-      toast.error('Email is required');
+      toast.error('Email tələb olunur');
       return;
     }
     try {
       await dispatch(updateContactInfo(formData)).unwrap();
-      toast.success('Contact info saved successfully');
+      toast.success('Əlaqə məlumatları yadda saxlanıldı');
       closeModal();
     } catch (error) {
-      toast.error(error?.message || 'Operation failed');
+      toast.error(error?.message || 'Əməliyyat uğursuz oldu');
     }
   };
 

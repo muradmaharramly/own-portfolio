@@ -90,7 +90,7 @@
   &__icon {
     width: 50px;
     height: 50px;
-    background-color: rgba($primary, 0.1);
+    background-color: rgba(var(--primary-rgb), 0.1);
     border-radius: $radius-md;
     @include flex-center;
     font-size: $fs-xl;
@@ -137,7 +137,7 @@
 
   &:focus {
     border-color: $primary;
-    box-shadow: 0 0 0 3px rgba($primary, 0.1);
+    box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.1);
   }
 
   &::placeholder {

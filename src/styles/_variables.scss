@@ -1,5 +1,5 @@
 // ============================================
-// COLOR PALETTE
+// COLOR PALETTE #6366f1 #8b5cf6
 // ============================================
 
 // Light Theme Colors
@@ -22,21 +22,33 @@ $dark-text-tertiary: #6b6b6b;
 $dark-border: #2a2a2a;
 $dark-shadow: rgba(0, 0, 0, 0.3);
 
-// Brand Colors
-$primary: #6366f1;
-$primary-hover: #4f46e5;
-$primary-light: #818cf8;
-$secondary: #8b5cf6;
-$accent: #10b981;
-$accent-hover: #059669;
-$danger: #ef4444;
-$danger-hover: #dc2626;
-$warning: #f59e0b;
-$info: #3b82f6;
+// Brand Colors (Dynamic)
+$primary: var(--primary, #6366f1);
+$primary-rgb: var(--primary-rgb, 99, 102, 241);
+$primary-hover: var(--primary-hover, #4f46e5);
+$primary-light: var(--primary-light, #818cf8);
+
+$secondary: var(--secondary, #8b5cf6);
+$secondary-rgb: var(--secondary-rgb, 139, 92, 246);
+
+$accent: var(--accent, #10b981);
+$accent-rgb: var(--accent-rgb, 16, 185, 129);
+$accent-hover: var(--accent-hover, #059669);
+
+$danger: var(--danger, #ef4444);
+$danger-rgb: var(--danger-rgb, 239, 68, 68);
+$danger-hover: var(--danger-hover, #dc2626);
+$danger-hover-rgb: var(--danger-hover-rgb, 220, 38, 38);
+
+$warning: var(--warning, #f59e0b);
+$warning-rgb: var(--warning-rgb, 245, 158, 11);
+
+$info: var(--info, #3b82f6);
+$info-rgb: var(--info-rgb, 59, 130, 246);
 
 // Gradient Colors
-$gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-$gradient-secondary: linear-gradient(135deg, #4f46e5 0%, #066dd4 100%);
+$gradient-primary: linear-gradient(135deg, var(--primary, #6366f1) 0%, var(--secondary, #8b5cf6) 100%);
+$gradient-secondary: linear-gradient(135deg, var(--primary-hover, #4f46e5) 0%, #066dd4 100%);
 $gradient-tertiary: linear-gradient(135deg, #7c3aed 0%, #0ea5e9 100%);
 $gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
 $gradient-light: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 100%);
@@ -46,7 +58,7 @@ $gradient-light: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 100%);
 // TYPOGRAPHY
 // ============================================
 
-$font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+$font-primary: var(--font-primary, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif);
 $font-code: 'Fira Code', 'Courier New', monospace;
 
 // Font Sizes

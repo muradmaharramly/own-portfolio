@@ -24,20 +24,20 @@ const MessagesAdmin = () => {
   const handleMarkAsRead = async (id) => {
     try {
       await dispatch(markMessageAsRead(id)).unwrap();
-      toast.success('Message marked as read');
+      toast.success('Mesaj oxunmuş kimi işarələndi');
     } catch {
-      toast.error('Failed to update message status');
+      toast.error('Mesaj statusunu yeniləmək mümkün olmadı');
     }
   };
 
   const handleDelete = async () => {
     try {
       await dispatch(deleteMessage(deleteId)).unwrap();
-      toast.success('Message deleted successfully');
+      toast.success('Mesaj uğurla silindi');
       setDeleteId(null);
       setConfirmOpen(false);
     } catch {
-      toast.error('Failed to delete message');
+      toast.error('Mesajı silmək mümkün olmadı');
     }
   };
 
@@ -47,7 +47,7 @@ const MessagesAdmin = () => {
   };
 
   const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
+    return new Date(dateString).toLocaleDateString('az-AZ', {
       year: 'numeric',
       month: 'short',
       day: 'numeric',

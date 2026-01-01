@@ -125,7 +125,7 @@
       content: '';
       position: absolute;
       inset: -15px;
-      border: 2px solid rgba($primary, 0.3);
+      border: 2px solid rgba(var(--primary-rgb), 0.3);
       border-radius: $radius-2xl;
       z-index: -1;
       transform: rotate(5deg);
@@ -138,7 +138,7 @@
 
     &:hover::before {
       transform: rotate(0deg) scale(1.02);
-      border-color: rgba($primary, 0.6);
+      border-color: rgba(var(--primary-rgb), 0.6);
       -webkit-transform: rotate(0deg) scale(1.02);
       -moz-transform: rotate(0deg) scale(1.02);
       -ms-transform: rotate(0deg) scale(1.02);

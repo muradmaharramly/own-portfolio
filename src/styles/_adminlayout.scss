@@ -109,13 +109,13 @@
     }
 
     &--active {
-      background: linear-gradient(180deg, #6365f1b6, #8a5cf6c3);
+      background: linear-gradient(180deg, $primary, $secondary);
       color: white;
       box-shadow: var(--shadow-md);
 
       &:hover {
         transform: none;
-        background: linear-gradient(180deg, #6365f1b6, #8a5cf6c3);
+        background: linear-gradient(180deg, $primary-hover, $secondary);
         color: white;
       }
     }
@@ -124,11 +124,12 @@
       border: 1px solid $danger;
       margin-top: auto;
       color: $danger;
+      background: transparent;
 
       &:hover {
-        background: rgba($danger, 0.1);
+        background: rgba(var(--danger-rgb), 0.1);
         color: $danger-hover;
-        border-color: rgba($danger, 0.2);
+        border-color: rgba(var(--danger-rgb), 0.2);
       }
     }
   }
@@ -144,7 +145,7 @@
     min-width: 20px;
     text-align: center;
     line-height: 1.2;
-    box-shadow: 0 2px 4px rgba($danger, 0.3);
+    box-shadow: 0 2px 4px rgba(var(--danger-rgb), 0.3);
   }
 
   &__icon {

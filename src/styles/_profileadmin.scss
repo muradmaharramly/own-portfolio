@@ -103,13 +103,13 @@
 
     &--danger {
       @include button-base;
-      background: linear-gradient(180deg, rgba($danger, 0.8), rgba($danger, 0.1));
+      background: linear-gradient(180deg, rgba(var(--danger-rgb), 0.8), rgba(var(--danger-rgb), 0.1));
       color: $light-bg-primary;
-      border: 1px solid rgba($danger, 0.5);
+      border: 1px solid rgba(var(--danger-rgb), 0.5);
 
       &:hover {
-        background: linear-gradient(180deg, rgba($danger, 1), rgba($danger, 0.6));
-        border: 1px solid rgba($danger, 0.5);
+        background: linear-gradient(180deg, rgba(var(--danger-rgb), 1), rgba(var(--danger-rgb), 0.6));
+        border: 1px solid rgba(var(--danger-rgb), 0.5);
       }
     }
   }
@@ -140,6 +140,7 @@
       border-color: $primary;
       color: $primary;
       transform: scale(1.02);
+      background: rgba(var(--primary-rgb), 0.05);
     }
   }
 }
@@ -238,7 +239,7 @@
   &:hover {
     border-color: $primary;
     color: $primary;
-    background: rgba($primary, 0.05);
+    background: rgba(var(--primary-rgb), 0.05);
   }
 }
 
@@ -318,15 +319,15 @@
 
 .btn-danger {
   @include button-base;
-      background: linear-gradient(180deg, rgba($danger, 0.8), rgba($danger, 0.1));
+      background: linear-gradient(180deg, rgba(var(--danger-rgb), 0.8), rgba(var(--danger-rgb), 0.1));
       color: $light-bg-primary;
       gap: $sp-2;
-      border: 1px solid rgba($danger, 0.5);
+      border: 1px solid rgba(var(--danger-rgb), 0.5);
   height: 48px;
 
       &:hover {
-        background: linear-gradient(180deg, rgba($danger, 1), rgba($danger, 0.6));
-        border: 1px solid rgba($danger, 0.5);
+        background: linear-gradient(180deg, rgba(var(--danger-rgb), 1), rgba(var(--danger-rgb), 0.6));
+        border: 1px solid rgba(var(--danger-rgb), 0.5);
       }
 
 }

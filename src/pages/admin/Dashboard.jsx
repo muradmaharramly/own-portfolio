@@ -143,7 +143,7 @@ const Dashboard = () => {
     title: 'Təhsil',
     count: education.length,
     icon: <PiGraduationCap />,
-    color: '#6366f1',
+    color: 'var(--primary)',
     link: '/admin/education',
     action: 'Əlavə et'
   },
@@ -151,7 +151,7 @@ const Dashboard = () => {
     title: 'Təcrübə',
     count: experience.length,
     icon: <IoBriefcaseOutline />,
-    color: '#7c7ff2',
+    color: 'var(--secondary)',
     link: '/admin/experience',
     action: 'Əlavə et'
   },
@@ -159,7 +159,7 @@ const Dashboard = () => {
     title: 'Proyektlər',
     count: projects.length,
     icon: <IoRocketOutline />,
-    color: '#8b5cf6',
+    color: 'var(--accent)',
     link: '/admin/projects',
     action: 'Əlavə et'
   },
@@ -167,7 +167,7 @@ const Dashboard = () => {
     title: 'Dillər',
     count: languages.length,
     icon: <HiMiniLanguage />,
-    color: '#9b7cf8',
+    color: 'var(--primary)',
     link: '/admin/languages',
     action: 'Əlavə et'
   },
@@ -175,7 +175,7 @@ const Dashboard = () => {
     title: 'Sosial Media',
     count: socialMedia?.length || 0,
     icon: <IoShareSocialOutline />,
-    color: '#7a5cf0',
+    color: 'var(--secondary)',
     link: '/admin/social-media',
     action: 'Əlavə et'
   },
@@ -183,7 +183,7 @@ const Dashboard = () => {
     title: 'Əlaqə Məlumatı',
     count: contactInfo ? 3 : 0,
     icon: <LuPhone />,
-    color: '#6d6df3',
+    color: 'var(--accent)',
     link: '/admin/contact',
     action: 'Düzəlt'
   },
@@ -191,7 +191,7 @@ const Dashboard = () => {
     title: 'Mesajlar',
     count: messages.length,
     icon: <CiMail />,
-    color: '#8f6cf7',
+    color: 'var(--primary)',
     link: '/admin/messages',
     action: 'Bax'
   }
@@ -206,7 +206,7 @@ const Dashboard = () => {
           <p className="dashboard__subtitle">Xoş gəldiniz, {profile?.full_name || 'Admin'}</p>
         </div>
         <Link to="/" className="dashboard__view-site" target="_blank">
-          <span>Saytı bax</span>
+          <span>Sayta bax</span>
           <FiExternalLink />
         </Link>
       </div>
@@ -246,12 +246,12 @@ const Dashboard = () => {
           {/* Tools & Technologies */}
           <div className="tag-category-card">
             <div className="tag-category-header">
-              <div className="tag-category-icon" style={{ background: '#6365f139', color: '#6366f1' }}>
+              <div className="tag-category-icon" style={{ background: 'rgba(var(--primary-rgb), 0.2)', color: 'var(--primary)' }}>
                 <GrTechnology />
               </div>
               <div className="tag-category-info">
-                <h3>Tools & Technologies</h3>
-                <span className="count">{toolsCount} items</span>
+                <h3>Alətlər və Texnologiyalar</h3>
+                <span className="count">{toolsCount} element</span>
               </div>
             </div>
             <div className="tag-list">
@@ -264,12 +264,12 @@ const Dashboard = () => {
           {/* Soft Skills */}
           <div className="tag-category-card">
             <div className="tag-category-header">
-              <div className="tag-category-icon" style={{ background: '#8a5cf637', color: '#8b5cf6' }}>
+              <div className="tag-category-icon" style={{ background: 'rgba(var(--secondary-rgb), 0.2)', color: 'var(--secondary)' }}>
                 <BsPersonCheck />
               </div>
               <div className="tag-category-info">
-                <h3>Soft Skills</h3>
-                <span className="count">{softSkillsCount} items</span>
+                <h3>Yumşaq Bacarıqlar</h3>
+                <span className="count">{softSkillsCount} element</span>
               </div>
             </div>
             <div className="tag-list">

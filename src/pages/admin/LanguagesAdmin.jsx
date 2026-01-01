@@ -17,11 +17,11 @@ const LanguagesAdmin = () => {
   const dispatch = useDispatch();
   const { items: languages, loading } = useSelector((state) => state.languages);
   const levelFor = (p) => {
-    if (p >= 96) return 'Native';
-    if (p >= 86) return 'Fluent';
-    if (p >= 61) return 'Advanced';
-    if (p >= 41) return 'Intermediate';
-    return 'Beginner';
+    if (p >= 96) return 'Ana dili';
+    if (p >= 86) return 'Səlis';
+    if (p >= 61) return 'Qabaqcıl';
+    if (p >= 41) return 'Orta';
+    return 'Başlanğıc';
   };
 
   const [modalOpen, setModalOpen] = useState(false);
