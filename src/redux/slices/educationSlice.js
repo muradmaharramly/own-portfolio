@@ -91,7 +91,7 @@ export const uploadInstitutionLogo = createAsyncThunk('education/uploadLogo', as
   let fileToUpload = file;
   try {
     fileToUpload = await compressImage(file, {
-      maxWidthOrHeight: 500,
+      maxWidthOrHeight: 300,
       fileType: 'image/webp'
     });
   } catch (err) {

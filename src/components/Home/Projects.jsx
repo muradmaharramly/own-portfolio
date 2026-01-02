@@ -56,7 +56,14 @@ const Projects = () => {
             >
               <div className="project-card__image">
                 {project.project_image ? (
-                  <img src={project.project_image} alt={project.project_name} />
+                  <img 
+                    src={project.project_image} 
+                    alt={project.project_name} 
+                    loading="lazy"
+                    width="650"
+                    height="350"
+                    style={{ objectFit: 'cover' }}
+                  />
                 ) : (
                   <div className="project-card__placeholder">
                     <FiFolder />

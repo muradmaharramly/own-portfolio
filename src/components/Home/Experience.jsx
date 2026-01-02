@@ -84,7 +84,13 @@ const Experience = () => {
               <div className="experience-card__content">
                 {exp.company_logo && (
                   <div className="experience-card__logo">
-                    <img src={exp.company_logo} alt={exp.company_name} />
+                    <img 
+                      src={exp.company_logo} 
+                      alt={exp.company_name} 
+                      loading="lazy"
+                      width="60"
+                      height="60"
+                    />
                   </div>
                 )}
 

@@ -11,7 +11,7 @@ export const uploadFile = async (file, bucket, folder = '') => {
       try {
         fileToUpload = await compressImage(file, {
           maxSizeMB: 0.5,
-          maxWidthOrHeight: 1920,
+          maxWidthOrHeight: 1280,
           useWebWorker: true,
           fileType: 'image/webp'
         });

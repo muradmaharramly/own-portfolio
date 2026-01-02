@@ -91,7 +91,7 @@ export const uploadCompanyLogo = createAsyncThunk('experience/uploadLogo', async
   let fileToUpload = file;
   try {
     fileToUpload = await compressImage(file, {
-      maxWidthOrHeight: 500, // Logos can be smaller
+      maxWidthOrHeight: 300, // Logos can be smaller (displayed ~74-100px)
       fileType: 'image/webp'
     });
   } catch (err) {

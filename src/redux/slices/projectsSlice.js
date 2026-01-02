@@ -91,7 +91,7 @@ export const uploadProjectImage = createAsyncThunk('projects/uploadImage', async
   let fileToUpload = file;
   try {
     fileToUpload = await compressImage(file, {
-      maxWidthOrHeight: 1920,
+      maxWidthOrHeight: 1280, // Optimized for retina displays (displayed ~640px)
       fileType: 'image/webp'
     });
   } catch (err) {

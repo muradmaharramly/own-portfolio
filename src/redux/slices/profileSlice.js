@@ -4,6 +4,7 @@
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { supabase } from '../../services/supabaseClient';
+import { compressImage } from '../../utils/imageOptimizer';
 
 export const fetchProfile = createAsyncThunk('profile/fetch', async () => {
   const { data, error } = await supabase
@@ -37,13 +38,26 @@ export const updateProfile = createAsyncThunk('profile/update', async (profileDa
 });
 
 export const uploadProfileImage = createAsyncThunk('profile/uploadImage', async (file) => {
-  const fileExt = file.name.split('.').pop();
+  let fileToUpload = file;
+  try {
+    fileToUpload = await compressImage(file, {
+      maxWidthOrHeight: 1024,
+      fileType: 'image/webp'
+    });
+  } catch (err) {
+    console.warn('Image optimization failed:', err);
+  }
+
+  const fileExt = fileToUpload.name.split('.').pop();
   const fileName = `${Math.random()}.${fileExt}`;
   const filePath = `${fileName}`;
 
   const { error: uploadError } = await supabase.storage
     .from('profile-images')
-    .upload(filePath, file);
+    .upload(filePath, fileToUpload, {
+      cacheControl: '31536000',
+      upsert: false
+    });
 
   if (uploadError) throw uploadError;
 
@@ -61,7 +75,10 @@ export const uploadCV = createAsyncThunk('profile/uploadCV', async (file) => {
 
   const { error: uploadError } = await supabase.storage
     .from('cv-files')
-    .upload(filePath, file);
+    .upload(filePath, file, {
+      cacheControl: '31536000',
+      upsert: false
+    });
 
   if (uploadError) throw uploadError;
 
