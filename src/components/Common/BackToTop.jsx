@@ -33,6 +33,9 @@ const BackToTop = () => {
           className="back-to-top"
           onClick={scrollToTop}
           aria-label="Back to top"
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && scrollToTop()}
         >
           <IoIosArrowUp />
         </div>

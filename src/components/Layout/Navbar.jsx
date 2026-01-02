@@ -67,6 +67,9 @@ const Navbar = () => {
             onClick={() => dispatch(toggleTheme())}
             className="navbar__theme-toggle"
             aria-label="Toggle theme"
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && dispatch(toggleTheme())}
           >
             {mode === 'light' ? <FiMoon /> : <FiSun />}
           </div>
@@ -75,6 +78,9 @@ const Navbar = () => {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="navbar__mobile-toggle"
             aria-label="Toggle menu"
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <FiX /> : <FiMenu />}
           </div>

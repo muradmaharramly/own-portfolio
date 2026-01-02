@@ -44,6 +44,9 @@ const Modal = ({ isOpen, onClose, title, children, size = 'md' }) => {
             className="modal__close" 
             onClick={onClose}
             aria-label="Close modal"
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onClose()}
           >
             <IoClose size={24} />
           </div>

@@ -137,6 +137,9 @@ const AdminLayout = ({ children }) => {
               className="admin-topbar__theme"
               onClick={() => dispatch(toggleTheme())}
               aria-label="Toggle theme"
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && dispatch(toggleTheme())}
             >
               {mode === 'dark' ? <FiSun /> : <FiMoon />}
             </div>
