@@ -34,13 +34,13 @@
   }
 
   &__logo {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     border-radius: $radius-lg;
     overflow: hidden;
     background: var(--bg-primary);
     @include flex-center;
-    padding: $sp-3;
+    padding: 0;
     border: 1px solid var(--border);
 
     img {
@@ -92,10 +92,6 @@
     margin: 0;
     padding-top: $sp-2;
     border-top: 1px solid var(--border);
-    margin-left: -75px !important;
-     @media (max-width: $breakpoint-md) {
-      margin-left: 0 !important;
-    }
   }
 
   &__skills {
@@ -104,10 +100,6 @@
     gap: $sp-2;
     margin-top: auto;
     padding-top: $sp-3;
-    margin-left: -75px;
-      @media (max-width: $breakpoint-md) {
-      margin-left: 0 !important;
-    }
   }
 }
 

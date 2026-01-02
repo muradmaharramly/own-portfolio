@@ -20,10 +20,8 @@
 
 .project-card {
   @extend .glass-card;
-  background-color: var(--bg-secondary);
   border-radius: $radius-lg;
   overflow: hidden;
-  box-shadow: var(--shadow-md);
   transition: transform $transition-base, box-shadow $transition-base;
   height: 100%;
   display: flex;
@@ -43,8 +41,9 @@
   }
 
   &__image {
+    margin: $sp-4;
     position: relative;
-    width: 100%;
+    width: 90%;
     height: 200px;
     overflow: hidden;
     background-color: var(--bg-tertiary);

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import '../styles/admin.scss';
 import { signIn } from '../redux/slices/authSlice';
 import { toast } from 'react-toastify';
 import { FaLock, FaUser } from 'react-icons/fa';

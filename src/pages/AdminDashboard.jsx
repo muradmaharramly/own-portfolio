@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import '../styles/admin.scss';
 import AdminLayout from '../components/Layout/AdminLayout';
 import Dashboard from './admin/Dashboard';
 import ProfileAdmin from './admin/ProfileAdmin';

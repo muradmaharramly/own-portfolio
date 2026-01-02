@@ -298,23 +298,34 @@ const ProjectsAdmin = () => {
                   <div className="project-card__header">
                     <h3 className="project-card__title">{item.project_name}</h3>
                     <div className="project-card__actions">
-                      <button 
-                        className="btn-icon primary"
+                      <div 
+                        className="btn-icon primary btn-sm"
                         onClick={() => openModal(item)}
+                        role="button"
+                        tabIndex={0}
+                        onKeyPress={(e) => (e.key === 'Enter' || e.key === ' ') && openModal(item)}
                         aria-label="Edit"
                       >
                         <FiEdit2 />
-                      </button>
-                      <button 
-                        className="btn-icon danger"
+                      </div>
+                      <div 
+                        className="btn-icon danger btn-sm"
                         onClick={() => {
                           setDeleteId(item.id);
                           setConfirmOpen(true);
                         }}
+                        role="button"
+                        tabIndex={0}
+                        onKeyPress={(e) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            setDeleteId(item.id);
+                            setConfirmOpen(true);
+                          }
+                        }}
                         aria-label="Delete"
                       >
                         <FiTrash />
-                      </button>
+                      </div>
                     </div>
                   </div>
 

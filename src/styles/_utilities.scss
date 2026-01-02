@@ -1,0 +1,25 @@
+// ============================================
+// GLASS UTILITIES
+// ============================================
+.glass-card {
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(5px);
+  transition: transform $transition-base, box-shadow $transition-base;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(224, 192, 255, 0.03));
+}
+
+.glass-panel {
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(5px);
+  transition: transform $transition-base, box-shadow $transition-base;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(224, 192, 255, 0.03));
+}
+
+.glass-outline {
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  background: transparent;
+  backdrop-filter: blur(5px);
+}

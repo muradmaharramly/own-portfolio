@@ -117,7 +117,10 @@
   &__form {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: $sp-10;
+    @media (max-width: $breakpoint-md) {
+      gap: $sp-4;
+    }
   }
 }
 

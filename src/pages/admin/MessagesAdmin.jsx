@@ -110,13 +110,13 @@ const MessagesAdmin = () => {
               <div className="message-card__footer">
                 {!msg.is_read ? (
                   <button 
-                    className="btn btn-primary btn-sm"
+                    className="btn btn-primary"
                     onClick={() => handleMarkAsRead(msg.id)}
                   >
                     <FiCheck /> Oxunmuş kimi işarələ
                   </button>
                 ) : (
-                  <span className="status-read btn-primary btn-sm">
+                  <span className="status-read btn-primary">
                     <IoCheckmarkDone /> Oxundu
                   </span>
                 )}

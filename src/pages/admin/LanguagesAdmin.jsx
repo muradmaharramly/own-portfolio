@@ -171,20 +171,30 @@ const LanguagesAdmin = () => {
               </div>
 
               <div className="language-admin-card__actions">
-                <button
-                  className="btn-icon primary"
+                <div
+                  className="btn-icon primary btn-sm"
                   onClick={() => openModal(lang)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyPress={(e) => (e.key === 'Enter' || e.key === ' ') && openModal(lang)}
                   aria-label="Edit"
                 >
                   <FiEdit2 />
-                </button>
-                <button
-                  className="btn-icon danger"
+                </div>
+                <div
+                  className="btn-icon danger btn-sm"
                   onClick={() => confirmDelete(lang.id)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyPress={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      confirmDelete(lang.id);
+                    }
+                  }}
                   aria-label="Delete"
                 >
                   <FiTrash />
-                </button>
+                </div>
               </div>
             </div>
           ))}

@@ -320,7 +320,7 @@ const ProfileAdmin = () => {
                 </div>
               </div>
               <div className="cv-uploaded__actions">
-                <label className="btn-secondary btn-sm">
+                <label className="btn-secondary ">
                   <GoUpload size={20} />
                   <span>Dəyişdir</span>
                   <input 

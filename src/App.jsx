@@ -2,7 +2,7 @@
 // App.jsx
 // ============================================
 
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
@@ -13,9 +13,9 @@ import { fetchDesignSettings } from './redux/slices/designSlice';
 
 // Pages
 import Home from './pages/Home';
-import AdminLogin from './pages/AdminLogin';
-import AdminDashboard from './pages/AdminDashboard';
-import NotFound from './pages/NotFound';
+const AdminLogin = lazy(() => import('./pages/AdminLogin'));
+const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Components
 import ProtectedRoute from './components/Auth/ProtectedRoute';
@@ -43,22 +43,24 @@ function AppContent() {
         <span className="ambient-blob ambient-blob--c"></span>
         <span className="ambient-blob ambient-blob--d"></span>
       </div>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route 
-          path="/admin/login" 
-          element={isAuthenticated ? <Navigate to="/admin" /> : <AdminLogin />} 
-        />
-        <Route
-          path="/admin/*"
-          element={
-            <ProtectedRoute>
-              <AdminDashboard />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <Suspense fallback={<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route 
+            path="/admin/login" 
+            element={isAuthenticated ? <Navigate to="/admin" /> : <AdminLogin />} 
+          />
+          <Route
+            path="/admin/*"
+            element={
+              <ProtectedRoute>
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
       <BackToTop />
       <ToastContainer
         position="bottom-right"

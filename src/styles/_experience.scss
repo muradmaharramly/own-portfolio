@@ -135,22 +135,24 @@
     // ----------------------------------------
     // Logo
     // ----------------------------------------
-    &__logo {
-      width: 60px;
-      height: 60px;
-      margin-bottom: $sp-3;
-      padding: $sp-2;
-      border-radius: $radius-md;
-      background: var(--bg-primary);
-      border: 1px solid var(--border);
+     &__logo {
+    width: 60px;
+    height: 60px;
+    border-radius: $radius-lg;
+    overflow: hidden;
+    background: var(--bg-primary);
+    @include flex-center;
+    padding: 0;
+    border: 1px solid var(--border);
+    margin-bottom: $sp-2;
 
-      img {
-        width: 100%;
-        height: 100%;
-        height: 100%;
-        object-fit: contain;
-      }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform $transition-base $ease-out;
     }
+  }
 
     // ----------------------------------------
     // Text Content
@@ -216,10 +218,6 @@
       font-size: $fs-sm;
       color: var(--text-secondary);
       line-height: $lh-relaxed;
-      margin-left: -75px;
-       @media (max-width: $breakpoint-md) {
-      margin-left: 0 !important;
-    }
     }
 
     &__skills {
@@ -227,10 +225,6 @@
       flex-wrap: wrap;
       gap: $sp-2;
       margin-top: $sp-3;
-      margin-left: -75px;
-       @media (max-width: $breakpoint-md) {
-      margin-left: 0 !important;
-    }
     }
   }
 }

@@ -107,10 +107,15 @@
 .btn-icon {
   @include button-base;
   @include flex-center;
-  width: 36px;
-  height: 36px;
+  width: 48px;
+  height: 48px;
   transition: all $transition-fast;
-  font-size: $fs-base;
+  font-size: $fs-2xl;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
 
   &.primary {
     background: linear-gradient(180deg, rgba(var(--primary-rgb), 0.12), rgba(var(--primary-rgb), 0.06));

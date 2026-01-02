@@ -20,10 +20,19 @@
   color: var(--text-secondary);
   border: 1px solid var(--border);
   backdrop-filter: blur(5px);
-  padding: $sp-2;
+  padding: 0;
   border-radius: $radius-md;
-  width: 36px;
-  height: 36px;
+  width: 48px;
+  height: 48px;
+  font-size: $fs-2xl;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
 
   &:hover {
     transform: translateY(-2px);
