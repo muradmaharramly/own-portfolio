@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import { HiOutlineLocationMarker, HiOutlineMail, HiOutlineDownload } from 'react-icons/hi';
-import AvatarComp from '../../assets/images/my-avatar-comp.png';
+import AvatarComp from '../../assets/images/my-avatar-comp.webp';
 import AboutDetailed from './AboutDetailed';
 
 const About = () => {

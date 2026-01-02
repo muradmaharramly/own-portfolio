@@ -8,6 +8,8 @@ import { fetchProfile } from '../../redux/slices/profileSlice';
 import { AnimatePresence, motion } from 'framer-motion';
 import { FiDownload, FiArrowDown } from 'react-icons/fi';
 
+import AvatarComp from '../../assets/images/my-avatar-comp.webp';
+
 const Hero = () => {
   const dispatch = useDispatch();
   const { data: profile } = useSelector((state) => state.profile);
@@ -163,13 +165,15 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <div className="hero__image-container">
-              {profile?.profile_image ? (
-                <img src={profile.profile_image} alt="Profile" />
-              ) : (
-                <div className="hero__image-placeholder">
-                  <span>{profile?.headline?.[0] || 'M'}</span>
-                </div>
-              )}
+              <img 
+                src={profile?.profile_image || AvatarComp} 
+                alt="Profile" 
+                fetchPriority="high"
+                loading="eager"
+                width="350"
+                height="350"
+                style={{ objectFit: 'cover' }}
+              />
               <div className="hero__image-decoration"></div>
               
               {/* Floating Badge */}

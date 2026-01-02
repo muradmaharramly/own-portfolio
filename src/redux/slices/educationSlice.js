@@ -4,6 +4,7 @@
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { supabase } from '../../services/supabaseClient';
+import { compressImage } from '../../utils/imageOptimizer';
 
 export const fetchEducation = createAsyncThunk('education/fetchAll', async () => {
   const { data, error } = await supabase
@@ -87,12 +88,25 @@ export const deleteEducation = createAsyncThunk('education/delete', async (id) =
 });
 
 export const uploadInstitutionLogo = createAsyncThunk('education/uploadLogo', async (file) => {
-  const fileExt = file.name.split('.').pop();
+  let fileToUpload = file;
+  try {
+    fileToUpload = await compressImage(file, {
+      maxWidthOrHeight: 500,
+      fileType: 'image/webp'
+    });
+  } catch (err) {
+    console.warn('Image optimization failed:', err);
+  }
+
+  const fileExt = fileToUpload.name.split('.').pop();
   const fileName = `${Math.random()}.${fileExt}`;
 
   const { error: uploadError } = await supabase.storage
     .from('institution-logos')
-    .upload(fileName, file);
+    .upload(fileName, fileToUpload, {
+      cacheControl: '31536000',
+      upsert: false
+    });
 
   if (uploadError) throw uploadError;
 

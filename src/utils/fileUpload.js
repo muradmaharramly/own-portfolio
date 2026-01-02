@@ -1,16 +1,33 @@
 // src/utils/fileUpload.js
 import { supabase } from '../../src/services/supabaseClient';
+import { compressImage } from './imageOptimizer';
 
 export const uploadFile = async (file, bucket, folder = '') => {
   try {
-    const fileExt = file.name.split('.').pop();
+    let fileToUpload = file;
+    
+    // Optimize image if it is an image
+    if (file.type.startsWith('image/')) {
+      try {
+        fileToUpload = await compressImage(file, {
+          maxSizeMB: 0.5,
+          maxWidthOrHeight: 1920,
+          useWebWorker: true,
+          fileType: 'image/webp'
+        });
+      } catch (err) {
+        console.warn('Image optimization failed, uploading original:', err);
+      }
+    }
+
+    const fileExt = fileToUpload.name.split('.').pop();
     const fileName = `${Math.random().toString(36).substring(2)}_${Date.now()}.${fileExt}`;
     const filePath = folder ? `${folder}/${fileName}` : fileName;
 
     const { data, error } = await supabase.storage
       .from(bucket)
-      .upload(filePath, file, {
-        cacheControl: '3600',
+      .upload(filePath, fileToUpload, {
+        cacheControl: '31536000',
         upsert: false
       });
 
