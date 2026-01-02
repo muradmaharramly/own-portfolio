@@ -5,6 +5,15 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   build: {
-    sourcemap: true
+    sourcemap: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom', '@reduxjs/toolkit', 'react-redux'],
+          ui: ['framer-motion', 'react-icons', 'react-toastify', 'qrcode.react'],
+          supabase: ['@supabase/supabase-js']
+        }
+      }
+    }
   }
 })
