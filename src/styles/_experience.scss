@@ -218,6 +218,10 @@
       font-size: $fs-sm;
       color: var(--text-secondary);
       line-height: $lh-relaxed;
+      margin-left: -75px;
+    @media (max-width: $breakpoint-md) {
+      margin-left: 0 ;
+    }
     }
 
     &__skills {
@@ -225,6 +229,10 @@
       flex-wrap: wrap;
       gap: $sp-2;
       margin-top: $sp-3;
+      margin-left: -75px;
+    @media (max-width: $breakpoint-md) {
+      margin-left: 0 ;
+    }
     }
   }
 }
