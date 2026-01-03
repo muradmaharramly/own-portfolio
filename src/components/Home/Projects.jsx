@@ -56,9 +56,9 @@ const Projects = () => {
             >
               <div className="project-card__image">
                 {project.project_image ? (
-                  <img 
-                    src={project.project_image} 
-                    alt={project.project_name} 
+                  <img
+                    src={project.project_image}
+                    alt={project.project_name}
                     loading="lazy"
                     width="650"
                     height="350"
@@ -72,9 +72,9 @@ const Projects = () => {
                 <div className="project-card__overlay">
                   <div className="project-card__links btn">
                     {project.github_url && (
-                      <a 
-                        href={project.github_url} 
-                        target="_blank" 
+                      <a
+                        href={project.github_url}
+                        target="_blank"
                         rel="noopener noreferrer"
                         aria-label="GitHub Repository"
                       >
@@ -82,9 +82,9 @@ const Projects = () => {
                       </a>
                     )}
                     {project.live_url && (
-                      <a 
-                        href={project.live_url} 
-                        target="_blank" 
+                      <a
+                        href={project.live_url}
+                        target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Live Demo"
                       >
@@ -97,8 +97,12 @@ const Projects = () => {
 
               <div className="project-card__content">
                 <h3 className="project-card__project_name">{project.project_name}</h3>
-                <p className="project-card__description">{project.description}</p>
-                
+                <p className="project-card__description">
+                  {project.description.length > 150
+                    ? project.description.slice(0, 150) + '...'
+                    : project.description}
+                </p>
+
                 {project.technologies && project.technologies.length > 0 && (
                   <div className="project-card__tech">
                     {project.technologies.map((tech) => (
@@ -115,7 +119,7 @@ const Projects = () => {
 
         {projects.length > 3 && (
           <div className="projects__actions">
-            <button 
+            <button
               className="btn-primary"
               onClick={() => setShowAll(!showAll)}
             >
