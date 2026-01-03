@@ -294,6 +294,16 @@
     }
   }
 }
+.form-fl{
+  display: flex;
+  justify-content: left;
+  align-items: flex-start;
+  gap: $sp-4;
+  .form-group{
+    flex: 0 0 48%;
+  }
+
+}
 
 .projects-fl{
   @include flex-start;

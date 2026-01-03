@@ -13,7 +13,7 @@ export const fetchProjects = createAsyncThunk('projects/fetchAll', async () => {
       *,
       technologies:project_technologies(id, technology_name)
     `)
-    .order('created_at', { ascending: false });
+    .order('display_index', { ascending: true });
   
   if (error) throw error;
   return data;

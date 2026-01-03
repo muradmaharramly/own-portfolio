@@ -417,7 +417,7 @@ const EducationAdmin = () => {
               <button 
                 type="button"
                 onClick={handleAddSkill}
-                className="btn-secondary btn-sm"
+                className="btn-secondary"
               >
                 <FaPlus />
               </button>

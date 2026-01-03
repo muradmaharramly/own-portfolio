@@ -45,6 +45,7 @@ const ProjectsAdmin = () => {
     project_image: '',
     github_url: '',
     live_url: '',
+    display_index: 0,
     technologies: []
   });
 
@@ -69,6 +70,7 @@ const ProjectsAdmin = () => {
       project_image: '',
       github_url: '',
       live_url: '',
+      display_index: 0,
       technologies: []
     });
     setTechInput('');
@@ -84,6 +86,7 @@ const ProjectsAdmin = () => {
         project_image: item.project_image || '',
         github_url: item.github_url || '',
         live_url: item.live_url || '',
+        display_index: item.display_index || 0,
         technologies: item.technologies ? item.technologies.map(t => t.technology_name) : []
       });
       setImagePreview(item.project_image);
@@ -472,7 +475,8 @@ const ProjectsAdmin = () => {
              
           </div>
 
-          <div className="form-group">
+          <div className='form-fl'>
+            <div className="form-group">
             <label className="form-group__label">
               Proyekt adı <span className="required">*</span>
             </label>
@@ -485,6 +489,22 @@ const ProjectsAdmin = () => {
               placeholder="Proyektinizin adı"
               required
             />
+          </div>
+
+          <div className="form-group">
+            <label className="form-group__label">
+              Sıra nömrəsi (Index)
+            </label>
+            <input
+              type="number"
+              name="display_index"
+              value={formData.display_index}
+              onChange={handleChange}
+              className="form-group__input"
+              placeholder="1, 2, 3..."
+              min="0"
+            />
+          </div>
           </div>
 
           <div className="form-group">
@@ -522,7 +542,7 @@ const ProjectsAdmin = () => {
               <button 
                 type="button"
                 onClick={handleAddTech}
-                className="btn-secondary btn-sm"
+                className="btn-secondary"
               >
                 <FaPlus />
               </button>
