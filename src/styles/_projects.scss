@@ -20,6 +20,7 @@
 
 .project-card {
   @extend .glass-card;
+  padding: $sp-2 !important;
   border-radius: $radius-lg;
   overflow: hidden;
   transition: transform $transition-base, box-shadow $transition-base;
