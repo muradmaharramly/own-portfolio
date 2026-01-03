@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 
-Sitemap: https://muradmaharramli.com/sitemap.xml
+Sitemap: https://murad-maharramli.netlify.app/sitemap.xml
