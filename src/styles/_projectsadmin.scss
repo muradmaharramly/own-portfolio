@@ -36,8 +36,8 @@
 
 .project-card {
   @include bento-card;
-    @extend .glass-card;
-    transition: transform $transition-base, box-shadow $transition-base;
+  @extend .glass-card;
+  transition: transform $transition-base, box-shadow $transition-base;
   overflow: hidden;
 
   &:hover {
