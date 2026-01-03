@@ -24,7 +24,8 @@
   gap: $sp-8;
 
   &__section {
-    @include card;
+    @include bento-card;
+    @extend .glass-card;
     flex: 1;
   }
 
@@ -244,7 +245,8 @@
 }
 
 .cv-uploaded {
-  @include card;
+  @include bento-card;
+  @extend .glass-card;
   @include flex-column;
   padding: $sp-4;
   border-radius: $radius-lg;

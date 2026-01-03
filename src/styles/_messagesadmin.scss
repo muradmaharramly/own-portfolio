@@ -9,11 +9,10 @@
 }
 
 .message-card {
+  @extend .glass-card;
   flex: 0 0 45%;
-  background-color: var(--bg-secondary);
   border-radius: $radius-lg;
   padding: $sp-6;
-  box-shadow: var(--shadow-sm);
   border-left: 4px solid transparent;
   transition: all $transition-base;
 

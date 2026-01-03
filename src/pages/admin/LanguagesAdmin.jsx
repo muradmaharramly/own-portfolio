@@ -214,6 +214,7 @@ const LanguagesAdmin = () => {
               className="form-control form-group__input"
               value={formData.language_name}
               onChange={(e) => setFormData({ ...formData, language_name: e.target.value })}
+              placeholder='English, Azerbaijani ve s.'
               required
             />
           </div>

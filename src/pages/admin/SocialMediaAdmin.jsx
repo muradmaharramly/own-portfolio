@@ -207,6 +207,7 @@ const SocialMediaAdmin = () => {
               className="form-control form-group__input"
               value={formData.platform_name}
               onChange={(e) => setFormData({ ...formData, platform_name: e.target.value })}
+              placeholder='Instagram, Facebook, Linkedin ve s.'
               required
             />
           </div>

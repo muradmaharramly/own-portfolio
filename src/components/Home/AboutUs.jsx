@@ -48,19 +48,18 @@ const About = () => {
         >
           {/* Image Column */}
           <div className="about__image-col">
-            <motion.div className="about__image-container" variants={imageVariants}>
+            <motion.div className="about__image-container" variants={imageVariants} initial="visible">
               <div className="about__image-backdrop"></div>
-              {profile?.profile_image ? (
-                <img 
-                  src={AvatarComp} 
-                  alt={profile.full_name || 'Profile'} 
-                  className="about__image"
-                />
-              ) : (
-                <div className="about__image-placeholder">
-                  <span>{profile?.full_name?.[0] || 'A'}</span>
-                </div>
-              )}
+              <img 
+                src={AvatarComp} 
+                alt={profile?.full_name || 'Murad Maharramli'} 
+                className="about__image"
+                width="350"
+                height="350"
+                loading="eager"
+                fetchPriority="high"
+                style={{ objectFit: 'cover' }}
+              />
               <div className="about__image-decoration"></div>
               
               {/* Floating Badge */}

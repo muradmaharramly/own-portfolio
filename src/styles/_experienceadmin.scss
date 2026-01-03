@@ -37,8 +37,9 @@
 }
 
 .experience-card {
-  @include card;
-  transition: all $transition-base;
+  @include bento-card;
+  @extend .glass-card;
+  transition: transform $transition-base, box-shadow $transition-base;
 
   &:hover {
     box-shadow: var(--shadow-lg);

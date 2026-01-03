@@ -35,9 +35,10 @@
 }
 
 .project-card {
-  @include card;
+  @include bento-card;
+    @extend .glass-card;
+    transition: transform $transition-base, box-shadow $transition-base;
   overflow: hidden;
-  transition: all $transition-base;
 
   &:hover {
     box-shadow: var(--shadow-lg);
@@ -47,8 +48,8 @@
   &__image {
     position: relative;
     width: 100%;
-    aspect-ratio: 16 / 9;
-    background: var(--bg-tertiary);
+    margin: 0 !important;
+    
 
     img {
       width: 100%;

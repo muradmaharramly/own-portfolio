@@ -53,7 +53,7 @@
 }
 
 .stat-card {
-  @include card;
+  @include bento-card;
   @extend .glass-card;
   display: flex;
   flex-direction: column;
@@ -175,7 +175,7 @@
 }
 
 .tag-category-card {
-  @include card;
+  @include bento-card;
   @extend .glass-card;
   padding: $sp-6;
   
