@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Preload LCP Image -->
-  <link rel="preload" as="image" href="/my-avatar-comp.webp" type="image/webp" fetchpriority="high" />
+  <link rel="preload" as="image" href="/src/assets/images/my-avatar-comp.webp" type="image/webp" fetchpriority="high" />
 
   <!-- SEO Meta Tags -->
   <title>Murad Maharramli - Creative Developer</title>
@@ -59,12 +59,26 @@
   <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Murad Maharramli",
-        "url": "https://murad-maharramli.netlify.app",
-        "jobTitle": "Creative Developer",
-        "description": "Creative Developer specializing in building modern web applications.",
-        "image": "https://murad-maharramli.netlify.app/og-image.png"
+        "@graph": [
+          {
+            "@type": "Person",
+            "name": "Murad Maharramli",
+            "url": "https://murad-maharramli.netlify.app",
+            "jobTitle": "Creative Developer",
+            "description": "Creative Developer specializing in building modern web applications.",
+            "image": "https://murad-maharramli.netlify.app/og-image.png",
+            "sameAs": [
+              "https://github.com/murad-maharramli",
+              "https://www.linkedin.com/in/murad-maharramli"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "name": "Murad Maharramli Portfolio",
+            "alternateName": ["Murad Maharramli", "Murad Portfolio"],
+            "url": "https://murad-maharramli.netlify.app"
+          }
+        ]
       }
     </script>
   <!-- Google tag (gtag.js) -->
