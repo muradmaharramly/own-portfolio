@@ -42,14 +42,13 @@
   }
 
   &__image {
-    margin: $sp-4;
+    margin: $sp-6;
     position: relative;
     width: 90%;
     height: 200px;
     overflow: hidden;
     background-color: var(--bg-tertiary);
-    border-radius: $radius-lg;
-    
+    border-radius: $radius-lg; 
     -webkit-border-radius: $radius-lg;
     -moz-border-radius: $radius-lg;
     -ms-border-radius: $radius-lg;
