@@ -14,19 +14,21 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
+            // Core vendor chunk
             if (id.includes('react') || id.includes('redux') || id.includes('@reduxjs') || id.includes('router')) {
               return 'vendor-react';
             }
-            if (id.includes('framer-motion')) {
-              return 'vendor-framer';
+            // UI libraries chunk
+            if (id.includes('framer-motion') || id.includes('react-toastify')) {
+              return 'vendor-ui';
             }
+            // Supabase chunk
             if (id.includes('supabase')) {
               return 'vendor-supabase';
             }
-            if (id.includes('react-icons')) {
-              return 'vendor-icons';
-            }
-            return 'vendor-libs';
+            // Let other dependencies (like react-icons) be handled by Vite's default splitting
+            // or bundle them into index if they are small/critical. 
+            // Avoid forcing everything into chunks to prevent 'Activity' undefined errors.
           }
         }
       }
