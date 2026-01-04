@@ -32,11 +32,15 @@
 }
 
 .education-list {
-  @include flex-column;
+  display: flex;
+  justify-content: left;
+  align-items: flex-start;
+  flex-wrap: wrap;
   gap: $sp-6;
 }
 
 .education-card {
+  flex: 0 0 48%;
   @include card;
   transition: all $transition-base;
 
@@ -46,7 +50,9 @@
   }
 
   &__header {
-    @include flex-start;
+    display: flex;
+  justify-content: left;
+  align-items: flex-start;
     gap: $sp-4;
     margin-bottom: $sp-4;
     flex-wrap: wrap;

@@ -32,11 +32,15 @@
 }
 
 .experience-list {
-  @include flex-column;
+  display: flex;
+  justify-content: left;
+  align-items: flex-start;
+  flex-wrap: wrap;
   gap: $sp-6;
 }
 
 .experience-card {
+  flex: 0 0 48%;
   @include bento-card;
   @extend .glass-card;
   transition: transform $transition-base, box-shadow $transition-base;
@@ -47,7 +51,9 @@
   }
 
   &__header {
-    @include flex-start;
+    display: flex;
+  justify-content: left;
+  align-items: flex-start;
     gap: $sp-4;
     margin-bottom: $sp-4;
     flex-wrap: wrap;

@@ -401,7 +401,8 @@ const ProfileAdmin = () => {
         <div className="profile-form__section">
           <h2 className="profile-form__section-title">Əsas Məlumatlar</h2>
           
-          <div className="form-group">
+        <div className='profile-form-fl'>
+                    <div className="form-group">
             <label className="form-group__label">
               Ad və Soyad <span className="required">*</span>
             </label>
@@ -457,6 +458,7 @@ const ProfileAdmin = () => {
               placeholder="Məsələn: Freelancer"
             />
           </div>
+        </div>
 
           <div className="form-group">
             <label className="form-group__label">
