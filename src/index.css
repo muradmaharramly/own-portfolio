@@ -30,6 +30,15 @@ body {
   min-height: 100vh;
 }
 
+@media (max-width: 768px) {
+  body {
+    display: block;
+    place-items: unset;
+    width: 100%;
+    overflow-x: hidden;
+  }
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;

@@ -111,9 +111,12 @@ body {
 
   @include flex-center;
   padding: 0px 200px;
+  
   @media (max-width: $breakpoint-md) {
-      padding: 0px 0px;
-    }
+    padding: 0px 0px;
+    display: block;
+    width: 100%;
+  }
 }
 
 
