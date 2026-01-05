@@ -162,47 +162,6 @@
     }
   }
 
-  &__lang-selector {
-    display: flex;
-    align-items: center;
-    gap: $sp-2;
-    padding: $sp-2 $sp-3;
-    border-radius: $radius-full;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border);
-    cursor: pointer;
-    transition: all $transition-base $ease-out;
-
-    &:hover {
-      border-color: var(--primary);
-      background: var(--bg-tertiary);
-    }
-  }
-
-  &__lang-icon {
-    font-size: $fs-lg;
-    color: var(--text-secondary);
-  }
-
-  &__lang-select {
-    background: transparent;
-    border: none;
-    color: var(--text-primary);
-    font-size: $fs-sm;
-    font-weight: $fw-medium;
-    cursor: pointer;
-    outline: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    padding-right: $sp-2;
-    
-    option {
-      background: var(--bg-secondary);
-      color: var(--text-primary);
-    }
-  }
-
   &__actions {
     @include flex-start;
     gap: $sp-4;

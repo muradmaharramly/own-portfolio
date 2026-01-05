@@ -23,7 +23,7 @@ const Languages = () => {
   const levelDescriptions = {
     Native: "I speak this language fluently and naturally.",
     Fluent: "I can communicate confidently in most situations.",
-    Advanced: "I can express myself clearly in complex conversations.",
+    Advanced: "I communicate clearly in complex discussions.”",
     Intermediate: "I can handle everyday conversations with ease.",
     Beginner: "I understand basic words and simple phrases."
   };
