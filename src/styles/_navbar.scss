@@ -135,15 +135,15 @@
     @media (max-width: $breakpoint-md) {
       position: fixed;
       z-index: 1001;
-      top: 0;
+      top: 66px;
       right: -100%;
-      width: 280px;
+      width: 250px;
       height: 100vh;
       background: linear-gradient(180deg, rgba(7, 7, 7, 0.701), rgba(0, 0, 0, 0.647));
       backdrop-filter: blur(40px);
       border-left: 1px solid var(--border);
       flex-direction: column;
-      padding: $sp-20 $sp-6;
+      padding: $sp-10 $sp-6;
       box-shadow: var(--shadow-xl);
       transition: right $transition-base $ease-out;
       align-items: flex-start;

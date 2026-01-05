@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleTheme } from '../../redux/slices/themeSlice';
@@ -10,6 +10,8 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const dispatch = useDispatch();
   const { mode } = useSelector((state) => state.theme);
+  const menuRef = useRef(null);
+  const toggleRef = useRef(null);
 
   useEffect(() => {
     let ticking = false;
@@ -27,6 +29,25 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        isMobileMenuOpen &&
+        menuRef.current &&
+        !menuRef.current.contains(event.target) &&
+        toggleRef.current &&
+        !toggleRef.current.contains(event.target)
+      ) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMobileMenuOpen]);
 
   const navLinks = [
     { name: 'Home', href: '#home' },
@@ -57,7 +78,7 @@ const Navbar = () => {
           <span className="gradient-text">Portfolio</span>
         </Link>
 
-        <div className={`navbar__menu ${isMobileMenuOpen ? 'active' : ''}`}>
+        <div className={`navbar__menu ${isMobileMenuOpen ? 'active' : ''}`} ref={menuRef}>
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -83,6 +104,7 @@ const Navbar = () => {
           </div>
 
           <div
+            ref={toggleRef}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="navbar__mobile-toggle"
             aria-label="Toggle menu"
