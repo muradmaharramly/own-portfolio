@@ -16,22 +16,21 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# 1. Admin panelinin işləməsi üçün daxili rewrite qaydası
+# 1. Admin qovluğunu və daxilindəki faylları olduğu kimi saxla
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/:splat"
+  status = 200
+
+# 2. Əgər admin daxilində səhifə tapılmazsa, ana index.html-ə yönləndir (SPA routing)
 [[redirects]]
   from = "/admin/*"
   to = "/index.html"
   status = 200
-  force = true
 
-# 2. Ana səhifə daxil olmaqla bütün trafiki yeni sayta yönləndir
+# 3. BÜTÜN DİGƏR sorğuları (ana səhifə daxil) yeni sayta yönləndir
 [[redirects]]
   from = "https://murad-maharramli.netlify.app/*"
-  to = "https://muradmaharramli.me/:splat"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "http://murad-maharramli.netlify.app/*"
   to = "https://muradmaharramli.me/:splat"
   status = 301
   force = true
