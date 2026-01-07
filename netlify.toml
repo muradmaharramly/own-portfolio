@@ -17,6 +17,12 @@
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[redirects]]
+  from = "/admin"
+  to = "/admin/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/admin/*"
   to = "/admin/:splat"
   status = 200
@@ -24,12 +30,6 @@
 
 [[redirects]]
   from = "https://murad-maharramli.netlify.app/*"
-  to = "https://muradmaharramli.me/:splat"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "http://murad-maharramli.netlify.app/*"
   to = "https://muradmaharramli.me/:splat"
   status = 301
   force = true
