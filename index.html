@@ -2,111 +2,154 @@
 <html lang="en">
 
 <head>
+  <!-- Basic -->
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Favicons -->
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Preload LCP Image -->
-  <link rel="preload" as="image" href="/src/assets/images/my-avatar-comp.webp" type="image/webp" fetchpriority="high" />
+  <link
+    rel="preload"
+    as="image"
+    href="/src/assets/images/my-avatar-comp.webp"
+    type="image/webp"
+    fetchpriority="high"
+  />
 
-  <!-- SEO Meta Tags -->
-  <title>Murad Maharramli - Creative Developer</title>
-  <meta name="description"
-    content="Portfolio of Murad Maharramli - A Creative Developer specializing in building modern web applications, digital products, and brand experiences." />
-  <meta name="keywords"
-    content="Murad Maharramli, Murad Məhərrəmli, Məhərrəmli Murad, Web Developer, Frontend Developer, React Developer, JavaScript Developer, Portfolio, Creative Developer, UX/UI Designer, Fullstack Developer, Veb Proqramçı, Front-end Proqramçı, Baku Developer, Azərbaycan Developer, Digital Portfolio, Web Applications, Modern Web Projects, Frontend Portfolio" />
+  <!-- SEO -->
+  <title>Murad Maharramli | Creative Developer</title>
+  <meta
+    name="description"
+    content="Portfolio of Murad Maharramli – Creative Developer specializing in modern, fast and SEO-friendly web applications and digital experiences."
+  />
+  <meta
+    name="keywords"
+    content="Murad Maharramli, Murad Məhərrəmli, Frontend Developer, Creative Developer, React Developer, Web Developer, Portfolio, Azerbaijan Developer, Digital Portfolio"
+  />
   <meta name="author" content="Murad Maharramli" />
   <meta name="robots" content="index, follow" />
-  <meta name="google-site-verification" content="CAfM25D0LsaFMJ01tHzHInUP8eYEYHtIK5gJhkodkhQ" />
-  <link rel="canonical" href="https://murad-maharramli.netlify.app/" />
 
-  <!-- Open Graph / Facebook -->
+  <!-- Canonical (PRIMARY DOMAIN) -->
+  <link rel="canonical" href="https://muradmaharramli.me/" />
+
+  <!-- Hreflang -->
+  <link rel="alternate" hreflang="en" href="https://muradmaharramli.me/" />
+  <link rel="alternate" hreflang="x-default" href="https://muradmaharramli.me/" />
+
+  <!-- Sitemap -->
+  <link rel="sitemap" type="application/xml" href="https://muradmaharramli.me/sitemap.xml" />
+
+  <!-- Google Search Console verification -->
+  <meta
+    name="google-site-verification"
+    content="CAfM25D0LsaFMJ01tHzHInUP8eYEYHtIK5gJhkodkhQ"
+  />
+
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Murad Maharramli Portfolio" />
   <meta property="og:locale" content="en_US" />
-  <meta property="og:url" content="https://murad-maharramli.netlify.app/" />
-  <meta property="og:title" content="Murad Maharramli - Creative Developer" />
-  <meta property="og:description"
-    content="Portfolio of Murad Maharramli - A Creative Developer specializing in building modern web applications and digital experiences." />
-  <meta property="og:image" content="https://murad-maharramli.netlify.app/og-image.png" />
+  <meta property="og:url" content="https://muradmaharramli.me/" />
+  <meta property="og:title" content="Murad Maharramli | Creative Developer" />
+  <meta
+    property="og:description"
+    content="Portfolio of Murad Maharramli – Creative Developer building modern web applications and digital experiences."
+  />
+  <meta property="og:image" content="https://muradmaharramli.me/og-image.png" />
 
   <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://murad-maharramli.netlify.app/" />
-  <meta property="twitter:title" content="Murad Maharramli - Creative Developer" />
-  <meta property="twitter:description"
-    content="Portfolio of Murad Maharramli - A Creative Developer specializing in building modern web applications and digital experiences." />
-  <meta property="twitter:image" content="https://murad-maharramli.netlify.app/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://muradmaharramli.me/" />
+  <meta name="twitter:title" content="Murad Maharramli | Creative Developer" />
+  <meta
+    name="twitter:description"
+    content="Portfolio of Murad Maharramli – Creative Developer building modern web applications."
+  />
+  <meta name="twitter:image" content="https://muradmaharramli.me/og-image.png" />
 
   <!-- Fonts -->
-  <link rel="preconnect" href="https://wzpkizhmgzmuixzmzawl.supabase.co" crossorigin>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
-    rel="stylesheet" media="print" onload="this.media='all'">
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+    media="print"
+    onload="this.media='all'"
+  />
   <noscript>
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
-      rel="stylesheet">
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
   </noscript>
 
-  <!-- Structured Data (JSON-LD) -->
+  <!-- Structured Data -->
   <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "Person",
-            "name": "Murad Maharramli",
-            "url": "https://murad-maharramli.netlify.app",
-            "jobTitle": "Creative Developer",
-            "description": "Creative Developer specializing in building modern web applications.",
-            "image": "https://murad-maharramli.netlify.app/og-image.png",
-            "sameAs": [
-              "https://github.com/murad-maharramli",
-              "https://www.linkedin.com/in/murad-maharramli"
-            ]
-          },
-          {
-            "@type": "WebSite",
-            "name": "Murad Maharramli Portfolio",
-            "alternateName": ["Murad Maharramli", "Murad Portfolio"],
-            "url": "https://murad-maharramli.netlify.app"
-          }
-        ]
-      }
-    </script>
-  <!-- Google tag (gtag.js) -->
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "name": "Murad Maharramli",
+          "url": "https://muradmaharramli.me",
+          "jobTitle": "Creative Developer",
+          "description": "Creative Developer specializing in modern web applications.",
+          "image": "https://muradmaharramli.me/og-image.png",
+          "sameAs": [
+            "https://github.com/murad-maharramli",
+            "https://www.linkedin.com/in/murad-maharramli"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "name": "Murad Maharramli Portfolio",
+          "url": "https://muradmaharramli.me"
+        }
+      ]
+    }
+  </script>
+
+  <!-- Google Analytics (GA4) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CV57XV0FXS"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-CV57XV0FXS');
   </script>
+
   <!-- Google Tag Manager -->
-  <script>(function (w, d, s, l, i) {
-      w[l] = w[l] || []; w[l].push({
-        'gtm.start':
-          new Date().getTime(), event: 'gtm.js'
-      }); var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-NRG5ZCRD');</script>
-  <!-- End Google Tag Manager -->
+  <script>
+    (function(w,d,s,l,i){
+      w[l]=w[l]||[];
+      w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+      var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),
+          dl=l!='dataLayer'?'&l='+l:'';
+      j.async=true;
+      j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+      f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NRG5ZCRD');
+  </script>
 </head>
 
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NRG5ZCRD" height="0" width="0"
-      style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+  <!-- GTM noscript -->
+  <noscript>
+    <iframe
+      src="https://www.googletagmanager.com/ns.html?id=GTM-NRG5ZCRD"
+      height="0"
+      width="0"
+      style="display:none;visibility:hidden">
+    </iframe>
+  </noscript>
+
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>
