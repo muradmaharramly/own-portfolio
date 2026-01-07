@@ -16,20 +16,22 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-[[redirects]]
-  from = "/admin"
-  to = "/admin/index.html"
-  status = 200
-  force = true
-
+# 1. Admin panelinin işləməsi üçün daxili rewrite qaydası
 [[redirects]]
   from = "/admin/*"
-  to = "/admin/:splat"
+  to = "/index.html"
   status = 200
   force = true
 
+# 2. Ana səhifə daxil olmaqla bütün trafiki yeni sayta yönləndir
 [[redirects]]
   from = "https://murad-maharramli.netlify.app/*"
+  to = "https://muradmaharramli.me/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://murad-maharramli.netlify.app/*"
   to = "https://muradmaharramli.me/:splat"
   status = 301
   force = true
