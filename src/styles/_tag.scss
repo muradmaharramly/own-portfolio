@@ -28,7 +28,7 @@
     border-color: rgba(var(--primary-rgb), 0.2);
 
     &:hover {
-      background: rgba(var(--primary-rgb), 0.2);
+      background: transparent;
       color: $primary;
       border-color: $primary;
       box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.2);
@@ -41,7 +41,7 @@
     border-color: rgba(var(--secondary-rgb), 0.2);
 
     &:hover {
-      background: rgba(var(--secondary-rgb), 0.2);
+      background: transparent;
       color: $secondary;
       border-color: $secondary;
       box-shadow: 0 0 20px rgba(var(--secondary-rgb), 0.2);
@@ -54,7 +54,7 @@
     border-color: rgba(var(--accent-rgb), 0.2);
 
     &:hover {
-      background: rgba(var(--accent-rgb), 0.2);
+      background: transparent;
       color: $accent;
       border-color: $accent;
       box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.2);

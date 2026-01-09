@@ -124,7 +124,7 @@
   &__form {
     display: flex;
     flex-direction: column;
-    gap: $sp-10; // Desktop default
+    gap: $sp-4; // Desktop default
     width: 100%;
 
     @media (max-width: $breakpoint-md) {
