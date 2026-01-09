@@ -8,7 +8,7 @@ import { fetchProfile } from '../../redux/slices/profileSlice';
 import { AnimatePresence, motion } from 'framer-motion';
 import { FiDownload, FiArrowDown } from 'react-icons/fi';
 
-import AvatarComp from '../../assets/images/my-avatar-comp.webp';
+import Avatar from '../../assets/images/my-avatar.webp';
 
 const Hero = () => {
   const dispatch = useDispatch();
@@ -166,7 +166,7 @@ const Hero = () => {
           >
             <div className="hero__image-container">
               <img 
-                src={profile?.profile_image || AvatarComp} 
+                src={profile?.profile_image || Avatar} 
                 alt="Profile" 
                 fetchPriority="high"
                 loading="eager"
