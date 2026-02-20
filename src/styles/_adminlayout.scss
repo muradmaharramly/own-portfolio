@@ -119,19 +119,6 @@
         color: white;
       }
     }
-
-    &--danger {
-      border: 1px solid $danger;
-      margin-top: auto;
-      color: $danger;
-      background: transparent;
-
-      &:hover {
-        background: rgba(var(--danger-rgb), 0.1);
-        color: $danger-hover;
-        border-color: rgba(var(--danger-rgb), 0.2);
-      }
-    }
   }
 
   &__badge {
@@ -160,10 +147,6 @@
     gap: $sp-2;
   }
 
-  &__footer {
-    padding: $sp-2 $sp-2 0px $sp-2;
-    border-top: 1px solid var(--border);
-  }
 }
 
 .admin-overlay {
@@ -230,6 +213,40 @@
     width: 100%;
     gap: $sp-4;
   }
+  &__ending{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 18%;
+    @media (max-width: $breakpoint-sm) {
+      width: 50%;
+    }
+  }
+  &__logout{
+    @include flex-start;
+    gap: $sp-3;
+    padding: $sp-2 $sp-3;
+    border-radius: $radius-lg;
+    text-decoration: none;
+    transition: all $transition-fast;
+    font-weight: $fw-medium;
+    border: 1px solid $danger;
+    margin-top: auto;
+    color: $danger;
+    background: transparent;
+
+    &:hover {
+     background: linear-gradient(180deg, rgba(78, 4, 4, 0.411), rgba(42, 0, 0, 0.159));
+      backdrop-filter: blur(5px);
+      color: var(--text-primary);
+      transform: translateX(4px);
+       box-shadow: var(--shadow-sm);
+        color: $danger-hover;
+        border-color: rgba(var(--danger-rgb), 0.5);
+    }
+
+  }
 
   &__lang {
     position: relative;
@@ -238,7 +255,7 @@
 
 
   &__theme {
-    width: 40px;
+    width: 40px !important;
     height: 40px;
     border-radius: $radius-full;
     @extend .glass-card;

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { 
+import {
   FaChartBar,
   FaUser,
   FaGraduationCap,
@@ -36,7 +36,7 @@ const AdminLayout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
- const { mode } = useSelector((state) => state.theme);
+  const { mode } = useSelector((state) => state.theme);
   const { user } = useSelector((state) => state.auth);
   const { messages = [] } = useSelector((state) => state.contact);
   const unreadCount = Array.isArray(messages) ? messages.filter(m => !m.is_read).length : 0;
@@ -45,7 +45,7 @@ const AdminLayout = ({ children }) => {
     dispatch(fetchContactMessages());
   }, [dispatch]);
 
-  
+
 
   const handleLogout = () => {
     dispatch(signOut());
@@ -72,13 +72,13 @@ const AdminLayout = ({ children }) => {
       <aside className={`admin-sidebar ${sidebarOpen ? 'admin-sidebar--open' : ''}`}>
         <div className="admin-sidebar__header">
           <h2 className="admin-sidebar__logo">Admin Panel</h2>
-          <button 
+          <div
             className="admin-sidebar__close"
             onClick={() => setSidebarOpen(false)}
             aria-label="Close sidebar"
           >
-            <FaTimes />
-          </button>
+            <FaTimes/>
+          </div>
         </div>
 
         <nav className="admin-sidebar__nav">
@@ -87,7 +87,7 @@ const AdminLayout = ({ children }) => {
               key={item.path}
               to={item.path}
               end={item.end}
-              className={({ isActive }) => 
+              className={({ isActive }) =>
                 `admin-sidebar__link ${isActive ? 'admin-sidebar__link--active' : ''}`
               }
               onClick={() => setSidebarOpen(false)}
@@ -101,54 +101,56 @@ const AdminLayout = ({ children }) => {
           ))}
         </nav>
 
-        <div className="admin-sidebar__footer">
-          <button 
-            className="admin-sidebar__link admin-sidebar__link--danger"
-            onClick={handleLogout}
-          >
-            <span className="admin-sidebar__icon"><IoMdLogOut /></span>
-            <span className="admin-sidebar__label">Çıxış</span>
-          </button>
-        </div>
+
       </aside>
 
       {/* Overlay */}
       {sidebarOpen && (
-        <div 
-          className="admin-overlay" 
+        <div
+          className="admin-overlay"
           onClick={() => setSidebarOpen(false)}
         />
       )}
 
-           {/* Main Content */}
+      {/* Main Content */}
       <div className="admin-main">
         {/* Top Bar */}
         <header className="admin-topbar">
-          <button 
+          <div
             className="admin-topbar__menu"
             onClick={() => setSidebarOpen(true)}
             aria-label="Open menu"
           >
             <FaBars />
-          </button>
+          </div>
 
           <div className="admin-topbar__actions">
-            <div 
-              className="admin-topbar__theme"
-              onClick={() => dispatch(toggleTheme())}
-              aria-label="Toggle theme"
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && dispatch(toggleTheme())}
-            >
-              {mode === 'dark' ? <FiSun /> : <FiMoon />}
-            </div>
 
             <div className="admin-topbar__user">
-              <span className="admin-topbar__user-name">{user?.email}</span>
               <div className="admin-topbar__user-avatar">
                 {user?.email?.charAt(0).toUpperCase()}
               </div>
+              <span className="admin-topbar__user-name">{user?.email}</span>
+            </div>
+            <div className="admin-topbar__ending">
+              <div
+                className="admin-topbar__theme"
+                onClick={() => dispatch(toggleTheme())}
+                aria-label="Toggle theme"
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && dispatch(toggleTheme())}
+              >
+                {mode === 'dark' ? <FiSun /> : <FiMoon />}
+              </div>
+              <button
+                className="admin-topbar__logout"
+                onClick={handleLogout}
+              >
+                <span className="admin-sidebar__label">Çıxış</span>
+                <span className="admin-sidebar__icon"><IoMdLogOut /></span>
+              </button>
+
             </div>
           </div>
         </header>
