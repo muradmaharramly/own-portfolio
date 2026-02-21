@@ -12,7 +12,7 @@
   top: 0;
   bottom: 0;
   width: 280px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+   background: linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(255,255,255,0.03));
   border-right: 1px solid var(--border);
   backdrop-filter: blur(5px);
   @include flex-column;
@@ -55,27 +55,26 @@
   }
 
   &__close {
-    @include flex-center;
-    width: 36px;
-    height: 36px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-    border: 1px solid var(--border);
-    backdrop-filter: blur(5px);
-    border: none;
-    border-radius: $radius-md;
+    @extend .glass-card;
+    display: none;
+    font-size: $fs-2xl;
     cursor: pointer;
-    color: var(--text-secondary);
-    transition: all $transition-fast;
-    font-size: $fs-lg;
-
-    @media (min-width: $breakpoint-lg) {
-      display: none;
+    color: $danger;
+    padding: $sp-2;
+    border: 1px solid $danger;
+    border-radius: $radius-md;
+    transition: all $transition-base;
+    -webkit-transition: all $transition-base;
+    -moz-transition: all $transition-base;
+    -ms-transition: all $transition-base;
+    -o-transition: all $transition-base;
+    &:hover {
+      background: linear-gradient(180deg, rgba(var(--danger-rgb), 0.18), rgba(var(--danger-rgb), 0.12));
     }
 
-    &:hover {
-      background: $danger;
-      color: $light-bg-primary;
-      transform: rotate(90deg);
+    @media (max-width: $breakpoint-md) {
+      @include flex-center;
+      z-index: 1002;
     }
   }
 
@@ -177,34 +176,33 @@
 .admin-topbar {
   @include flex-between;
   padding: $sp-2 $sp-6;
-  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(255,255,255,0.03));
   backdrop-filter: blur(5px);
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
   z-index: $z-sticky;
   &__menu{
-    @include flex-center;
-    width: 40px;
-    height: 40px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-    border: 1px solid var(--border);
-    backdrop-filter: blur(5px);
-    border: none;
-    border-radius: $radius-md;
+    @extend .glass-card;
+    display: none;
+    font-size: $fs-2xl;
     cursor: pointer;
     color: var(--text-primary);
-    transition: all $transition-fast;
-    font-size: $fs-lg;
-
-    @media (min-width: $breakpoint-lg) {
-      display: none;
+    padding: $sp-2;
+    border-radius: $radius-md;
+    transition: all $transition-base;
+    -webkit-transition: all $transition-base;
+    -moz-transition: all $transition-base;
+    -ms-transition: all $transition-base;
+    -o-transition: all $transition-base;
+    &:hover {
+      background: transparent;
+      color: var(--primary);
     }
 
-    &:hover {
-      background: $primary;
-      color: white;
-      transform: scale(1.05);
+    @media (max-width: $breakpoint-md) {
+      @include flex-center;
+      z-index: 1002;
     }
   }
 
@@ -216,7 +214,7 @@
   &__ending{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     gap: 1rem;
     width: 18%;
     @media (max-width: $breakpoint-sm) {
@@ -246,6 +244,20 @@
         border-color: rgba(var(--danger-rgb), 0.5);
     }
 
+  }
+  &__icon {
+    @include flex-center;
+    font-size: $fs-lg;
+    width: 24px;
+  }
+
+  &__label {
+    font-size: $fs-base;
+    @include flex-start;
+    gap: $sp-2;
+    @media (max-width: $breakpoint-sm) {
+      display: none;
+    }
   }
 
   &__lang {
@@ -326,6 +338,9 @@
     border-radius: $radius-full;
     font-weight: $fw-bold;
     font-size: $fs-lg;
+    @media (max-width: $breakpoint-sm) {
+      margin-left: $sp-2;
+    }
   }
 }
 

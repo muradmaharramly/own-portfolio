@@ -1,6 +1,6 @@
 // src/layouts/AdminLayout.jsx
 import React, { useState } from 'react';
-import { Outlet, NavLink, useNavigate } from 'react-router-dom';
+import { Outlet, NavLink, useNavigate, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   FaChartBar,
@@ -21,7 +21,7 @@ import {
 import { toggleTheme } from '../../redux/slices/themeSlice';
 import { signOut } from '../../redux/slices/authSlice';
 import { IoMdLogOut } from 'react-icons/io';
-import { FiMoon, FiSun, FiUser, FiDownload, FiMenu } from 'react-icons/fi';
+import { FiMoon, FiSun, FiUser, FiDownload, FiMenu, FiX } from 'react-icons/fi';
 import { HiOutlineChartBar } from 'react-icons/hi';
 import { PiGraduationCap } from 'react-icons/pi';
 import { IoBriefcaseOutline, IoRocketOutline, IoShareSocialOutline } from 'react-icons/io5';
@@ -77,7 +77,7 @@ const AdminLayout = ({ children }) => {
             onClick={() => setSidebarOpen(false)}
             aria-label="Close sidebar"
           >
-            <FaTimes/>
+            <FiX/>
           </div>
         </div>
 
@@ -121,17 +121,17 @@ const AdminLayout = ({ children }) => {
             onClick={() => setSidebarOpen(true)}
             aria-label="Open menu"
           >
-            <FaBars />
+            <FiMenu />
           </div>
 
           <div className="admin-topbar__actions">
 
-            <div className="admin-topbar__user">
+            <Link to="/admin/profile" className="admin-topbar__user">
               <div className="admin-topbar__user-avatar">
                 {user?.email?.charAt(0).toUpperCase()}
               </div>
               <span className="admin-topbar__user-name">{user?.email}</span>
-            </div>
+            </Link>
             <div className="admin-topbar__ending">
               <div
                 className="admin-topbar__theme"
@@ -147,8 +147,8 @@ const AdminLayout = ({ children }) => {
                 className="admin-topbar__logout"
                 onClick={handleLogout}
               >
-                <span className="admin-sidebar__label">Çıxış</span>
-                <span className="admin-sidebar__icon"><IoMdLogOut /></span>
+                <span className="admin-topbar__label">Çıxış</span>
+                <span className="admin-topbar__icon"><IoMdLogOut /></span>
               </button>
 
             </div>
