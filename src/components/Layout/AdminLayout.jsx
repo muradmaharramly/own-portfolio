@@ -21,19 +21,21 @@ import {
 import { toggleTheme } from '../../redux/slices/themeSlice';
 import { signOut } from '../../redux/slices/authSlice';
 import { IoMdLogOut } from 'react-icons/io';
-import { FiMoon, FiSun, FiUser, FiDownload, FiMenu, FiX } from 'react-icons/fi';
+import { FiMoon, FiSun, FiUser, FiDownload, FiMenu, FiX, FiBell } from 'react-icons/fi';
 import { HiOutlineChartBar } from 'react-icons/hi';
 import { PiGraduationCap } from 'react-icons/pi';
 import { IoBriefcaseOutline, IoRocketOutline, IoShareSocialOutline } from 'react-icons/io5';
 import { HiMiniLanguage } from 'react-icons/hi2';
 import { CiMail } from 'react-icons/ci';
 import { LuPhone, LuQrCode } from 'react-icons/lu';
-import { fetchContactMessages } from '../../redux/slices/contactSlice';
+import { fetchContactMessages, markAllMessagesAsRead } from '../../redux/slices/contactSlice';
 import Logo from '../../assets/images/MM-Logo.png';
 import { VscSymbolColor } from 'react-icons/vsc';
+import { toast } from 'react-toastify';
 
 const AdminLayout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [notificationsOpen, setNotificationsOpen] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { mode } = useSelector((state) => state.theme);
@@ -51,6 +53,30 @@ const AdminLayout = ({ children }) => {
     dispatch(signOut());
     navigate('/admin/login');
   };
+
+  const handleMarkAllAsRead = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (unreadCount > 0) {
+      dispatch(markAllMessagesAsRead());
+      toast.success('Bütün mesajlar oxunmuş kimi işarələndi');
+    }
+  };
+
+  const formatTimeAgo = (dateString) => {
+    const date = new Date(dateString);
+    const now = new Date();
+    const sec = Math.floor((now - date) / 1000);
+    if (sec < 60) return 'İndi';
+    const min = Math.floor(sec / 60);
+    if (min < 60) return `${min} dəq əvvəl`;
+    const h = Math.floor(min / 60);
+    if (h < 24) return `${h} saat əvvəl`;
+    const d = Math.floor(h / 24);
+    return `${d} gün əvvəl`;
+  };
+
+  const recentMessages = (messages || []).slice(0, 6);
 
   const menuItems = [
     { path: '/admin', icon: <HiOutlineChartBar />, label: 'İdarə Paneli', end: true },
@@ -133,6 +159,60 @@ const AdminLayout = ({ children }) => {
               <span className="admin-topbar__user-name">{user?.email}</span>
             </Link>
             <div className="admin-topbar__ending">
+              <div
+                className="admin-topbar__notifications"
+                onMouseEnter={() => setNotificationsOpen(true)}
+                onMouseLeave={() => setNotificationsOpen(false)}
+              >
+                <Link to="/admin/messages" className="admin-topbar__notifications-btn" aria-label="Bildirişlər">
+                  <FiBell />
+                  {unreadCount > 0 && (
+                    <span className="admin-topbar__notifications-badge">{unreadCount > 99 ? '99+' : unreadCount}</span>
+                  )}
+                </Link>
+                {notificationsOpen && (
+                  <div className="admin-topbar__notifications-banner">
+                    <div className="admin-topbar__notifications-header">
+                      <h3 className="admin-topbar__notifications-title">Bildirişlər</h3>
+                      {unreadCount > 0 && (
+                        <button type="button" className="admin-topbar__notifications-markall" onClick={handleMarkAllAsRead}>
+                          Hamısını oxunmuş işarələ
+                        </button>
+                      )}
+                    </div>
+                    <div className="admin-topbar__notifications-list">
+                      {recentMessages.length === 0 ? (
+                        <p className="admin-topbar__notifications-empty">Mesaj yoxdur</p>
+                      ) : (
+                        recentMessages.map((msg) => (
+                          <Link
+                            key={msg.id}
+                            to="/admin/messages"
+                            className={`admin-topbar__notifications-item ${!msg.is_read ? 'admin-topbar__notifications-item--unread' : ''}`}
+                          >
+                            <div className="admin-topbar__notifications-item-avatar">
+                              {msg.sender_name?.charAt(0).toUpperCase() || '?'}
+                            </div>
+                            <div className="admin-topbar__notifications-item-body">
+                              <span className="admin-topbar__notifications-item-name">{msg.sender_name}</span>
+                              <span className="admin-topbar__notifications-item-preview">
+                                {msg.message?.length > 50 ? `${msg.message.slice(0, 50)}...` : msg.message}
+                              </span>
+                              <span className="admin-topbar__notifications-item-time">{formatTimeAgo(msg.created_at)}</span>
+                            </div>
+                            {!msg.is_read && <span className="admin-topbar__notifications-item-dot" />}
+                          </Link>
+                        ))
+                      )}
+                    </div>
+                    {recentMessages.length > 0 && (
+                      <Link to="/admin/messages" className="admin-topbar__notifications-footer">
+                        Bütün mesajlara bax
+                      </Link>
+                    )}
+                  </div>
+                )}
+              </div>
               <div
                 className="admin-topbar__theme"
                 onClick={() => dispatch(toggleTheme())}

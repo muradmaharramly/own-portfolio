@@ -315,6 +315,213 @@
     }
   }
 
+  &__notifications {
+    position: relative;
+    @include flex-center;
+  }
+
+  &__notifications-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: $radius-full;
+    @extend .glass-card;
+    @include flex-center;
+    color: var(--text-primary);
+    font-size: $fs-xl;
+    transition: all $transition-base $ease-out;
+    text-decoration: none;
+    position: relative;
+
+    &:hover {
+      background: transparent;
+      transform: translateY(-2px);
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.2);
+
+      svg {
+        animation: admin-notifications-shake 0.5s ease-in-out;
+        color: var(--primary);
+      }
+    }
+  }
+
+  &__notifications-badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    background: $gradient-primary;
+    color: white;
+    font-size: $fs-xs;
+    font-weight: $fw-bold;
+    border-radius: $radius-full;
+    @include flex-center;
+    line-height: 1;
+    box-shadow: 0 2px 4px rgba(var(--primary-rgb), 0.4);
+  }
+
+  &__notifications-banner {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 360px;
+    max-height: 420px;
+    @extend .glass-card;
+    border-radius: $radius-lg;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    @include flex-column;
+    z-index: $z-dropdown;
+    animation: fadeIn $transition-base;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(16px);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(224, 192, 255, 0.05));
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      right: 16px;
+      width: 12px;
+      height: 12px;
+      background: var(--bg-secondary);
+      border-left: 1px solid var(--border);
+      border-top: 1px solid var(--border);
+      transform: rotate(45deg);
+    }
+  }
+
+  &__notifications-header {
+    @include flex-between;
+    padding: $sp-4;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  &__notifications-title {
+    margin: 0;
+    font-size: $fs-lg;
+    font-weight: $fw-semibold;
+    color: var(--text-primary);
+  }
+
+  &__notifications-markall {
+    font-size: $fs-sm;
+    color: var(--primary);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-weight: $fw-medium;
+    transition: color $transition-fast;
+
+    &:hover {
+      text-decoration: underline;
+      color: var(--primary-hover, $primary);
+    }
+  }
+
+  &__notifications-list {
+    overflow-y: auto;
+    max-height: 320px;
+    @include custom-scrollbar;
+  }
+
+  &__notifications-empty {
+    margin: 0;
+    padding: $sp-6;
+    font-size: $fs-sm;
+    color: var(--text-tertiary);
+    text-align: center;
+  }
+
+  &__notifications-item {
+    display: flex;
+    align-items: flex-start;
+    gap: $sp-3;
+    padding: $sp-3 $sp-4;
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid var(--border);
+    transition: background $transition-fast;
+
+    &:hover {
+      background: rgba(var(--primary-rgb), 0.06);
+    }
+
+    &--unread {
+      background: rgba(var(--primary-rgb), 0.04);
+    }
+  }
+
+  &__notifications-item-avatar {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    border-radius: $radius-full;
+    background: $gradient-primary;
+    color: white;
+    @include flex-center;
+    font-weight: $fw-bold;
+    font-size: $fs-sm;
+  }
+
+  &__notifications-item-body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__notifications-item-name {
+    font-size: $fs-sm;
+    font-weight: $fw-semibold;
+    color: var(--text-primary);
+  }
+
+  &__notifications-item-preview {
+    font-size: $fs-xs;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__notifications-item-time {
+    font-size: $fs-xs;
+    color: var(--text-tertiary);
+  }
+
+  &__notifications-item-dot {
+    width: 8px;
+    height: 8px;
+    min-width: 8px;
+    border-radius: 50%;
+    background: $primary;
+    margin-top: 6px;
+    align-self: flex-start;
+  }
+
+  &__notifications-footer {
+    display: block;
+    padding: $sp-3 $sp-4;
+    font-size: $fs-sm;
+    font-weight: $fw-medium;
+    color: var(--primary);
+    text-align: center;
+    text-decoration: none;
+    border-top: 1px solid var(--border);
+    transition: background $transition-fast;
+
+    &:hover {
+      background: rgba(var(--primary-rgb), 0.08);
+    }
+  }
+
   &__user {
     @include flex-start;
     gap: $sp-3;
@@ -351,4 +558,45 @@
   @include md {
     padding: $sp-8;
   }
+}
+
+@keyframes admin-notifications-shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  15% {
+    transform: translateX(-3px) rotate(8deg);
+    -webkit-transform: translateX(-3px) rotate(8deg);
+    -moz-transform: translateX(-3px) rotate(8deg);
+    -ms-transform: translateX(-3px) rotate(8deg);
+    -o-transform: translateX(-3px) rotate(8deg);
+}
+  30% {
+    transform: translateX(3px) rotate(-8deg);
+    -webkit-transform: translateX(3px) rotate(-8deg);
+    -moz-transform: translateX(3px) rotate(-8deg);
+    -ms-transform: translateX(3px) rotate(-8deg);
+    -o-transform: translateX(3px) rotate(-8deg);
+}
+  45% {
+    transform: translateX(-2px) rotate(4deg);
+    -webkit-transform: translateX(-2px) rotate(4deg);
+    -moz-transform: translateX(-2px) rotate(4deg);
+    -ms-transform: translateX(-2px) rotate(4deg);
+    -o-transform: translateX(-2px) rotate(4deg);
+}
+  60% {
+    transform: translateX(2px) rotate(-4deg);
+    -webkit-transform: translateX(2px) rotate(-4deg);
+    -moz-transform: translateX(2px) rotate(-4deg);
+    -ms-transform: translateX(2px) rotate(-4deg);
+    -o-transform: translateX(2px) rotate(-4deg);
+}
+  75% {
+    transform: translateX(-1px) rotate(2deg);
+    -webkit-transform: translateX(-1px) rotate(2deg);
+    -moz-transform: translateX(-1px) rotate(2deg);
+    -ms-transform: translateX(-1px) rotate(2deg);
+    -o-transform: translateX(-1px) rotate(2deg);
+}
 }

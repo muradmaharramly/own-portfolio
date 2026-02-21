@@ -62,6 +62,19 @@ export const markMessageAsRead = createAsyncThunk('contact/markAsRead', async (i
   return data;
 });
 
+export const markAllMessagesAsRead = createAsyncThunk('contact/markAllAsRead', async (_, { getState }) => {
+  const { messages } = getState().contact;
+  const unreadIds = (messages || []).filter(m => !m.is_read).map(m => m.id);
+  if (unreadIds.length === 0) return [];
+  const { data, error } = await supabase
+    .from('contact_messages')
+    .update({ is_read: true })
+    .in('id', unreadIds)
+    .select();
+  if (error) throw error;
+  return data;
+});
+
 export const deleteMessage = createAsyncThunk('contact/deleteMessage', async (id) => {
   const { error } = await supabase
     .from('contact_messages')
@@ -107,6 +120,12 @@ const contactSlice = createSlice({
         if (index !== -1) {
           state.messages[index] = action.payload;
         }
+      })
+      .addCase(markAllMessagesAsRead.fulfilled, (state, action) => {
+        const updatedIds = (action.payload || []).map(m => m.id);
+        state.messages.forEach((msg, i) => {
+          if (updatedIds.includes(msg.id)) state.messages[i] = { ...msg, is_read: true };
+        });
       })
       .addCase(deleteMessage.fulfilled, (state, action) => {
         state.messages = state.messages.filter(msg => msg.id !== action.payload);
