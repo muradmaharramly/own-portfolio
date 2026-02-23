@@ -226,14 +226,6 @@ const Dashboard = () => {
               </div>
             </Link>
             <Link to={stat.link} className="stat-card__action">
-              {stat.action === 'Əlavə et' ? (
-                <FaPlus />
-              ) : stat.action === 'Düzəlt' ? (
-                <FiEdit2 />
-              ) : (
-                <FaRegEye />
-              )}
-
               <span>{stat.action}</span>
             </Link>
           </div>

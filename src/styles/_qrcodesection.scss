@@ -7,7 +7,7 @@
 }
 
 .admin-layout .qr-section {
-  padding: $sp-16 0;
+  padding: $sp-2 0;
   display: block;
 }
 
@@ -29,8 +29,6 @@
   align-items: center;
   justify-content: space-between;
   gap: $sp-8;
-  max-width: 800px;
-  margin: 0 auto;
   padding: $sp-8;
   text-align: left;
 
@@ -58,7 +56,7 @@
 
   &__code {
     @include card;
-    padding: $sp-6;
+    padding: $sp-2;
     background: var(--bg-primary);
     border-radius: $radius-xl;
     margin: $sp-4 0;
@@ -73,7 +71,7 @@
   &__download {
     @include button-secondary;
     width: auto;
-    max-width: none;
+    max-width: 250px;
   }
 
   &__left {
