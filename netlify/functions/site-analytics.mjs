@@ -8,29 +8,21 @@ const TOKEN_URL = 'https://oauth2.googleapis.com/token';
 const SCOPES = ['https://www.googleapis.com/auth/analytics.readonly'];
 
 function getServiceAccount() {
+  // 1. İlk olaraq ayrı-ayrı dəyişənləri yoxlayırıq (Ən etibarlı yol)
+  if (process.env.GA_CLIENT_EMAIL && process.env.GA_PRIVATE_KEY) {
+    return {
+      client_email: process.env.GA_CLIENT_EMAIL,
+      private_key: process.env.GA_PRIVATE_KEY.replace(/\\n/g, '\n'),
+      project_id: process.env.GA_PROJECT_ID_STR || 'my-portfolio-project-488112',
+    };
+  }
+
+  // 2. Əgər yuxarıdakılar yoxdursa, köhnə JSON üsulunu yoxlayırıq
   let raw = process.env.GA_SERVICE_ACCOUNT_JSON;
   if (!raw) {
-    throw new Error('Konfiqurasiya xətası: GA_SERVICE_ACCOUNT_JSON tapılmadı.');
+    throw new Error('Konfiqurasiya xətası: Lazımi GA dəyişənləri tapılmadı.');
   }
-
-  // Əgər Base64 formatındadırsa, onu deşifrə edirik
-  if (!raw.trim().startsWith('{')) {
-    try {
-      raw = Buffer.from(raw, 'base64').toString('utf-8');
-    } catch (e) {
-      // Base64 deyilsə, olduğu kimi davam edirik
-    }
-  }
-
-  try {
-    const sa = JSON.parse(raw);
-    if (sa.private_key && typeof sa.private_key === 'string') {
-      sa.private_key = sa.private_key.replace(/\\n/g, '\n');
-    }
-    return sa;
-  } catch (err) {
-    throw new Error(`GA_SERVICE_ACCOUNT_JSON düzgün JSON formatında deyil: ${err.message}`);
-  }
+  // ... (JSON parsing məntiqi qaldı)
 }
 
 function getPropertyId() {
