@@ -8,21 +8,18 @@ const TOKEN_URL = 'https://oauth2.googleapis.com/token';
 const SCOPES = ['https://www.googleapis.com/auth/analytics.readonly'];
 
 function getServiceAccount() {
-  // 1. İlk olaraq ayrı-ayrı dəyişənləri yoxlayırıq (Ən etibarlı yol)
-  if (process.env.GA_CLIENT_EMAIL && process.env.GA_PRIVATE_KEY) {
-    return {
-      client_email: process.env.GA_CLIENT_EMAIL,
-      private_key: process.env.GA_PRIVATE_KEY.replace(/\\n/g, '\n'),
-      project_id: process.env.GA_PROJECT_ID_STR || 'my-portfolio-project-488112',
-    };
+  const email = process.env.GA_CLIENT_EMAIL;
+  const key = process.env.GA_PRIVATE_KEY;
+
+  if (!email || !key) {
+    throw new Error('Konfiqurasiya xətası: GA_CLIENT_EMAIL və ya GA_PRIVATE_KEY tapılmadı.');
   }
 
-  // 2. Əgər yuxarıdakılar yoxdursa, köhnə JSON üsulunu yoxlayırıq
-  let raw = process.env.GA_SERVICE_ACCOUNT_JSON;
-  if (!raw) {
-    throw new Error('Konfiqurasiya xətası: Lazımi GA dəyişənləri tapılmadı.');
-  }
-  // ... (JSON parsing məntiqi qaldı)
+  return {
+    client_email: email.trim(),
+    private_key: key.replace(/\\n/g, '\n').trim(),
+    project_id: process.env.GA_PROJECT_ID_STR || 'my-portfolio-project-488112',
+  };
 }
 
 function getPropertyId() {
