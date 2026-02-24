@@ -1,0 +1,250 @@
+// ============================================
+// SITE ANALYTICS ADMIN
+// ============================================
+
+.analytics-admin {
+  .admin-header {
+    @include flex-between;
+    margin-bottom: $sp-4;
+  }
+
+  &__refresh {
+    display: inline-flex;
+    align-items: center;
+    gap: $sp-2;
+
+    svg {
+      font-size: $fs-lg;
+    }
+  }
+
+  &__error {
+    @extend .glass-card;
+    border-radius: $radius-lg;
+    padding: $sp-4;
+    margin-bottom: $sp-6;
+    border-left: 4px solid $danger;
+    background: linear-gradient(
+      180deg,
+      rgba(var(--danger-rgb), 0.08),
+      rgba(var(--danger-rgb), 0.02)
+    );
+
+    p {
+      margin: 0;
+      font-size: $fs-sm;
+      color: var(--text-secondary);
+
+      &:first-child {
+        font-weight: $fw-semibold;
+        color: $danger;
+        margin-bottom: $sp-1;
+      }
+    }
+  }
+
+  &__error-detail {
+    margin: $sp-3 0 0;
+    padding-left: $sp-5;
+    font-size: $fs-sm;
+    color: var(--text-secondary);
+
+    code {
+      font-size: $fs-xs;
+      word-break: break-all;
+    }
+  }
+
+  &__grid {
+    @include grid-auto(260px);
+    gap: $sp-6;
+    margin-bottom: $sp-8;
+  }
+
+  &__sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: $sp-6;
+  }
+}
+
+.analytics-card {
+  @extend .glass-card;
+  border-radius: $radius-lg;
+  padding: $sp-5;
+  display: flex;
+  align-items: center;
+  gap: $sp-4;
+
+  &__icon {
+    width: 48px;
+    height: 48px;
+    border-radius: $radius-xl;
+    @include flex-center;
+    font-size: $fs-xl;
+    box-shadow: var(--shadow-sm);
+
+    &.primary {
+      background: rgba(var(--primary-rgb), 0.12);
+      color: $primary;
+    }
+    &.success {
+      background: green;
+      color:green;
+    }
+    &.warning {
+      background: rgba(var(--warning-rgb), 0.12);
+      color: $warning;
+    }
+    &.info {
+      background: rgba(var(--info-rgb), 0.12);
+      color: $info;
+    }
+    &.danger {
+      background: rgba(var(--danger-rgb), 0.12);
+      color: $danger;
+    }
+    &.neutral {
+      background: rgba(148, 163, 184, 0.16);
+      color: var(--text-secondary);
+    }
+  }
+
+  &__content {
+    h3 {
+      @include heading;
+      font-size: $fs-base;
+      margin: 0 0 $sp-1;
+    }
+  }
+
+  &__value {
+    font-size: $fs-2xl;
+    font-weight: $fw-semibold;
+    color: var(--text-primary);
+    margin: 0 0 $sp-1;
+  }
+
+  &__label {
+    font-size: $fs-sm;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+}
+
+.analytics-panel {
+  @extend .glass-card;
+  border-radius: $radius-lg;
+  padding: $sp-5;
+  display: flex;
+  flex-direction: column;
+  gap: $sp-4;
+
+  &__header {
+    @include flex-between;
+    gap: $sp-3;
+
+    h3 {
+      @include heading;
+      font-size: $fs-lg;
+      margin: 0;
+    }
+  }
+
+  &__empty {
+    font-size: $fs-sm;
+    color: var(--text-tertiary);
+    margin: 0;
+  }
+}
+
+.analytics-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $sp-3;
+
+  &__item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: $sp-3;
+    align-items: center;
+  }
+
+  &__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__title {
+    font-size: $fs-sm;
+    font-weight: $fw-medium;
+    color: var(--text-primary);
+  }
+
+  &__subtitle {
+    font-size: $fs-xs;
+    color: var(--text-secondary);
+  }
+
+  &__bar {
+    position: relative;
+    grid-column: 1 / -1;
+    height: 6px;
+    border-radius: $radius-full;
+    background: var(--bg-tertiary);
+    overflow: hidden;
+  }
+
+  &__bar-fill {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+      90deg,
+      rgba(var(--primary-rgb), 0.2),
+      rgba(var(--primary-rgb), 0.8)
+    );
+    transform-origin: left;
+  }
+
+  &__value {
+    font-size: $fs-xs;
+    color: var(--text-secondary);
+    justify-self: flex-end;
+  }
+}
+
+.analytics-pills {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: $sp-3;
+
+  &__item {
+    display: inline-flex;
+    align-items: center;
+    gap: $sp-2;
+    padding: 6px 12px;
+    border-radius: $radius-full;
+    background: rgba(var(--primary-rgb), 0.08);
+    border: 1px solid rgba(var(--primary-rgb), 0.4);
+  }
+
+  &__label {
+    font-size: $fs-xs;
+    color: var(--text-primary);
+  }
+
+  &__value {
+    font-size: $fs-xs;
+    font-weight: $fw-semibold;
+    color: $primary;
+  }
+}
+

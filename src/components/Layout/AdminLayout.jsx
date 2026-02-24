@@ -80,6 +80,7 @@ const AdminLayout = ({ children }) => {
 
   const menuItems = [
     { path: '/admin', icon: <HiOutlineChartBar />, label: 'İdarə Paneli', end: true },
+    { path: '/admin/analytics', icon: <FaChartBar />, label: 'Site Analytics' },
     { path: '/admin/profile', icon: <FiUser />, label: 'Profil' },
     { path: '/admin/education', icon: <PiGraduationCap />, label: 'Təhsil' },
     { path: '/admin/experience', icon: <IoBriefcaseOutline />, label: 'Təcrübə' },

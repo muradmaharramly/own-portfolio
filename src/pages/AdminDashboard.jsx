@@ -14,6 +14,7 @@ const ContactAdmin = lazy(() => import('./admin/ContactAdmin'));
 const SocialMediaAdmin = lazy(() => import('./admin/SocialMediaAdmin'));
 const DesignSettings = lazy(() => import('./admin/DesignSettings'));
 const QRAdmin = lazy(() => import('./admin/QRAdmin'));
+const SiteAnalyticsAdmin = lazy(() => import('./admin/SiteAnalyticsAdmin'));
 
 const AdminDashboard = () => {
   return (
@@ -31,6 +32,7 @@ const AdminDashboard = () => {
           <Route path="social-media" element={<SocialMediaAdmin />} />
           <Route path="qr" element={<QRAdmin />} />
           <Route path="design" element={<DesignSettings />} />
+          <Route path="analytics" element={<SiteAnalyticsAdmin />} />
         </Routes>
       </Suspense>
     </AdminLayout>
