@@ -10,12 +10,18 @@ const SCOPES = ['https://www.googleapis.com/auth/analytics.readonly'];
 function getServiceAccount() {
   const raw = process.env.GA_SERVICE_ACCOUNT_JSON;
   if (!raw) {
-    throw new Error('GA_SERVICE_ACCOUNT_JSON env is missing');
+    throw new Error('Konfiqurasiya xətası: GA_SERVICE_ACCOUNT_JSON tapılmadı. Zəhmət olmasa Netlify-da bu dəyişəni təyin edin.');
   }
   try {
-    return JSON.parse(raw);
-  } catch {
-    throw new Error('GA_SERVICE_ACCOUNT_JSON is not valid JSON');
+    const sa = JSON.parse(raw);
+    // Netlify sometimes strips or breaks newlines in the private key.
+    // We ensure it's correctly formatted for crypto.createSign.
+    if (sa.private_key && typeof sa.private_key === 'string') {
+      sa.private_key = sa.private_key.replace(/\\n/g, '\n');
+    }
+    return sa;
+  } catch (err) {
+    throw new Error(`GA_SERVICE_ACCOUNT_JSON düzgün JSON formatında deyil: ${err.message}`);
   }
 }
 
