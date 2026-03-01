@@ -335,6 +335,8 @@
         background: var(--bg-tertiary);
         border-bottom: 1px solid var(--border-color);
         padding: $sp-3;
+        border-top-left-radius: $sp-3;
+        border-top-right-radius: $sp-3;
         display: flex;
         align-items: center;
         gap: $sp-2;
@@ -369,6 +371,8 @@
       }
 
       .preview-content {
+        border-bottom-left-radius: $sp-3;
+        border-bottom-right-radius: $sp-3;
         padding: $sp-6;
         background: var(--bg-primary);
         min-height: 400px;
