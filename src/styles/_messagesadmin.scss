@@ -17,7 +17,7 @@
   transition: all $transition-base;
 
   &.unread {
-    border-left-color: $primary;
+    border:1px solid $primary;
     background-color: rgba(var(--primary-rgb), 0.02);
 
     .message-card__name {
@@ -97,6 +97,12 @@
     color: var(--text-secondary);
     line-height: $lh-relaxed;
     white-space: pre-wrap;
+    .message-subject{
+      span{
+        font-weight: bold;
+        margin-right: 5px;
+      }
+    }
   }
 
   &__footer {
@@ -105,19 +111,21 @@
     padding-top: $sp-4;
     border-top: 1px solid var(--border);
   }
-}
-
-.btn-sm {
-  padding: $sp-2 $sp-3;
-  font-size: $fs-sm;
+  .btn-primary {
+  padding: $sp-4 !important;
+  font-size: $fs-sm !important;
+  border-color: $primary;
 }
 
 .btn-danger-outline {
   color: $danger;
-  border-color: $danger;
+  border-color: $danger !important;
 
   &:hover {
     background-color: $danger;
     color: $light-bg-primary;
   }
 }
+}
+
+

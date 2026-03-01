@@ -12,7 +12,7 @@
   top: 0;
   bottom: 0;
   width: 280px;
-   background: linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(255,255,255,0.03));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(255,255,255,0.03));
   border-right: 1px solid var(--border);
   backdrop-filter: blur(5px);
   @include flex-column;
@@ -131,7 +131,7 @@
     min-width: 20px;
     text-align: center;
     line-height: 1.2;
-    box-shadow: 0 2px 4px rgba(var(--danger-rgb), 0.3);
+    border: 1px solid white
   }
 
   &__icon {
