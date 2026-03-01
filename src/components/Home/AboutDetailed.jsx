@@ -14,6 +14,9 @@ import { GrTechnology } from 'react-icons/gr';
 import { FaRegCircleCheck } from 'react-icons/fa6';
 import { FiHeart } from 'react-icons/fi';
 import { HiCodeBracket } from 'react-icons/hi2';
+import { RiChat3Line } from 'react-icons/ri';
+import { PiChatCircleText, PiHandshakeLight } from 'react-icons/pi';
+import { TbHeartHandshake } from 'react-icons/tb';
 
 const SOFT_SKILLS_KEYWORDS = [
   'Communication', 'Networking', 'Teamwork', 'Team Player', 'Leadership', 'Problem Solving',
@@ -211,6 +214,14 @@ const AboutDetailed = () => {
             <li>
               <GoCheckCircle className="promise-icon" />
               <span>I provide 100% feedback via email.</span>
+            </li>
+            <li>
+              <PiChatCircleText className='promise-icon' />
+              <span>I can discuss your idea with you.</span>
+            </li>
+             <li>
+              <PiHandshakeLight className='promise-icon' />
+              <span>I can collaborate with you on your project.</span>
             </li>
           </ul>
           <a href="#contact" className="btn-primary btn-sm btn-block">
