@@ -1,12 +1,13 @@
 // src/pages/admin/ProfileAdmin.jsx
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {FaSave, FaFilePdf, FaTrash } from 'react-icons/fa';
+import { FaFilePdf, FaTrash } from 'react-icons/fa';
 import { fetchProfile, updateProfile } from '../../redux/slices/profileSlice';
 import { uploadFile, deleteFile, validateFile } from '../../utils/fileUpload';
 import { toast } from 'react-toastify';
 import { CgArrowsExchange } from 'react-icons/cg';
 import { GoUpload } from 'react-icons/go';
+import { IoSaveOutline } from 'react-icons/io5';
 
 const ProfileAdmin = () => {
   const dispatch = useDispatch();
@@ -499,7 +500,7 @@ const ProfileAdmin = () => {
             className="btn-primary"
             disabled={loading || uploadingImage || uploadingCv}
           >
-            <FaSave />
+            <IoSaveOutline />
             <span>{loading ? 'Yadda saxlanılır...' : 'Yadda saxla'}</span>
           </button>
         </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
-import { FaPalette, FaFont, FaSave, FaUndo, FaDesktop, FaMobileAlt, FaCheck, FaPaintBrush } from 'react-icons/fa';
+import { FaPalette, FaFont, FaUndo, FaDesktop, FaMobileAlt, FaCheck, FaPaintBrush } from 'react-icons/fa';
 import { fetchDesignSettings, updateDesignSettings, previewSettings } from '../../redux/slices/designSlice';
 import { toast } from 'react-toastify';
 import { IoIosCheckmarkCircleOutline, IoMdCheckmarkCircleOutline } from 'react-icons/io';

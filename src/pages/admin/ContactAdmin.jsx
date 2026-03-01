@@ -6,6 +6,8 @@ import EmptyState from '../../components/Common/EmptyState';
 import { fetchContactInfo, updateContactInfo } from '../../redux/slices/contactSlice';
 import { toast } from 'react-toastify';
 import { FaTimes } from 'react-icons/fa';
+import { IoSaveOutline } from 'react-icons/io5';
+import { IoMdClose } from 'react-icons/io';
 
 const ContactAdmin = () => {
   const dispatch = useDispatch();
@@ -147,10 +149,10 @@ const ContactAdmin = () => {
 
           <div className="form-actions">
             <button type="button" onClick={closeModal} className="btn-secondary">
-              <FaTimes /> Ləğv et
+              <IoMdClose /> Ləğv et
             </button>
             <button type="submit" className="btn-primary">
-              <FiSave /> Yadda saxla
+              <IoSaveOutline /> Yadda saxla
             </button>
           </div>
         </form>

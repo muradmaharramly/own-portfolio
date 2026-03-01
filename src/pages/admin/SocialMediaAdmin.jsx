@@ -5,7 +5,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSocialMedia, createSocialMedia, updateSocialMedia, deleteSocialMedia } from '../../redux/slices/socialMediaSlice';
-import { FiPlus, FiEdit2, FiTrash2, FiSave, FiLink, FiTrash } from 'react-icons/fi';
+import { FiPlus, FiEdit2, FiTrash2, FiLink, FiTrash } from 'react-icons/fi';
 import Modal from '../../components/Common/Modal';
 import ConfirmDialog from '../../components/Common/ConfirmDialog';
 import EmptyState from '../../components/Common/EmptyState';
@@ -14,6 +14,9 @@ import { FaTimes } from 'react-icons/fa';
 import * as FiIcons from 'react-icons/fi';
 import * as FaIcons from 'react-icons/fa';
 import * as SiIcons from 'react-icons/si';
+import { AiOutlinePlusCircle } from 'react-icons/ai';
+import { IoMdClose } from 'react-icons/io';
+import { IoSaveOutline } from 'react-icons/io5';
 
 const SocialMediaAdmin = () => {
   const dispatch = useDispatch();
@@ -120,7 +123,7 @@ const SocialMediaAdmin = () => {
           <p className="admin-subtitle">Sosial profillərinizi idarə edin</p>
         </div>
         <button className="btn-primary" onClick={() => openModal()}>
-          <FiPlus />
+          <AiOutlinePlusCircle />
           Keçid əlavə et
         </button>
       </div>
@@ -236,11 +239,11 @@ const SocialMediaAdmin = () => {
 
           <div className="form-actions">
             <button type="button" className="btn-secondary" onClick={closeModal}>
-              <FaTimes />
+              <IoMdClose />
               Ləğv et
             </button>
             <button type="submit" className="btn-primary">
-              <FiSave />
+              <IoSaveOutline />
               {editingId ? 'Yenilə' : 'Əlavə et'}
             </button>
           </div>

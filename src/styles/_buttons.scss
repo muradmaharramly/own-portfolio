@@ -4,6 +4,10 @@
 
 .btn-primary {
   @include button-primary;
+  display: flex;
+  align-items: center;
+  gap: $sp-2;
+  font-weight: $fw-medium;
 }
 
 .btn-secondary {

@@ -5,7 +5,6 @@ import {
   FaPlus, 
   FaEdit, 
   FaTrash, 
-  FaSave, 
   FaTimes,
   FaGraduationCap 
 } from 'react-icons/fa';
@@ -25,6 +24,9 @@ import { ITEMS_PER_PAGE } from '../../utils/constants';
 import { toast } from 'react-toastify';
 import { FiEdit2, FiTrash } from 'react-icons/fi';
 import { PiGraduationCap } from 'react-icons/pi';
+import { AiOutlinePlusCircle } from 'react-icons/ai';
+import { IoSaveOutline } from 'react-icons/io5';
+import { IoMdClose } from 'react-icons/io';
 
 const EducationAdmin = () => {
   const dispatch = useDispatch();
@@ -179,7 +181,7 @@ const EducationAdmin = () => {
           <p className="education-admin__subtitle">Təhsil məlumatlarınızı idarə edin</p>
         </div>
         <button className="btn-primary" onClick={() => openModal()}>
-          <FaPlus />
+          <AiOutlinePlusCircle />
           <span>Təhsil əlavə et</span>
         </button>
       </div>
@@ -443,7 +445,7 @@ const EducationAdmin = () => {
               className="btn-secondary"
               onClick={closeModal}
             >
-              <FaTimes />
+              <IoMdClose />
               <span>Ləğv et</span>
             </button>
             <button 
@@ -451,7 +453,7 @@ const EducationAdmin = () => {
               className="btn-primary"
               disabled={loading}
             >
-              <FaSave />
+              <IoSaveOutline />
               <span>{editingId ? 'Yenilə' : 'Əlavə et'}</span>
             </button>
           </div>

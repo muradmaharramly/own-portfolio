@@ -5,7 +5,6 @@ import {
   FaPlus, 
   FaEdit, 
   FaTrash, 
-  FaSave, 
   FaTimes,
   FaBriefcase 
 } from 'react-icons/fa';
@@ -24,7 +23,9 @@ import { formatDateRange } from '../../utils/formatters';
 import { ITEMS_PER_PAGE, EMPLOYMENT_TYPES, EXPERIENCE_TYPES } from '../../utils/constants';
 import { toast } from 'react-toastify';
 import { FiEdit2, FiTrash } from 'react-icons/fi';
-import { IoBriefcaseOutline } from 'react-icons/io5';
+import { IoBriefcaseOutline, IoSaveOutline } from 'react-icons/io5';
+import { AiOutlinePlusCircle } from 'react-icons/ai';
+import { IoMdClose } from 'react-icons/io';
 
 const ExperienceAdmin = () => {
   const dispatch = useDispatch();
@@ -194,7 +195,7 @@ const ExperienceAdmin = () => {
           <p className="experience-admin__subtitle">İş təcrübələrinizi idarə edin</p>
         </div>
         <button className="btn-primary" onClick={() => openModal()}>
-          <FaPlus />
+          <AiOutlinePlusCircle />
           <span>Təcrübə əlavə et</span>
         </button>
       </div>
@@ -503,7 +504,7 @@ const ExperienceAdmin = () => {
           className="btn-secondary"
           onClick={closeModal}
         >
-          <FaTimes />
+          <IoMdClose />
           <span>Ləğv et</span>
         </button>
         <button 
@@ -511,7 +512,7 @@ const ExperienceAdmin = () => {
           className="btn-primary"
           disabled={loading}
         >
-          <FaSave />
+          <IoSaveOutline />
           <span>{editingId ? 'Yenilə' : 'Əlavə et'}</span>
         </button>
       </div>

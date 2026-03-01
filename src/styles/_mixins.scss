@@ -153,15 +153,19 @@
 
 @mixin button-primary {
   @include button-base;
-  background: linear-gradient(180deg, rgba(var(--primary-rgb), 0.7), rgba(var(--secondary-rgb), 0.75));
-  color: $light-bg-primary;
-  border: 1px solid var(--border);
+  padding: $sp-4 $sp-6;
+  background: linear-gradient(180deg, $primary, $secondary);
+  color: #fff;
+  border: none;
+  border-radius: $sp-2;
+  transition: all 0.2s;
+  backdrop-filter: none;
 
   &:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: $shadow-lg;
-    background: linear-gradient(180deg, $primary, $secondary);
-    border-color: $primary;
+    background: linear-gradient(180deg, $primary-hover, $secondary);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.2);
+    border: none;
   }
 
   &:active:not(:disabled) {
@@ -171,10 +175,12 @@
 
 @mixin button-secondary {
   @include button-base;
+  padding: $sp-4 $sp-6;
   background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
   color: var(--text-primary);
   border: 1px solid var(--border);
   backdrop-filter: blur(12px);
+  border-radius: $sp-2;
 
   &:hover:not(:disabled) {
     transform: translateY(-2px);

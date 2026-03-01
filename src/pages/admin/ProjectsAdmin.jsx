@@ -5,7 +5,6 @@ import {
   FaPlus, 
   FaEdit, 
   FaTrash, 
-  FaSave, 
   FaTimes,
   FaRocket,
   FaGithub,
@@ -28,7 +27,9 @@ import { uploadFile, deleteFile, validateFile } from '../../utils/fileUpload';
 import { ITEMS_PER_PAGE } from '../../utils/constants';
 import { toast } from 'react-toastify';
 import { FiEdit2, FiExternalLink, FiGithub, FiTrash } from 'react-icons/fi';
-import { IoRocketOutline } from 'react-icons/io5';
+import { IoRocketOutline, IoSaveOutline } from 'react-icons/io5';
+import { AiOutlinePlusCircle } from 'react-icons/ai';
+import { IoMdClose } from 'react-icons/io';
 
 const ProjectsAdmin = () => {
   const dispatch = useDispatch();
@@ -238,7 +239,7 @@ const ProjectsAdmin = () => {
           <p className="projects-admin__subtitle">Proyektlərinizi idarə edin</p>
         </div>
         <button className="btn-primary" onClick={() => openModal()}>
-          <FaPlus />
+          <AiOutlinePlusCircle />
           <span>Proyekt əlavə et</span>
         </button>
       </div>
@@ -255,7 +256,7 @@ const ProjectsAdmin = () => {
           description="Proyektlərinizi əlavə edin"
           action={
             <button className="btn-primary" onClick={() => openModal()}>
-              <FaPlus />
+              <AiOutlinePlusCircle />
               <span>İlk proyekti əlavə et</span>
             </button>
           }
@@ -568,7 +569,7 @@ const ProjectsAdmin = () => {
               className="btn-secondary"
               onClick={closeModal}
             >
-              <FaTimes />
+              <IoMdClose />
               <span>Ləğv et</span>
             </button>
             <button 
@@ -576,7 +577,7 @@ const ProjectsAdmin = () => {
               className="btn-primary"
               disabled={loading || uploading}
             >
-              <FaSave />
+              <IoSaveOutline />
               <span>{editingId ? 'Yenilə' : 'Əlavə et'}</span>
             </button>
           </div>

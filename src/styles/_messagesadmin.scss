@@ -114,7 +114,11 @@
   .btn-primary {
   padding: $sp-4 !important;
   font-size: $fs-sm !important;
-  border-color: $primary;
+  border-radius: $sp-3 !important;
+  -webkit-border-radius: $sp-3 !important;
+  -moz-border-radius: $sp-3 !important;
+  -ms-border-radius: $sp-3 !important;
+  -o-border-radius: $sp-3 !important;
 }
 
 .btn-danger-outline {

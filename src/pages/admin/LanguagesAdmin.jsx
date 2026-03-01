@@ -5,13 +5,16 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchLanguages, createLanguage, updateLanguage, deleteLanguage } from '../../redux/slices/languageSlice';
-import { FiPlus, FiEdit2, FiTrash2, FiSave, FiX, FiTrash } from 'react-icons/fi';
+import { FiPlus, FiEdit2, FiTrash2, FiX, FiTrash } from 'react-icons/fi';
 import { FaLanguage, FaTimes } from 'react-icons/fa';
 import Modal from '../../components/Common/Modal';
 import ConfirmDialog from '../../components/Common/ConfirmDialog';
 import EmptyState from '../../components/Common/EmptyState';
 import { toast } from 'react-toastify';
 import { HiMiniLanguage } from 'react-icons/hi2';
+import { AiOutlinePlusCircle } from 'react-icons/ai';
+import { IoSaveOutline } from 'react-icons/io5';
+import { IoMdClose } from 'react-icons/io';
 
 const LanguagesAdmin = () => {
   const dispatch = useDispatch();
@@ -117,7 +120,7 @@ const LanguagesAdmin = () => {
           <p className="admin-subtitle">Dil bacarıqlarınızı idarə edin</p>
         </div>
         <button className="btn-primary" onClick={() => openModal()}>
-          <FiPlus />
+          <AiOutlinePlusCircle />
           Dil əlavə et
         </button>
       </div>
@@ -233,11 +236,11 @@ const LanguagesAdmin = () => {
 
           <div className="form-actions">
             <button type="button" className="btn-secondary" onClick={closeModal}>
-              <FaTimes />
+              <IoMdClose />
               Ləğv et
             </button>
             <button type="submit" className="btn-primary">
-              <FiSave />
+              <IoSaveOutline />
               {editingId ? 'Yenilə' : 'Əlavə et'}
             </button>
           </div>
