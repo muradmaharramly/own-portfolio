@@ -3,14 +3,19 @@
         @include flex-between;
     }
   &__card {
-    @include flex-start;
+    display: flex;
     gap: $sp-4;
-    padding: $sp-6;
+    padding: $sp-6 0;
+     @media (max-width: $breakpoint-md) {
+      flex-direction: column;
+      justify-content: left;
+    }
+
     
 }
 
   &__item {
-    flex: 1;
+    flex: 0 0 33%;
     @extend .glass-card;
     border-radius:  $radius-lg ;
     -webkit-border-radius:  $radius-lg ;
@@ -22,6 +27,11 @@
     gap: $sp-4;
     padding: $sp-4;
     transition: transform $transition-fast, box-shadow $transition-fast;
+     @media (max-width: $breakpoint-md) {
+      
+    width: 100%;
+    }
+
 
     &:hover {
       transform: translateY(-2px);

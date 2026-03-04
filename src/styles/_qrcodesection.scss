@@ -4,6 +4,7 @@
 
 .qr-section {
   display: none;
+  padding: 0;
 }
 
 .admin-layout .qr-section {
@@ -12,15 +13,12 @@
 }
 
 .qr-admin {
+  padding: 0;
   .admin-header {
     @include flex-between;
     margin-bottom: $sp-2;
   }
 
-  &__grid {
-    @include grid-auto(300px);
-    gap: $sp-6;
-  }
 }
 
 .admin-layout .qr-card {
@@ -72,6 +70,10 @@
     @include button-secondary;
     width: auto;
     max-width: 250px;
+     @media (max-width: $breakpoint-md) {
+      margin: auto;
+    }
+
   }
 
   &__left {

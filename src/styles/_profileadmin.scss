@@ -5,6 +5,9 @@
     display: flex;
     justify-content: left;
     gap: $sp-4;
+    @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+    }
   }
 
   .settings-header {
@@ -91,6 +94,7 @@
   }
 }
 
+
 .profile-form {
   @include flex-column;
   gap: $sp-8;
@@ -119,8 +123,15 @@
   justify-content: left;
   align-items: flex-start;
   gap: $sp-2;
+   @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+    }
+
   .form-group{
     flex: 0 0 24%;
+    @media (max-width: $breakpoint-md) {
+    flex: 1;
+    }
   }
 
 }

@@ -44,6 +44,11 @@
   @include bento-card;
   @extend .glass-card;
   transition: transform $transition-base, box-shadow $transition-base;
+   @media (max-width: $breakpoint-md) {
+      
+    flex: 0 0 100%;
+    }
+
 
   &:hover {
     box-shadow: var(--shadow-lg);

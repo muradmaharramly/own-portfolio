@@ -15,6 +15,11 @@
   padding: $sp-6;
   border-left: 4px solid transparent;
   transition: all $transition-base;
+   @media (max-width: $breakpoint-md) {
+      
+    flex: 0 0 100%;
+    }
+
 
   &.unread {
     border:1px solid $primary;

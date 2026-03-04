@@ -2,13 +2,8 @@
 @import 'mixins';
 
 .design-settings-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: $sp-6;
+  padding: $sp-2 0;
   
-  @include lg {
-    padding: $sp-10;
-  }
   
   // Header section
   .settings-header {

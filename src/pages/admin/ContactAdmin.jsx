@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import { FaTimes } from 'react-icons/fa';
 import { IoSaveOutline } from 'react-icons/io5';
 import { IoMdClose } from 'react-icons/io';
+import { AiOutlinePlusCircle } from 'react-icons/ai';
 
 const ContactAdmin = () => {
   const dispatch = useDispatch();
@@ -77,7 +78,7 @@ const ContactAdmin = () => {
           description="Əlaqə məlumatlarınızı əlavə edin."
           action={
             <button className="btn-primary" onClick={openModal}>
-              <FiPlus />
+              <AiOutlinePlusCircle />
               Məlumat Əlavə Et
             </button>
           }

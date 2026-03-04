@@ -43,6 +43,10 @@
   flex: 0 0 48%;
   @include card;
   transition: all $transition-base;
+   @media (max-width: $breakpoint-md) {
+      
+    flex: 0 0 100%;
+    }
 
   &:hover {
     box-shadow: var(--shadow-lg);
