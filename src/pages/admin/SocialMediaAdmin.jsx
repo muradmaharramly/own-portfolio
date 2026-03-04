@@ -135,7 +135,7 @@ const SocialMediaAdmin = () => {
           description="Hələ sosial media keçidi əlavə edilməyib. Profillərinizi göstərmək üçün əlavə edin."
           action={
             <button className="btn-primary" onClick={() => openModal()}>
-              <FiPlus />
+              <AiOutlinePlusCircle />
               Keçid əlavə et
             </button>
           }
@@ -144,52 +144,66 @@ const SocialMediaAdmin = () => {
         <div className="social-admin__grid">
           {socialMedia.map((item) => (
             <div key={item.id} className="social-card">
-              <div className="social-card__content">
-                <div className="social-card__header">
-                  <h3 className="social-card__platform">{item.platform_name}</h3>
+              <div className="social-card__top">
+                <div className="social-card__icon-box">
+                  {(() => {
+                    const Icon = resolveIcon(item.icon_name);
+                    return <Icon />;
+                  })()}
                 </div>
-
-                <div className='media-fl'>
-                  <FiLink /><a
-                    href={item.platform_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="social-card__link"
+                <div className="social-card__actions">
+                  <div
+                    className="btn-icon primary btn-sm"
+                    onClick={() => openModal(item)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyPress={(e) => (e.key === 'Enter' || e.key === ' ') && openModal(item)}
+                    aria-label="Edit"
                   >
-
-                    {item.platform_url}
-                  </a></div>
-                  <div className='media-fl'>{(() => {
-                  const Icon = resolveIcon(item.icon_name);
-                  return <Icon />;
-                })()}<span>{item.icon_name}</span></div>
-                  
+                    <FiEdit2 />
+                  </div>
+                  <div
+                    className="btn-icon danger btn-sm"
+                    onClick={() => confirmDelete(item.id)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyPress={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        confirmDelete(item.id);
+                      }
+                    }}
+                    aria-label="Delete"
+                  >
+                    <FiTrash />
+                  </div>
+                </div>
               </div>
 
-              <div className="social-card__actions">
-                <div
-                  className="btn-icon primary btn-sm"
-                  onClick={() => openModal(item)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyPress={(e) => (e.key === 'Enter' || e.key === ' ') && openModal(item)}
-                  aria-label="Edit"
-                >
-                  <FiEdit2 />
+              <div className="social-card__info">
+                <div className="social-card__info-row">
+                  <span className="social-card__label">Ad:</span>
+                  <span className="social-card__value">{item.platform_name}</span>
                 </div>
-                <div
-                  className="btn-icon danger btn-sm"
-                  onClick={() => confirmDelete(item.id)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyPress={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      confirmDelete(item.id);
-                    }
-                  }}
-                  aria-label="Delete"
-                >
-                  <FiTrash />
+                <div className="social-card__info-row">
+                  <span className="social-card__label">İkon:</span>
+                  <span className="social-card__value">{item.icon_name}</span>
+                </div>
+              </div>
+
+              <div className="social-card__url-container">
+                <span className="social-card__label">URL</span>
+                <div className="social-card__url-box">
+                  <span className="social-card__url-text">{item.platform_url}</span>
+                  <div 
+                    className="social-card__copy-btn" 
+                    onClick={() => {
+                      navigator.clipboard.writeText(item.platform_url);
+                      toast.info('Link kopyalandı');
+                    }}
+                    title="Kopyala"
+                  >
+                    <FiIcons.FiCopy />
+                  </div>
                 </div>
               </div>
             </div>

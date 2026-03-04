@@ -132,7 +132,7 @@ const LanguagesAdmin = () => {
           description="Hələ dil əlavə edilməyib. Aşağıdakı düymə ilə əlavə edin."
           action={
             <button className="btn-primary" onClick={() => openModal()}>
-              <FiPlus />
+              <AiOutlinePlusCircle />
               Dil əlavə et
             </button>
           }

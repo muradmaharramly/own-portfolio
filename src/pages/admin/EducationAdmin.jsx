@@ -198,7 +198,7 @@ const EducationAdmin = () => {
           description="Təhsil məlumatlarınızı əlavə edin"
           action={
             <button className="btn-primary" onClick={() => openModal()}>
-              <FaPlus />
+              <AiOutlinePlusCircle />
               <span>İlk təhsili əlavə et</span>
             </button>
           }

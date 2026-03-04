@@ -212,7 +212,7 @@ const ExperienceAdmin = () => {
           description="İş təcrübələrinizi əlavə edin"
           action={
             <button className="btn-primary" onClick={() => openModal()}>
-              <FaPlus />
+              <AiOutlinePlusCircle />
               <span>İlk təcrübəni əlavə et</span>
             </button>
           }
