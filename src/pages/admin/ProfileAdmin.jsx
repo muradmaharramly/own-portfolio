@@ -7,7 +7,8 @@ import { uploadFile, deleteFile, validateFile } from '../../utils/fileUpload';
 import { toast } from 'react-toastify';
 import { CgArrowsExchange } from 'react-icons/cg';
 import { GoUpload } from 'react-icons/go';
-import { IoSaveOutline } from 'react-icons/io5';
+import { IoMdCheckmarkCircleOutline } from 'react-icons/io';
+import { RxReset } from 'react-icons/rx';
 
 const ProfileAdmin = () => {
   const dispatch = useDispatch();
@@ -53,6 +54,24 @@ const ProfileAdmin = () => {
       setImagePreview(profile.profile_image);
     }
   }, [profile]);
+
+  const handleReset = () => {
+    if (profile) {
+      setFormData({
+        id: profile.id,
+        full_name: profile.full_name || '',
+        headline: profile.headline || '',
+        headline_2: profile.headline_2 || '',
+        headline_3: profile.headline_3 || '',
+        subtitle: profile.subtitle || '',
+        about: profile.about || '',
+        profile_image: profile.profile_image || '',
+        cv_file: profile.cv_file || ''
+      });
+      setImagePreview(profile.profile_image);
+      toast.info('Dəyişikliklər ləğv edildi');
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -209,11 +228,38 @@ const ProfileAdmin = () => {
 
   return (
     <div className="profile-admin">
-      <div className="profile-admin__header">
-        <h1 className="profile-admin__title">Profil Parametrləri</h1>
+      <div className="settings-header">
+        <div>
+          <h1>Profil Parametrləri</h1>
+          <p>Şəxsi məlumatlarınızı və CV-nizi buradan idarə edin.</p>
+        </div>
+        <div className="header-actions">
+          <button
+            type="button"
+            onClick={handleReset}
+            className="btn-reset"
+            disabled={loading || uploadingImage || uploadingCv}
+          >
+            <RxReset />
+            <span>Sıfırla</span>
+          </button>
+          <button
+            type="submit"
+            form="profile-form"
+            className="btn-save"
+            disabled={loading || uploadingImage || uploadingCv}
+          >
+            {loading ? (
+              <span className="spinner-xs" />
+            ) : (
+              <IoMdCheckmarkCircleOutline />
+            )}
+            <span>{loading ? 'Yadda saxlanılır...' : 'Yadda saxla'}</span>
+          </button>
+        </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="profile-form">
+      <form id="profile-form" onSubmit={handleSubmit} className="profile-form">
         {/* Profile Image */}
         <div className='section-fl'>
           <div className="profile-form__section image">
@@ -493,17 +539,7 @@ const ProfileAdmin = () => {
         {/* CV Upload */}
         
 
-        {/* Submit Button */}
-        <div className="profile-form__actions">
-          <button 
-            type="submit" 
-            className="btn-primary"
-            disabled={loading || uploadingImage || uploadingCv}
-          >
-            <IoSaveOutline />
-            <span>{loading ? 'Yadda saxlanılır...' : 'Yadda saxla'}</span>
-          </button>
-        </div>
+        {/* Submit Button Removed from bottom as it is now in header */}
       </form>
     </div>
   );
