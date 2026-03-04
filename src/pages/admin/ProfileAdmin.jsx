@@ -350,43 +350,54 @@ const ProfileAdmin = () => {
         <div className="profile-form__section cv">
         <h2 className="profile-form__section-title">CV (Resume)</h2>
           {formData.cv_file ? (
-            <div className="cv-uploaded">
-            
-              <div className="cv-uploaded__info">
-                <FaFilePdf className="cv-uploaded__icon" />
-                <div>
-                  <p className="cv-uploaded__name">CV yüklənib</p>
-                  <a 
-                    href={formData.cv_file} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="cv-uploaded__link"
+            <div className="cv-uploaded">              
+              <div className="cv-uploaded__preview-frame">
+                <iframe 
+                  src={`${formData.cv_file}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`} 
+                  title="CV Center Preview"
+                  scrolling="no"
+                  style={{ border: 'none', overflow: 'hidden' }}
+                ></iframe>
+              </div>
+
+              <div className="cv-uploaded__footer">
+                <div className="cv-uploaded__info">
+                  <FaFilePdf className="cv-uploaded__icon" />
+                  <div>
+                    <p className="cv-uploaded__name">CV yüklənib</p>
+                    <a 
+                      href={formData.cv_file} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="cv-uploaded__link"
+                    >
+                      Baxmaq və ya yükləmək
+                    </a>
+                  </div>
+                </div>
+                <div className="cv-uploaded__actions">
+                  <label className="btn-secondary">
+                    <GoUpload size={18} />
+                    <span>Dəyişdir</span>
+                    <input 
+                      type="file" 
+                      accept=".pdf" 
+                      onChange={handleCVChange}
+                      disabled={uploadingCv}
+                    />
+                  </label>
+                  <button 
+                    type="button"
+                    className="btn-danger btn-sm"
+                    onClick={handleDeleteCV}
+                    disabled={uploadingCv}
                   >
-                    Baxmaq və ya yükləmək
-                  </a>
+                    <FaTrash size={14} />
+                    <span>Sil</span>
+                  </button>
                 </div>
               </div>
-              <div className="cv-uploaded__actions">
-                <label className="btn-secondary ">
-                  <GoUpload size={20} />
-                  <span>Dəyişdir</span>
-                  <input 
-                    type="file" 
-                    accept=".pdf" 
-                    onChange={handleCVChange}
-                    disabled={uploadingCv}
-                  />
-                </label>
-                <button 
-                  type="button"
-                  className="btn-danger btn-sm"
-                  onClick={handleDeleteCV}
-                  disabled={uploadingCv}
-                >
-                  <FaTrash />
-                  <span>Sil</span>
-                </button>
-              </div>
+
               {uploadingCv && (
                 <div className="cv-uploaded__progress">
                   <div className="upload-circular">
