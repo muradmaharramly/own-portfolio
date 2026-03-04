@@ -104,6 +104,25 @@ const LanguagesAdmin = () => {
     setConfirmOpen(true);
   };
 
+  const levelDescriptions = {
+    'Ana dili': "I speak this language fluently and naturally.",
+    'Səlis': "I can communicate confidently in most situations.",
+    'Qabaqcıl': "I communicate clearly in complex discussions.”",
+    'Orta': "I can handle everyday conversations with ease.",
+    'Başlanğıc': "I understand basic words and simple phrases."
+  };
+
+  const levelSlug = (p) => {
+    if (p >= 96) return 'native';
+    if (p >= 86) return 'fluent';
+    if (p >= 61) return 'advanced';
+    if (p >= 41) return 'intermediate';
+    return 'beginner';
+  };
+
+  const radius = 54;
+  const circumference = 2 * Math.PI * radius;
+
   if (loading && languages.length === 0) {
     return (
       <div className="admin-loading">
@@ -141,62 +160,78 @@ const LanguagesAdmin = () => {
         <div className="languages-admin__grid">
           {languages.map((lang) => (
             <div key={lang.id} className="language-admin-card">
-              <div className="language-admin-card__content">
-                <div className="language-admin-card__header">
+              <div className="language-admin-card__main">
+                <div className="language-admin-card__info">
                   <h3 className="language-admin-card__name">{lang.language_name}</h3>
-                  <span className="language-admin-card__percentage">
-                    {lang.proficiency_percentage}%
-                  </span>
+                  <div className={`language-admin-card__level-badge pill level-${levelSlug(lang.proficiency_percentage)}`}>
+                    {levelFor(lang.proficiency_percentage)}
+                  </div>
+                  <p className="language-admin-card__description">
+                    {levelDescriptions[levelFor(lang.proficiency_percentage)]}
+                  </p>
                 </div>
 
-                <div className="language-admin-card__circular">
-                  <svg className="language-admin-card__svg" viewBox="0 0 120 120">
+                <div className="language-admin-card__ring">
+                  <svg className="language-admin-card__svg" viewBox="0 0 140 140">
+                    <defs>
+                      <linearGradient id={`grad-admin-${lang.id}`} x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="var(--primary)" />
+                        <stop offset="100%" stopColor="var(--secondary)" />
+                      </linearGradient>
+                    </defs>
                     <circle
-                      className="language-admin-card__circle-bg"
-                      cx="60"
-                      cy="60"
-                      r="45"
+                      className="language-admin-card__track"
+                      cx="70"
+                      cy="70"
+                      r={radius}
                     />
                     <circle
-                      className="language-admin-card__circle-progress"
-                      cx="60"
-                      cy="60"
-                      r="45"
-                      style={{
-                        strokeDasharray: 2 * Math.PI * 45,
-                        strokeDashoffset:
-                          2 * Math.PI * 45 - (2 * Math.PI * 45 * lang.proficiency_percentage) / 100,
-                      }}
+                      className="language-admin-card__ticks"
+                      cx="70"
+                      cy="70"
+                      r={radius + 8}
+                    />
+                    <circle
+                      className="language-admin-card__progress"
+                      cx="70"
+                      cy="70"
+                      r={radius}
+                      strokeDasharray={circumference}
+                      strokeDashoffset={circumference - (circumference * lang.proficiency_percentage) / 100}
+                      stroke={`url(#grad-admin-${lang.id})`}
                     />
                   </svg>
+                  <div className="language-admin-card__center">
+                    <div className="language-admin-card__percent">{lang.proficiency_percentage}%</div>
+                  </div>
                 </div>
-                <p className="language-admin-card__level">{levelFor(lang.proficiency_percentage)}</p>
               </div>
-
-              <div className="language-admin-card__actions">
-                <div
-                  className="btn-icon primary btn-sm"
-                  onClick={() => openModal(lang)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyPress={(e) => (e.key === 'Enter' || e.key === ' ') && openModal(lang)}
-                  aria-label="Edit"
-                >
-                  <FiEdit2 />
-                </div>
-                <div
-                  className="btn-icon danger btn-sm"
-                  onClick={() => confirmDelete(lang.id)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyPress={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      confirmDelete(lang.id);
-                    }
-                  }}
-                  aria-label="Delete"
-                >
-                  <FiTrash />
+              <div className="language-admin-card__end">
+                <div className="language-admin-card__actions">
+                  <div
+                    className="btn-icon primary btn-sm"
+                    onClick={() => openModal(lang)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyPress={(e) => (e.key === 'Enter' || e.key === ' ') && openModal(lang)}
+                    aria-label="Edit"
+                  >
+                    <FiEdit2 />
+                  </div>
+                  <div
+                    className="btn-icon danger btn-sm"
+                    onClick={() => confirmDelete(lang.id)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyPress={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        confirmDelete(lang.id);
+                      }
+                    }}
+                    aria-label="Delete"
+                  >
+                    <FiTrash />
+                  </div>
                 </div>
               </div>
             </div>
