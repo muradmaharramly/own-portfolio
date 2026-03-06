@@ -85,6 +85,16 @@ export const deleteMessage = createAsyncThunk('contact/deleteMessage', async (id
   return id;
 });
 
+export const deleteAllMessages = createAsyncThunk('contact/deleteAllMessages', async () => {
+  const { error } = await supabase
+    .from('contact_messages')
+    .delete()
+    .neq('id', 0); // Delete all rows
+  
+  if (error) throw error;
+  return true;
+});
+
 const contactSlice = createSlice({
   name: 'contact',
   initialState: {
@@ -126,6 +136,9 @@ const contactSlice = createSlice({
         state.messages.forEach((msg, i) => {
           if (updatedIds.includes(msg.id)) state.messages[i] = { ...msg, is_read: true };
         });
+      })
+      .addCase(deleteAllMessages.fulfilled, (state) => {
+        state.messages = [];
       })
       .addCase(deleteMessage.fulfilled, (state, action) => {
         state.messages = state.messages.filter(msg => msg.id !== action.payload);

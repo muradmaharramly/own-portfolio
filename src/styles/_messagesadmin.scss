@@ -2,31 +2,188 @@
 // MESSAGES ADMIN
 // ============================================
 
+.messages-admin {
+  .admin-header {
+    @include flex-between;
+    align-items: flex-start;
+    margin-bottom: $sp-6;
+    flex-wrap: wrap;
+    gap: $sp-4;
+
+    &__info {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    &__controls {
+      display: flex;
+      align-items: center;
+      gap: $sp-4;
+  
+
+      .search-bar {
+        display: flex;
+        align-items: center;
+        gap: $sp-2;
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border);
+        border-radius: $radius-lg;
+        @include input-base;
+        min-width: 300px;
+        transition: all $transition-base;
+
+        svg {
+          color: var(--text-tertiary);
+        }
+
+        input {
+          background: transparent;
+          border: none;
+          color: var(--text-primary);
+          outline: none;
+          width: 100%;
+          font-size: $fs-sm;
+
+          &::placeholder {
+            color: var(--text-tertiary);
+          }
+        }
+
+        &:focus-within {
+          border-color: $primary;
+          box-shadow: 0 0 0 2px rgba($primary, 0.1);
+        }
+      }
+    }
+
+    &__actions {
+      display: flex;
+      gap: $sp-2;
+
+      .btn-icon {
+        border-radius: $radius-lg;
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border);
+        color: var(--text-secondary);
+        transition: all $transition-fast;
+        cursor: pointer;
+
+        svg {
+    width: 16px;
+    height: 16px;
+  }
+
+        &:hover {
+          &.primary {
+            color: $primary;
+            background: rgba($primary, 0.1);
+            border-color: $primary;
+          }
+          &.secondary {
+            color: $secondary;
+            background: rgba($secondary, 0.1);
+            border-color: $secondary;
+          }
+          &.danger {
+            color: $danger;
+            background: rgba($danger, 0.1);
+            border-color: $danger;
+          }
+        }
+
+        .spinning {
+          animation: spin 1s linear infinite;
+        }
+      }
+    }
+  }
+
+  .messages-toolbar {
+    @include flex-between;
+    margin-bottom: $sp-4;
+    padding: $sp-2 $sp-4;
+    background: var(--bg-secondary);
+    border-radius: $radius-lg;
+    border: 1px solid var(--border);
+
+    .select-all {
+      display: flex;
+      align-items: center;
+      gap: $sp-2;
+      cursor: pointer;
+      color: var(--text-secondary);
+      font-size: $fs-sm;
+      transition: color $transition-fast;
+
+      &:hover {
+        color: var(--text-primary);
+      }
+
+      svg {
+        font-size: $fs-xl;
+        &.selected {
+          color: $primary;
+        }
+      }
+    }
+  }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 .messages-list {
   @include flex-start;
   flex-wrap: wrap;
   gap: $sp-4;
 }
+
 .admin-title{
        font-size: $fs-4xl;
 }
 
 .message-card {
   @extend .glass-card;
-  flex: 0 0 45%;
+  flex: 0 0 calc(50% - #{$sp-2});
   border-radius: $radius-lg;
   padding: $sp-6;
-  border-left: 4px solid transparent;
+  border: 1px solid var(--border);
   transition: all $transition-base;
-   @media (max-width: $breakpoint-md) {
-      
-    flex: 0 0 100%;
-    }
+  display: flex;
+  gap: $sp-4;
 
+  @media (max-width: $breakpoint-lg) {
+    flex: 0 0 100%;
+  }
+
+  &.selected {
+    border-color: $primary;
+    background: rgba($primary, 0.02);
+  }
+
+  &__selection {
+    cursor: pointer;
+    color: var(--text-tertiary);
+    padding-top: $sp-1;
+
+    svg {
+      font-size: $fs-xl;
+      &.selected {
+        color: $primary;
+      }
+    }
+  }
+
+  &__main {
+    flex: 1;
+    min-width: 0;
+  }
 
   &.unread {
-    border:1px solid $primary;
-    background-color: rgba(var(--primary-rgb), 0.02);
+    border-left: 4px solid $primary;
+    background-color: rgba($primary, 0.02);
 
     .message-card__name {
       font-weight: $fw-bold;
