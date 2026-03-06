@@ -29,9 +29,9 @@
         border: 1px solid var(--border);
         border-radius: $radius-lg;
         @include input-base;
-        min-width: 300px;
+        min-width: 400px;
         transition: all $transition-base;
-
+        padding: $sp-4;
         svg {
           color: var(--text-tertiary);
         }
@@ -62,7 +62,7 @@
 
       .btn-icon {
         border-radius: $radius-lg;
-        background: var(--bg-tertiary);
+        background: transparent;
         border: 1px solid var(--border);
         color: var(--text-secondary);
         transition: all $transition-fast;
@@ -72,41 +72,74 @@
     width: 16px;
     height: 16px;
   }
-
-        &:hover {
-          &.primary {
+  &.primary {
             color: $primary;
             background: rgba($primary, 0.1);
             border-color: $primary;
           }
           &.secondary {
-            color: $secondary;
+            color: var(--text-secondary);
             background: rgba($secondary, 0.1);
-            border-color: $secondary;
+            border-color: var(--text-secondary);
           }
           &.danger {
             color: $danger;
             background: rgba($danger, 0.1);
             border-color: $danger;
           }
+
+        &:hover {
+          &.primary {
+            color: white;
+            background: $primary;
+            border-color: $primary;
+          }
+          &.secondary{
+            transform: none;
+            -webkit-transform: none;
+            -moz-transform: none;
+            -ms-transform: none;
+            -o-transform: none;
+            svg{
+               animation: spinBack 2s ease;
+               -webkit-animation: spinBack 2s ease;
+}
+}
+          &.danger {
+            color: white;
+            background: rgba($danger, 0.1);
+            border-color: $danger;
+          }
         }
 
-        .spinning {
-          animation: spin 1s linear infinite;
-        }
+        
       }
     }
   }
+  @keyframes spinBack {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
 
   .messages-toolbar {
     @include flex-between;
     margin-bottom: $sp-4;
-    padding: $sp-2 $sp-4;
-    background: var(--bg-secondary);
-    border-radius: $radius-lg;
+    padding:  $sp-4;
+    background: transparent;
+    border-radius: $radius-md;
     border: 1px solid var(--border);
-
-    .select-all {
+    -webkit-border-radius: $radius-md;
+    -moz-border-radius: $radius-md;
+    -ms-border-radius: $radius-md;
+    -o-border-radius: $radius-md;
+     .select-all{
       display: flex;
       align-items: center;
       gap: $sp-2;
@@ -127,11 +160,6 @@
       }
     }
   }
-}
-
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
 
 .messages-list {
@@ -182,11 +210,12 @@
   }
 
   &.unread {
-    border-left: 4px solid $primary;
-    background-color: rgba($primary, 0.02);
 
-    .message-card__name {
-      font-weight: $fw-bold;
+    .message-card__name, .message-card__email, .message-card__date, .message-subject, .main-subject{
+      color: $primary !important;
+    }
+    .message-card__footer{
+      border-top: 1px solid $primary
     }
   }
 
@@ -248,13 +277,6 @@
     @include sm {
       padding-left: 56px;
     }
-  }
-
-  &__subject {
-    font-size: $fs-lg;
-    font-weight: $fw-semibold;
-    color: var(--text-primary);
-    margin-bottom: $sp-2;
   }
 
   &__body {

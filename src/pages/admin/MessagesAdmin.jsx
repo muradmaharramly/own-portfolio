@@ -136,14 +136,14 @@ const MessagesAdmin = () => {
           </div>
 
           <div className="admin-header__actions">
-            <div className="btn-icon secondary" onClick={handleRefresh} title="Yenilə">
+            <div className="btn-icon secondary btn-sm" onClick={handleRefresh} title="Yenilə">
               <FiRefreshCw className={loading ? 'spinning' : ''} />
             </div>
-            <div className="btn-icon primary" onClick={handleMarkAllRead} title="Hamısını oxunmuş işarələ">
+            <div className="btn-icon primary btn-sm" onClick={handleMarkAllRead} title="Hamısını oxunmuş işarələ">
               <IoCheckmarkDone />
             </div>
-            <div className="btn-icon danger" onClick={() => setConfirmAllOpen(true)} title="Hamısını sil">
-              <FiTrash2 />
+            <div className="btn-icon danger btn-sm" onClick={() => setConfirmAllOpen(true)} title="Hamısını sil">
+              <FiTrash />
             </div>
           </div>
         </div>
@@ -196,7 +196,7 @@ const MessagesAdmin = () => {
 
                 <div className="message-card__body">
                   <p className='message-subject'><span>Mövzu:</span>{msg.subject}</p>
-                  <p>{msg.message}</p>
+                  <p className='main-subject'>{msg.message}</p>
                 </div>
 
                 <div className="message-card__footer">
