@@ -3,6 +3,20 @@
 // ============================================
 
 .messages-admin {
+
+  // Keyframes should not be nested inside selectors
+  @keyframes spinBack {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(360deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
   .admin-header {
     @include flex-between;
     align-items: flex-start;
@@ -19,7 +33,6 @@
       display: flex;
       align-items: center;
       gap: $sp-4;
-  
 
       .search-bar {
         display: flex;
@@ -32,6 +45,7 @@
         min-width: 400px;
         transition: all $transition-base;
         padding: $sp-4;
+
         svg {
           color: var(--text-tertiary);
         }
@@ -55,13 +69,95 @@
         }
       }
     }
+  }
 
-    &__actions {
+  .messages-toolbar {
+    @include flex-between;
+    margin-bottom: $sp-4;
+    padding: $sp-4;
+    background: transparent;
+    border-radius: $radius-md;
+    border: 1px solid var(--border);
+
+    &__start {
       display: flex;
+      align-items: center;
+      gap: $sp-4;
+
+      .btn-toolbar {
+        @include button-base;
+        padding: $sp-2 $sp-4;
+        font-size: $fs-sm;
+        background: transparent;
+        border: 1px solid var(--border);
+        color: var(--text-primary);
+        border-radius: $radius-md;
+
+        &:hover {
+          background: var(--bg-secondary);
+          border-color: $primary;
+        }
+      }
+
+      .selection-controls {
+        display: flex;
+        align-items: center;
+        gap: $sp-6;
+
+        .select-all {
+          display: flex;
+          align-items: center;
+          gap: $sp-2;
+          cursor: pointer;
+          color: var(--text-secondary);
+          font-size: $fs-sm;
+          transition: color $transition-fast;
+
+          &:hover {
+            color: var(--text-primary);
+          }
+
+          svg {
+            font-size: $fs-xl;
+            &.selected {
+              color: $primary;
+            }
+          }
+        }
+
+        .btn-cancel {
+          background: transparent;
+          border: none;
+          color: $danger;
+          font-size: $fs-sm;
+          font-weight: $fw-medium;
+          cursor: pointer;
+          padding: $sp-1 $sp-2;
+          transition: opacity $transition-fast;
+
+          &:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
+    &__end {
+      display: flex;
+      align-items: center;
       gap: $sp-2;
 
+       .btn-sm {
+        padding: $sp-2 $sp-3;
+        font-size: $fs-sm;
+      }
+
       .btn-icon {
-        border-radius: $radius-lg;
+        width: 50px;
+        height: 50px;
+        border-radius: $radius-md;
+       
         background: transparent;
         border: 1px solid var(--border);
         color: var(--text-secondary);
@@ -69,88 +165,74 @@
         cursor: pointer;
 
         svg {
-    width: 16px;
-    height: 16px;
-  }
-  &.primary {
-            color: $primary;
-            background: rgba($primary, 0.1);
+          width: 16px;
+          height: 16px;
+        }
+
+        &:hover {
+          &.primary {
+            color: #fff;
+            background: $primary;
             border-color: $primary;
           }
           &.secondary {
             color: var(--text-secondary);
-            background: rgba($secondary, 0.1);
-            border-color: var(--text-secondary);
-          }
-          &.danger {
-            color: $danger;
-            background: rgba($danger, 0.1);
-            border-color: $danger;
-          }
-
-        &:hover {
-          &.primary {
-            color: white;
-            background: $primary;
-            border-color: $primary;
-          }
-          &.secondary{
+            background:rgba(206, 206, 206, 0.092);
+            border-color: var(--border);
             transform: none;
+          
             -webkit-transform: none;
             -moz-transform: none;
             -ms-transform: none;
             -o-transform: none;
-            svg{
-               animation: spinBack 2s ease;
-               -webkit-animation: spinBack 2s ease;
+              svg{
+              animation: spinBack 2s ease;
+              -webkit-animation: spinBack 2s ease;
 }
-}
+          }
           &.danger {
-            color: white;
-            background: rgba($danger, 0.1);
+            color: #fff;
+            background: $danger;
             border-color: $danger;
           }
         }
-
-        
       }
     }
   }
-  @keyframes spinBack {
-  0% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(360deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
 
-  .messages-toolbar {
-    @include flex-between;
-    margin-bottom: $sp-4;
-    padding:  $sp-4;
-    background: transparent;
-    border-radius: $radius-md;
+  .messages-list {
+    @include flex-start;
+    flex-wrap: wrap;
+    gap: $sp-4;
+  }
+
+  .admin-title {
+    font-size: $fs-4xl;
+  }
+
+  .message-card {
+    @extend .glass-card;
+    flex: 0 0 calc(50% - #{$sp-2});
+    border-radius: $radius-lg;
+    padding: $sp-6;
     border: 1px solid var(--border);
-    -webkit-border-radius: $radius-md;
-    -moz-border-radius: $radius-md;
-    -ms-border-radius: $radius-md;
-    -o-border-radius: $radius-md;
-     .select-all{
-      display: flex;
-      align-items: center;
-      gap: $sp-2;
-      cursor: pointer;
-      color: var(--text-secondary);
-      font-size: $fs-sm;
-      transition: color $transition-fast;
+    transition: all $transition-base;
+    display: flex;
+    gap: $sp-4;
 
-      &:hover {
-        color: var(--text-primary);
-      }
+    @media (max-width: $breakpoint-lg) {
+      flex: 0 0 100%;
+    }
+
+    &.selected {
+      border-color: $primary;
+      background: rgba($primary, 0.02);
+    }
+
+    &__selection {
+      cursor: pointer;
+      color: var(--text-tertiary);
+      padding-top: $sp-1;
 
       svg {
         font-size: $fs-xl;
@@ -159,172 +241,133 @@
         }
       }
     }
-  }
-}
 
-.messages-list {
-  @include flex-start;
-  flex-wrap: wrap;
-  gap: $sp-4;
-}
+    &__main {
+      flex: 1;
+      min-width: 0;
+    }
 
-.admin-title{
-       font-size: $fs-4xl;
-}
+    &.unread {
+      .message-card__name,
+      .message-card__email,
+      .message-card__date,
+      .message-subject,
+      .main-subject {
+        color: $primary !important;
+      }
 
-.message-card {
-  @extend .glass-card;
-  flex: 0 0 calc(50% - #{$sp-2});
-  border-radius: $radius-lg;
-  padding: $sp-6;
-  border: 1px solid var(--border);
-  transition: all $transition-base;
-  display: flex;
-  gap: $sp-4;
+      .message-card__footer {
+        border-top: 1px solid $primary;
+      }
+    }
 
-  @media (max-width: $breakpoint-lg) {
-    flex: 0 0 100%;
-  }
+    &__header {
+      @include flex-between;
+      margin-bottom: $sp-4;
+      flex-wrap: wrap;
+      gap: $sp-4;
+    }
 
-  &.selected {
-    border-color: $primary;
-    background: rgba($primary, 0.02);
-  }
+    &__sender {
+      @include flex-start;
+      gap: $sp-4;
+    }
 
-  &__selection {
-    cursor: pointer;
-    color: var(--text-tertiary);
-    padding-top: $sp-1;
+    &__avatar {
+      width: 40px;
+      height: 40px;
+      background-color: $primary;
+      color: $light-bg-primary;
+      border-radius: 50%;
+      @include flex-center;
+      font-weight: $fw-bold;
+      font-size: $fs-lg;
+    }
 
-    svg {
-      font-size: $fs-xl;
-      &.selected {
+    &__info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__name {
+      font-size: $fs-base;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+
+    &__email {
+      font-size: $fs-sm;
+      color: var(--text-secondary);
+      text-decoration: none;
+
+      &:hover {
         color: $primary;
+        text-decoration: underline;
+      }
+    }
+
+    &__date {
+      font-size: $fs-sm;
+      color: var(--text-tertiary);
+      white-space: nowrap;
+    }
+
+    &__content {
+      margin-bottom: $sp-6;
+      padding-left: $sp-12;
+
+      @include sm {
+        padding-left: 56px;
+      }
+    }
+
+    &__body {
+      font-size: $fs-base;
+      color: var(--text-secondary);
+      line-height: $lh-relaxed;
+      white-space: pre-wrap;
+
+      .message-subject {
+        span {
+          font-weight: bold;
+          margin-right: 5px;
+        }
+      }
+    }
+
+    &__footer {
+      @include flex-end;
+      gap: $sp-3;
+      padding-top: $sp-4;
+      border-top: 1px solid var(--border);
+
+      .btn-primary {
+        @include button-primary;
+        gap: $sp-2;
+      }
+
+      .btn-secondary {
+        @include button-secondary;
+        gap: $sp-2;
+      }
+
+      .btn-sm {
+        padding: $sp-2 $sp-3;
+        font-size: $fs-sm;
+      }
+
+      .btn-icon {
+        margin: 0;
+        width: 48px;
+        height: 48px;
+        transition: all $transition-fast;
+        font-size: $fs-2xl;
+
+        svg {
+          width: 16px;
+          height: 16px;
+        }
       }
     }
   }
-
-  &__main {
-    flex: 1;
-    min-width: 0;
-  }
-
-  &.unread {
-
-    .message-card__name, .message-card__email, .message-card__date, .message-subject, .main-subject{
-      color: $primary !important;
-    }
-    .message-card__footer{
-      border-top: 1px solid $primary
-    }
-  }
-
-  &__header {
-    @include flex-between;
-    margin-bottom: $sp-4;
-    flex-wrap: wrap;
-    gap: $sp-4;
-  }
-
-  &__sender {
-    @include flex-start;
-    gap: $sp-4;
-  }
-
-  &__avatar {
-    width: 40px;
-    height: 40px;
-    background-color: $primary;
-    color: $light-bg-primary;
-    border-radius: 50%;
-    @include flex-center;
-    font-weight: $fw-bold;
-    font-size: $fs-lg;
-  }
-
-  &__info {
-    display: flex;
-    flex-direction: column;
-  }
-
-  &__name {
-    font-size: $fs-base;
-    color: var(--text-primary);
-    margin-bottom: 2px;
-  }
-
-  &__email {
-    font-size: $fs-sm;
-    color: var(--text-secondary);
-    text-decoration: none;
-
-    &:hover {
-      color: $primary;
-      text-decoration: underline;
-    }
-  }
-
-  &__date {
-    font-size: $fs-sm;
-    color: var(--text-tertiary);
-    white-space: nowrap;
-  }
-
-  &__content {
-    margin-bottom: $sp-6;
-    padding-left: $sp-12; 
-
-    @include sm {
-      padding-left: 56px;
-    }
-  }
-
-  &__body {
-    font-size: $fs-base;
-    color: var(--text-secondary);
-    line-height: $lh-relaxed;
-    white-space: pre-wrap;
-    .message-subject{
-      span{
-        font-weight: bold;
-        margin-right: 5px;
-      }
-    }
-  }
-
-  &__footer {
-    @include flex-end;
-    gap: $sp-3;
-    padding-top: $sp-4;
-    border-top: 1px solid var(--border);
-    .btn-primary {
-  @include button-primary;
-  gap: $sp-2;
 }
-
-.btn-secondary {
-  @include button-secondary;
-  gap: $sp-2;
-}
-
-.btn-sm {
-  padding: $sp-2 $sp-3;
-  font-size: $fs-sm;
-}
-
-.btn-icon {
-  margin: 0;
-  width: 48px;
-  height: 48px;
-  transition: all $transition-fast;
-  font-size: $fs-2xl;
-
-  svg {
-    width: 16px;
-    height: 16px;
-  }
-}
-  }
-}
-
-

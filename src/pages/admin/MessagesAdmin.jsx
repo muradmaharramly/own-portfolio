@@ -19,6 +19,7 @@ const MessagesAdmin = () => {
   const [confirmAllOpen, setConfirmAllOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedIds, setSelectedIds] = useState([]);
+  const [isSelectionMode, setIsSelectionMode] = useState(false);
 
   useEffect(() => {
     dispatch(fetchContactMessages());
@@ -62,6 +63,15 @@ const MessagesAdmin = () => {
       setSelectedIds([]);
     } else {
       setSelectedIds(filteredMessages.map(m => m.id));
+    }
+  };
+
+  const toggleSelectionMode = () => {
+    if (isSelectionMode) {
+      setIsSelectionMode(false);
+      setSelectedIds([]);
+    } else {
+      setIsSelectionMode(true);
     }
   };
 
@@ -134,29 +144,42 @@ const MessagesAdmin = () => {
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
-
-          <div className="admin-header__actions">
-            <div className="btn-icon secondary btn-sm" onClick={handleRefresh} title="Yenilə">
-              <FiRefreshCw className={loading ? 'spinning' : ''} />
-            </div>
-            <div className="btn-icon primary btn-sm" onClick={handleMarkAllRead} title="Hamısını oxunmuş işarələ">
-              <IoCheckmarkDone />
-            </div>
-            <div className="btn-icon danger btn-sm" onClick={() => setConfirmAllOpen(true)} title="Hamısını sil">
-              <FiTrash />
-            </div>
-          </div>
         </div>
       </div>
 
       <div className="messages-toolbar">
-        <div className="select-all" onClick={toggleSelectAll}>
-          {selectedIds.length > 0 && selectedIds.length === filteredMessages.length ? (
-            <IoCheckbox className="selected" />
+        <div className="messages-toolbar__start">
+          {!isSelectionMode ? (
+            <button className="btn-toolbar" onClick={toggleSelectionMode}>
+              <span>Seç</span>
+            </button>
           ) : (
-            <IoSquareOutline />
+            <div className="selection-controls">
+              <div className="select-all" onClick={toggleSelectAll}>
+                {selectedIds.length > 0 && selectedIds.length === filteredMessages.length ? (
+                  <IoCheckbox className="selected" />
+                ) : (
+                  <IoSquareOutline />
+                )}
+                <span>Hamısını seç ({selectedIds.length})</span>
+              </div>
+              <button className="btn-cancel" onClick={toggleSelectionMode}>
+                Ləğv et
+              </button>
+            </div>
           )}
-          <span>Hamısını seç ({selectedIds.length})</span>
+        </div>
+
+        <div className="messages-toolbar__end">
+          <div className="btn-icon secondary btn-sm" onClick={handleRefresh} title="Yenilə">
+            <FiRefreshCw className={loading ? 'spinning' : ''} />
+          </div>
+          <div className="btn-icon primary btn-sm" onClick={handleMarkAllRead} title="Hamısını oxunmuş işarələ">
+            <IoCheckmarkDone />
+          </div>
+          <div className="btn-icon danger btn-sm" onClick={() => setConfirmAllOpen(true)} title="Hamısını sil">
+            <FiTrash />
+          </div>
         </div>
       </div>
 
@@ -173,9 +196,11 @@ const MessagesAdmin = () => {
               key={msg.id} 
               className={`message-card ${msg.is_read ? 'read' : 'unread'} ${selectedIds.includes(msg.id) ? 'selected' : ''}`}
             >
-              <div className="message-card__selection" onClick={() => toggleSelect(msg.id)}>
-                {selectedIds.includes(msg.id) ? <IoCheckbox className="selected" /> : <IoSquareOutline />}
-              </div>
+              {isSelectionMode && (
+                <div className="message-card__selection" onClick={() => toggleSelect(msg.id)}>
+                  {selectedIds.includes(msg.id) ? <IoCheckbox className="selected" /> : <IoSquareOutline />}
+                </div>
+              )}
               <div className="message-card__main">
                 <div className="message-card__header">
                   <div className="message-card__sender">
