@@ -56,13 +56,6 @@
     display: flex;
     gap: $sp-2;
 
-    .btn-icon {
-      border-radius: $radius-lg;
-      background: var(--bg-tertiary);
-      border: 1px solid var(--border);
-      color: var(--text-secondary);
-      transition: all $transition-fast;
-    }
   }
 
   &__info {
@@ -104,9 +97,13 @@
     padding: $sp-2 $sp-3;
     background: transparent;
     border: 1px solid var(--border);
-    border-radius: $radius-md;
+    border-radius: $radius-sm;
     overflow: hidden;
-  }
+    -webkit-border-radius: $radius-sm;
+    -moz-border-radius: $radius-sm;
+    -ms-border-radius: $radius-sm;
+    -o-border-radius: $radius-sm;
+}
 
   &__url-text {
     font-size: $fs-xs;

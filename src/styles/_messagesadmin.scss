@@ -118,26 +118,34 @@
     gap: $sp-3;
     padding-top: $sp-4;
     border-top: 1px solid var(--border);
-  }
-  .btn-primary {
-  padding: $sp-4 !important;
-  font-size: $fs-sm !important;
-  border-radius: $sp-3 !important;
-  -webkit-border-radius: $sp-3 !important;
-  -moz-border-radius: $sp-3 !important;
-  -ms-border-radius: $sp-3 !important;
-  -o-border-radius: $sp-3 !important;
+    .btn-primary {
+  @include button-primary;
+  gap: $sp-2;
 }
 
-.btn-danger-outline {
-  color: $danger;
-  border-color: $danger !important;
+.btn-secondary {
+  @include button-secondary;
+  gap: $sp-2;
+}
 
-  &:hover {
-    background-color: $danger;
-    color: $light-bg-primary;
+.btn-sm {
+  padding: $sp-2 $sp-3;
+  font-size: $fs-sm;
+}
+
+.btn-icon {
+  margin: 0;
+  width: 48px;
+  height: 48px;
+  transition: all $transition-fast;
+  font-size: $fs-2xl;
+
+  svg {
+    width: 16px;
+    height: 16px;
   }
 }
+  }
 }
 
 

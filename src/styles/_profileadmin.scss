@@ -489,13 +489,17 @@
 
 .btn-danger {
   @include button-base;
-      background: linear-gradient(180deg, rgba(var(--danger-rgb), 0.8), rgba(var(--danger-rgb), 0.1));
-      color: $light-bg-primary;
-      gap: $sp-2;
-      border: 1px solid rgba(var(--danger-rgb), 0.5);
-      height: 56px;
-
-      &:hover {
+  border-radius: $radius-lg;
+  background: linear-gradient(180deg, rgba(var(--danger-rgb), 0.8), rgba(var(--danger-rgb), 0.1));
+  color: $light-bg-primary;
+  gap: $sp-2;
+  border: 1px solid rgba(var(--danger-rgb), 0.5);
+  height: 56px;
+  -webkit-border-radius: $radius-lg;
+  -moz-border-radius: $radius-lg;
+  -ms-border-radius: $radius-lg;
+  -o-border-radius: $radius-lg;
+  &:hover {
         background: linear-gradient(180deg, rgba(var(--danger-rgb), 1), rgba(var(--danger-rgb), 0.6));
         border: 1px solid rgba(var(--danger-rgb), 0.5);
       }

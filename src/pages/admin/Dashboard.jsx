@@ -206,8 +206,8 @@ const Dashboard = () => {
           <p className="dashboard__subtitle">Xoş gəldiniz, {profile?.full_name || 'Admin'}</p>
         </div>
         <Link to="/" className="dashboard__view-site" target="_blank">
-          <span>Sayta bax</span>
           <FiExternalLink />
+          <span>Sayta bax</span>
         </Link>
       </div>
 

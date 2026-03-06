@@ -110,24 +110,24 @@ const MessagesAdmin = () => {
 
               <div className="message-card__footer">
                 {!msg.is_read ? (
-                  <button 
-                    className="btn btn-sm btn-primary"
+                  <div
+                    className="btn-icon primary btn-sm"
                     onClick={() => handleMarkAsRead(msg.id)}
                   >
                     <FiCheck />
-                  </button>
+                  </div>
                 ) : (
-                  <span className="status-read btn btn-sm btn-primary">
+                  <div className="btn-icon primary btn-sm status-read ">
                     <IoCheckmarkDone />
-                  </span>
+                  </div>
                 )}
                 
-                <button 
-                  className="btn btn-danger btn-sm"
+                <div
+                  className="btn-icon danger btn-sm"
                   onClick={() => confirmDelete(msg.id)}
                 >
                   <FiTrash />
-                </button>
+                </div>
               </div>
             </div>
           ))}

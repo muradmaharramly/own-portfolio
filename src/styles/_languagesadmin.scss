@@ -40,14 +40,6 @@
   &__actions {
     display: flex;
     gap: $sp-2;
-
-    .btn-icon {
-      border-radius: $radius-lg;
-      background: var(--bg-tertiary);
-      border: 1px solid var(--border);
-      color: var(--text-secondary);
-      transition: all $transition-fast;
-    }
   }
 
   &__main {
@@ -162,6 +154,7 @@
     }
   }
 }
+
 
 .btn-icon {
   @include button-base;
