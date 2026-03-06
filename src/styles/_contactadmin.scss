@@ -1,6 +1,9 @@
 .contact-admin {
     .admin-header{
         @include flex-between;
+        .admin-title{
+       font-size: $fs-4xl;
+    }
     }
   &__card {
     display: flex;

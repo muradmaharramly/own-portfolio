@@ -7,6 +7,9 @@
   flex-wrap: wrap;
   gap: $sp-4;
 }
+.admin-title{
+       font-size: $fs-4xl;
+}
 
 .message-card {
   @extend .glass-card;

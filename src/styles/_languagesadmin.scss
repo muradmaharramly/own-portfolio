@@ -6,6 +6,9 @@
   .admin-header {
     @include flex-between;
     margin-bottom: $sp-2;
+    .admin-title{
+       font-size: $fs-4xl;
+    }
   }
   &__grid {
     @include grid-auto(280px);

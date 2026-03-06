@@ -1,18 +1,11 @@
-// ============================================
-// components/Home/QRCode.scss
-// ============================================
 
-.qr-section {
-  display: none;
-  padding: 0;
-}
 
 .admin-layout .qr-section {
   padding: $sp-2 0;
   display: block;
 }
-
 .qr-admin {
+  width: 100%;
   padding: 0;
   .admin-header {
     @include flex-between;
