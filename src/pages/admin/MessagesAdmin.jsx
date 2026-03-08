@@ -10,6 +10,7 @@ import { IoCheckmarkDone, IoSquareOutline, IoCheckbox } from 'react-icons/io5';
 import ConfirmDialog from '../../components/Common/ConfirmDialog';
 import EmptyState from '../../components/Common/EmptyState';
 import { toast } from 'react-toastify';
+import { RiRefreshLine } from 'react-icons/ri';
 
 const MessagesAdmin = () => {
   const dispatch = useDispatch();
@@ -172,7 +173,7 @@ const MessagesAdmin = () => {
 
         <div className="messages-toolbar__end">
           <div className="btn-icon secondary btn-sm" onClick={handleRefresh} title="Yenilə">
-            <FiRefreshCw className={loading ? 'spinning' : ''} />
+            <RiRefreshLine className={loading ? 'spinning' : ''} />
           </div>
           <div className="btn-icon primary btn-sm" onClick={handleMarkAllRead} title="Hamısını oxunmuş işarələ">
             <IoCheckmarkDone />

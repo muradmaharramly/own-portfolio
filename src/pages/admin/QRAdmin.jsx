@@ -133,9 +133,9 @@ const QRAdmin = () => {
           transition={{ duration: 0.5 }}
         >
           <div className="qr-card__left">
-            <h3 className="qr-card__title">Scan to Visit</h3>
+            <h3 className="qr-card__title">Ziyarət etmək üçün skan edin</h3>
             <p className="qr-card__description">
-              Scan this QR code to visit my portfolio on your mobile device.
+              Mobil cihazınızdan portfolioma daxil olmaq üçün bu QR kodu skan edin.
             </p>
             <div className="qr-card__meta">
               <a
@@ -157,7 +157,7 @@ const QRAdmin = () => {
                 disabled={!isActive}
               >
                 <FiDownload />
-                Download QR Code
+                QR Kodu yüklə
               </button>
               <button
                 onClick={toggleQRStatus}
