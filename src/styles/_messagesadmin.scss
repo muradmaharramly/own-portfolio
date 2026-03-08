@@ -76,17 +76,22 @@
     margin-bottom: $sp-4;
     padding: $sp-4;
     background: transparent;
-    border-radius: $radius-md;
+    border-radius: $radius-lg;
     border: 1px solid var(--border);
-
-    &__start {
+    @extend .glass-card;
+    
+    -webkit-border-radius: $radius-lg;
+    -moz-border-radius: $radius-lg;
+    -ms-border-radius: $radius-lg;
+    -o-border-radius: $radius-lg;
+    &__start{
       display: flex;
       align-items: center;
       gap: $sp-4;
 
       .btn-toolbar {
         @include button-base;
-        padding: $sp-2 $sp-4;
+        padding: $sp-4;
         font-size: $fs-sm;
         background: transparent;
         border: 1px solid var(--border);
