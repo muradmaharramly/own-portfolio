@@ -45,7 +45,9 @@
         min-width: 400px;
         transition: all $transition-base;
         padding: $sp-4;
-
+        @media (max-width: $breakpoint-md) {
+         min-width: 325px;
+    }
         svg {
           color: var(--text-tertiary);
         }
