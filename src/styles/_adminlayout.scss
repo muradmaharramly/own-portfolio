@@ -264,7 +264,6 @@
     top: calc(100% + 8px);
     left: 0;
     right: 0;
-    background: var(--bg-secondary);
     border: 1px solid var(--border);
     border-radius: $radius-lg;
     box-shadow: var(--shadow-lg);
@@ -273,6 +272,14 @@
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     animation: fadeIn $transition-base;
+
+    [data-theme='dark'] & {
+      background: rgba(20, 20, 20, 0.8);
+    }
+
+    [data-theme='light'] & {
+      background: rgba(255, 255, 255, 0.8);
+    }
   }
 
   &__search-item {
@@ -519,7 +526,6 @@
     right: 0;
     width: 360px;
     max-height: 420px;
-    
     border-radius: $radius-lg;
     border: 1px solid var(--border);
     box-shadow: var(--shadow-lg);
@@ -529,7 +535,14 @@
     animation: fadeIn $transition-base;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(16px);
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(255,255,255,0.03));
+
+    [data-theme='dark'] & {
+      background: rgba(20, 20, 20, 0.8);
+    }
+
+    [data-theme='light'] & {
+      background: rgba(255, 255, 255, 0.8);
+    }
 
     &::before {
       content: '';
