@@ -21,7 +21,7 @@ import {
 import { toggleTheme } from '../../redux/slices/themeSlice';
 import { signOut } from '../../redux/slices/authSlice';
 import { IoMdLogOut } from 'react-icons/io';
-import { FiMoon, FiSun, FiUser, FiDownload, FiMenu, FiX, FiBell, FiSearch } from 'react-icons/fi';
+import { FiMoon, FiSun, FiUser, FiDownload, FiMenu, FiX, FiBell, FiSearch, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { HiOutlineChartBar } from 'react-icons/hi';
 import { PiGraduationCap } from 'react-icons/pi';
 import { IoBriefcaseOutline, IoRocketOutline, IoShareSocialOutline } from 'react-icons/io5';
@@ -41,6 +41,7 @@ import { toast } from 'react-toastify';
 
 const AdminLayout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearchFocused, setIsSearchFocused] = useState(false);
@@ -245,17 +246,26 @@ const AdminLayout = ({ children }) => {
   const filteredSearchResults = getFilteredSearchResults();
 
   return (
-    <div className="admin-layout">
+    <div className={`admin-layout ${isCollapsed ? 'admin-layout--collapsed' : ''}`}>
       {/* Sidebar */}
-      <aside className={`admin-sidebar ${sidebarOpen ? 'admin-sidebar--open' : ''}`}>
+      <aside className={`admin-sidebar ${sidebarOpen ? 'admin-sidebar--open' : ''} ${isCollapsed ? 'admin-sidebar--collapsed' : ''}`}>
         <div className="admin-sidebar__header">
-          <h2 className="admin-sidebar__logo">Admin Panel</h2>
-          <div
-            className="admin-sidebar__close"
-            onClick={() => setSidebarOpen(false)}
-            aria-label="Close sidebar"
-          >
-            <FiX/>
+          {!isCollapsed && <h2 className="admin-sidebar__logo">Admin Panel</h2>}
+          <div className="admin-sidebar__controls">
+            <div
+              className="admin-sidebar__toggle"
+              onClick={() => setIsCollapsed(!isCollapsed)}
+              aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+            >
+              {isCollapsed ? <FiChevronRight /> : <FiChevronLeft />}
+            </div>
+            <div
+              className="admin-sidebar__close"
+              onClick={() => setSidebarOpen(false)}
+              aria-label="Close sidebar"
+            >
+              <FiX/>
+            </div>
           </div>
         </div>
 

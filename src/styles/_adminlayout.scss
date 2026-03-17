@@ -17,7 +17,7 @@
   backdrop-filter: blur(5px);
   @include flex-column;
   z-index: $z-fixed;
-  transition: transform $transition-base;
+  transition: transform $transition-base, width $transition-base;
 
   @media (max-width: $breakpoint-lg) {
     transform: translateX(-100%);
@@ -27,10 +27,66 @@
     }
   }
 
+  &--collapsed {
+    width: 80px;
+
+    .admin-sidebar__header {
+      justify-content: center;
+      padding: $sp-4 0;
+    }
+
+    .admin-sidebar__logo {
+      display: none;
+    }
+
+    .admin-sidebar__link {
+      justify-content: center;
+      padding: $sp-3 0;
+      gap: 0;
+    }
+
+    .admin-sidebar__label,
+    .admin-sidebar__badge {
+      display: none;
+    }
+
+    .admin-sidebar__icon {
+      margin: 0;
+    }
+  }
+
   &__header {
     @include flex-between;
     padding: $sp-4;
     border-bottom: 1px solid var(--border);
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    gap: $sp-2;
+  }
+
+  &__toggle {
+    @include flex-center;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    border-radius: $radius-md;
+    transition: all $transition-base;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.05);
+
+    &:hover {
+      color: $primary;
+      border-color: $primary;
+      background: rgba(var(--primary-rgb), 0.1);
+    }
+
+    @media (max-width: $breakpoint-lg) {
+      display: none;
+    }
   }
 
   &__logo-container {
@@ -163,13 +219,20 @@
 
 .admin-main {
   flex: 1;
+  min-width: 0;
+  width: 1260px;
   margin-left: 0;
   min-height: 100vh;
-  width: 1260px;
   @include flex-column;
+  transition: margin-left $transition-base;
 
   @media (min-width: $breakpoint-lg) {
     margin-left: 280px;
+
+    .admin-layout--collapsed & {
+      margin-left: 80px;
+      width: 1460px;
+    }
   }
 }
 
