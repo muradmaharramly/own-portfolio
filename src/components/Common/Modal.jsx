@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { IoMdClose } from 'react-icons/io';
 import { IoClose } from 'react-icons/io5';
 
-const Modal = ({ isOpen, onClose, title, children, size = 'md' }) => {
+const Modal = ({ isOpen, onClose, title, children, size = 'md', className = '' }) => {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -36,7 +36,7 @@ const Modal = ({ isOpen, onClose, title, children, size = 'md' }) => {
   return ReactDOM.createPortal(
     <div className="modal-overlay" onClick={onClose}>
       <div 
-        className={`modal modal--${size}`} 
+        className={`modal modal--${size} ${className}`} 
         onClick={(e) => e.stopPropagation()}
       >
         <div className="modal__header">

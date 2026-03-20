@@ -418,6 +418,48 @@
   }
 }
 
+.skills-modal {
+  &.modal {
+    @include bento-card;
+    @extend .glass-card;
+    border-radius: $radius-2xl;
+    backdrop-filter: blur(25px);
+    
+    .modal__header {
+      border-bottom: 1px solid rgba(var(--primary-rgb), 0.1);
+      padding-bottom: $sp-4;
+      margin-bottom: $sp-4;
+    }
+
+    .modal__title {
+      font-size: $fs-2xl;
+      font-weight: $fw-bold;
+    }
+  }
+  
+  &--tech {
+    &.modal {
+      border-color: rgba(var(--primary-rgb), 0.3) !important;
+      box-shadow: 0 0 30px rgba(var(--primary-rgb), 0.15);
+      
+      .modal__title {
+        color: $primary;
+      }
+    }
+  }
+
+  &--soft {
+    &.modal {
+      border-color: rgba(var(--secondary-rgb), 0.3) !important;
+      box-shadow: 0 0 30px rgba(var(--secondary-rgb), 0.15);
+      
+      .modal__title {
+        color: $secondary;
+      }
+    }
+  }
+}
+
 .skills-modal-content {
   padding: $sp-4 0;
   

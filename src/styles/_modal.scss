@@ -21,6 +21,17 @@
   z-index: $z-modal;
   animation: scaleIn $transition-base;
   box-shadow: $shadow-2xl;
+  backdrop-filter: blur(20px);
+
+  [data-theme='dark'] & {
+    background: linear-gradient(180deg, rgba(20, 20, 20, 0.9), rgba(10, 10, 10, 0.95));
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  [data-theme='light'] & {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(245, 245, 245, 0.95));
+    border-color: rgba(0, 0, 0, 0.1);
+  }
 
   &--sm {
     max-width: 400px;

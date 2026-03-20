@@ -194,6 +194,7 @@ const AboutDetailed = () => {
         onClose={() => setTechModalOpen(false)} 
         title="Tools & Technologies"
         size="lg"
+        className="skills-modal skills-modal--tech"
       >
         <div className="skills-modal-content">
           <div className="bento-card__tags">
@@ -209,6 +210,7 @@ const AboutDetailed = () => {
         onClose={() => setSoftModalOpen(false)} 
         title="Soft Skills"
         size="lg"
+        className="skills-modal skills-modal--soft"
       >
         <div className="skills-modal-content">
           <div className="bento-card__tags">
@@ -275,9 +277,7 @@ const AboutDetailed = () => {
               <span>I can collaborate with you on your project.</span>
             </li>
           </ul>
-          <a href="#contact" className="btn-primary btn-sm btn-block">
-            Hire Me
-          </a>
+         
         </motion.div>
       </div>
     </motion.div>
