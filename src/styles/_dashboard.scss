@@ -19,10 +19,7 @@
     margin: $sp-2 0 0;
   }
 
-  &__view-site {
-    @include button-primary;
-    gap: $sp-2;
-  }
+  
 
   &__stats {
     @include grid-auto(250px, $sp-6);
@@ -165,6 +162,9 @@
   @include bento-card;
   @extend .glass-card;
   padding: $sp-6;
+  @media (max-width: $breakpoint-md) {
+      max-width: 325px;
+    }
   
   .tag-category-header {
     @include flex-start;

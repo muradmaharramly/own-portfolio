@@ -18,6 +18,7 @@
   }
 }
 .language-circle {
+  @include bento-card;
   @extend .glass-card;
   padding: $sp-4 $sp-6;
   border-radius: $radius-lg;

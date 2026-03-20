@@ -180,6 +180,10 @@
     position: relative;
     overflow: hidden;
 
+    [data-theme='light'] & {
+             background: linear-gradient(180deg, rgba(229, 229, 229, 0.21), rgba(240, 240, 240, 0.275));
+        }
+
     &:hover {
       background: transparent;
       transform: translateY(-2px);

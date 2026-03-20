@@ -121,7 +121,7 @@
     }
 
     &::before {
-      @extend .glass-card;
+     backdrop-filter: blur(3px);
       content: '';
       position: absolute;
       inset: -15px;
@@ -189,16 +189,19 @@
     opacity: 0.3;
     z-index: -2;
     animation: float 6s ease-in-out infinite;
-  }
+    -webkit-filter: blur(60px);
+}
 
   &__badge {
-    @extend .glass-card;
+     @extend .glass-card;
+    @include bento-card;
     position: absolute;
     top: 30px;
     right: -20px;
     padding: $sp-3 $sp-6;
     border-radius: $radius-full;
     z-index: 2;
+    border: 1px solid rgba(var(--primary-rgb), 0.2);
 
     &-text {
       font-size: $fs-sm;

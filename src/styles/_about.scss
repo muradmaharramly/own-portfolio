@@ -44,7 +44,7 @@
     }
 
     &::before {
-      @extend .glass-card;
+      backdrop-filter: blur(2px);
       content: '';
       position: absolute;
       inset: -15px;
@@ -121,12 +121,14 @@
   
 
   &__badge {
+     @extend .glass-card;
+    @include bento-card;
     position: absolute;
     bottom: 30px;
     right: -20px;
-    @extend .glass-card;
     padding: $sp-3 $sp-6;
     border-radius: $radius-full;
+    border: 1px solid rgba(var(--primary-rgb), 0.2);
     
     z-index: 2;
 
@@ -266,6 +268,7 @@
 }
 
 .bento-card {
+  @include bento-card;
   @extend .glass-card;
   padding: $sp-6;
   border-radius: $radius-xl;

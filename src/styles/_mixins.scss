@@ -160,6 +160,7 @@
   border-radius: $sp-2;
   transition: all 0.2s;
   backdrop-filter: none;
+  
 
   &:hover:not(:disabled) {
     background: linear-gradient(180deg, $primary-hover, $secondary);

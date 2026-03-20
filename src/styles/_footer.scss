@@ -25,10 +25,11 @@
     @include flex-center;
     width: 48px;
     height: 48px;
-    background: var(--bg-primary);
+    background: transparent;
     border: 1px solid var(--border);
     border-radius: $radius-lg;
     color: var(--text-secondary);
+    backdrop-filter: blur(2px);
     font-size: $fs-xl;
     text-decoration: none;
     transition: all $transition-base $ease-out;

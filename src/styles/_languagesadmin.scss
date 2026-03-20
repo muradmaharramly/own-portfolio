@@ -18,6 +18,7 @@
 }
 
 .language-admin-card {
+  @include bento-card;
   @extend .glass-card;
   border-radius: $radius-xl;
   padding: $sp-5;

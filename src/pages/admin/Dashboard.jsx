@@ -205,7 +205,7 @@ const Dashboard = () => {
           <h1 className="dashboard__title">Dashboard</h1>
           <p className="dashboard__subtitle">Xoş gəldiniz, {profile?.full_name || 'Admin'}</p>
         </div>
-        <Link to="/" className="dashboard__view-site" target="_blank">
+        <Link to="/" className="btn-primary" target="_blank">
           <FiExternalLink />
           <span>Sayta bax</span>
         </Link>

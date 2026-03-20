@@ -68,9 +68,10 @@
   }
 
   &__item {
+    @include bento-card;
     @extend .glass-card;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: $sp-4;
     padding: $sp-4;
     border-radius: $radius-lg;
@@ -88,6 +89,7 @@
         color: var(--text-secondary);
         transition: color $transition-base;
         text-decoration: none;
+        margin: auto;
 
         &:hover {
           color: $primary;
@@ -108,6 +110,7 @@
   }
 
   &__form-wrapper {
+    @include bento-card;
     @extend .glass-card;
     transition: transform $transition-base, box-shadow $transition-base;
     border-radius: $radius-lg;

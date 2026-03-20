@@ -161,6 +161,10 @@
       transform: translateX(4px);
       border: 1px solid $dark-border;
        box-shadow: var(--shadow-sm);
+       [data-theme='light'] & {
+             background: linear-gradient(180deg, rgba(194, 194, 194, 0.21), rgba(240, 240, 240, 0.275));
+             border: 1px solid #9898984e;
+        }
     }
 
     &--active {
@@ -172,6 +176,9 @@
         transform: none;
         background: linear-gradient(180deg, $primary-hover, $secondary);
         color: white;
+        [data-theme='light'] & {
+              background: linear-gradient(180deg, $primary-hover, $secondary);
+        }
       }
     }
   }
@@ -245,6 +252,9 @@
   position: sticky;
   top: 0;
   z-index: $z-sticky;
+  @media (max-width: $breakpoint-sm) {
+      padding: $sp-2 $sp-3;
+    }
   &__menu{
     @extend .glass-card;
     display: none;
@@ -287,18 +297,31 @@
     display: flex;
         align-items: center;
         gap: $sp-2;
-        background: var(--bg-tertiary);
         border: 1px solid var(--border);
         border-radius: $radius-lg;
         @include input-base;
         min-width: 400px;
         transition: all $transition-base;
         padding: $sp-3 $sp-4;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.293), rgba(11, 11, 11, 0.14));
+
+        [data-theme='dark'] & {
+          background: linear-gradient(180deg, rgba(0, 0, 0, 0.293), rgba(11, 11, 11, 0.14));
+        }
+
+        [data-theme='light'] & {
+          background: linear-gradient(180deg, rgba(229, 229, 229, 0.21), rgba(240, 240, 240, 0.275));
+          border: 1px solid #c7c7c77c;
+        }
+
         @media (max-width: $breakpoint-md) {
          min-width: 325px;
-    }
+        }
         svg {
           color: var(--text-tertiary);
+          [data-theme='light'] & {
+             color: #989898ca;
+        }
         }
 
         input {
@@ -311,6 +334,9 @@
 
           &::placeholder {
             color: var(--text-tertiary);
+            [data-theme='light'] & {
+             color: #989898ca;
+        }
           }
         }
 
@@ -463,6 +489,14 @@
        box-shadow: var(--shadow-sm);
         color: $danger-hover;
         border-color: rgba(var(--danger-rgb), 0.5);
+        [data-theme='light'] & {
+             background: linear-gradient(180deg, rgba(255, 0, 0, 0.411), rgba(255, 47, 47, 0.159));
+        }
+    }
+    @media (max-width: $breakpoint-sm) {
+      padding: $sp-2;
+      width: 40px;
+      height: 40px;
     }
 
   }
@@ -488,7 +522,7 @@
 
 
   &__theme {
-    width: 40px !important;
+    width: 40px;
     height: 40px;
     border-radius: $radius-full;
     @extend .glass-card;
@@ -499,6 +533,9 @@
     transition: all $transition-base $ease-out;
     position: relative;
     overflow: hidden;
+    [data-theme='light'] & {
+             background: linear-gradient(180deg, rgba(229, 229, 229, 0.21), rgba(240, 240, 240, 0.275));
+        }
 
     &:hover {
       background: transparent;
@@ -552,6 +589,9 @@
     transition: all $transition-base $ease-out;
     text-decoration: none;
     position: relative;
+    [data-theme='light'] & {
+             background: linear-gradient(180deg, rgba(229, 229, 229, 0.21), rgba(240, 240, 240, 0.275));
+        }
 
     &:hover {
       background: transparent;
