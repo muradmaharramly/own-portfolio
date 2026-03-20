@@ -1,6 +1,7 @@
 // src/components/common/Modal.jsx
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
+import { IoMdClose } from 'react-icons/io';
 import { IoClose } from 'react-icons/io5';
 
 const Modal = ({ isOpen, onClose, title, children, size = 'md' }) => {
@@ -48,7 +49,7 @@ const Modal = ({ isOpen, onClose, title, children, size = 'md' }) => {
             tabIndex={0}
             onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onClose()}
           >
-            <IoClose size={24} />
+            <IoMdClose size={24}/>
           </div>
         </div>
         <div className="modal__body">

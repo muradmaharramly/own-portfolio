@@ -56,17 +56,21 @@
     width: 40px;
     height: 40px;
     background: var(--bg-tertiary);
-    border: none;
+    border: 1px solid var(--border);
     border-radius: $radius-md;
     cursor: pointer;
     color: var(--text-secondary);
-    transition: all $transition-fast;
-
-    &:hover {
-      background: $danger;
-      color: white;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+     &:hover {
+      border: 1px solid $danger;
+      color: $danger;
     }
-  }
+}
+
 
   &__body {
     @include custom-scrollbar;

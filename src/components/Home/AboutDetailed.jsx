@@ -1,7 +1,7 @@
-import React, { useMemo, useEffect } from 'react';
+import React, { useMemo, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { motion } from 'framer-motion';
-import { FaCode, FaClock, FaHandshake, FaCheckCircle, FaUsers, FaReact, FaHeart } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaCode, FaClock, FaHandshake, FaCheckCircle, FaUsers, FaReact, FaHeart, FaChevronRight } from 'react-icons/fa';
 import { BiTimeFive } from 'react-icons/bi';
 import { fetchProjects } from '../../redux/slices/projectsSlice';
 import { fetchExperience } from '../../redux/slices/experienceSlice';
@@ -12,11 +12,12 @@ import { GoCheckCircle, GoClock } from 'react-icons/go';
 import { BsPersonCheck } from 'react-icons/bs';
 import { GrTechnology } from 'react-icons/gr';
 import { FaRegCircleCheck } from 'react-icons/fa6';
-import { FiHeart } from 'react-icons/fi';
+import { FiHeart, FiX } from 'react-icons/fi';
 import { HiCodeBracket } from 'react-icons/hi2';
 import { RiChat3Line } from 'react-icons/ri';
 import { PiChatCircleText, PiHandshakeLight } from 'react-icons/pi';
 import { TbHeartHandshake } from 'react-icons/tb';
+import Modal from '../Common/Modal';
 
 const SOFT_SKILLS_KEYWORDS = [
   'Communication', 'Networking', 'Teamwork', 'Team Player', 'Leadership', 'Problem Solving',
@@ -35,6 +36,9 @@ const AboutDetailed = () => {
   const { items: projects, loading: projectsLoading } = useSelector((state) => state.projects);
   const { items: experience, loading: experienceLoading } = useSelector((state) => state.experience);
   const { items: education, loading: educationLoading } = useSelector((state) => state.education);
+
+  const [techModalOpen, setTechModalOpen] = useState(false);
+  const [softModalOpen, setSoftModalOpen] = useState(false);
 
   useEffect(() => {
     if (!projects.length && !projectsLoading) dispatch(fetchProjects());
@@ -132,7 +136,11 @@ const AboutDetailed = () => {
       {/* Left Column */}
       <div className="about-detailed__col">
         {/* Tools & Tech Card */}
-        <motion.div className="bento-card" variants={itemVariants}>
+        <motion.div 
+          className={`bento-card ${toolsAndTech.length > 10 ? 'bento-card--clickable' : ''}`} 
+          variants={itemVariants}
+          onClick={() => toolsAndTech.length > 10 && setTechModalOpen(true)}
+        >
           <div className="bento-card__header">
             <div className="bento-card__icon">
               <GrTechnology />
@@ -145,12 +153,20 @@ const AboutDetailed = () => {
             )) : (
               <span className="skill-tag">Loading...</span>
             )}
-            {toolsAndTech.length > 10 && <span className="skill-tag">+{toolsAndTech.length - 10} more</span>}
+            {toolsAndTech.length > 10 && (
+              <button className="skill-tag skill-tag--more">
+                +{toolsAndTech.length - 10} more <FaChevronRight size={10} />
+              </button>
+            )}
           </div>
         </motion.div>
 
         {/* Soft Skills Card */}
-        <motion.div className="bento-card" variants={itemVariants}>
+        <motion.div 
+          className={`bento-card ${softSkills.length > 10 ? 'bento-card--clickable' : ''}`} 
+          variants={itemVariants}
+          onClick={() => softSkills.length > 10 && setSoftModalOpen(true)}
+        >
           <div className="bento-card__header">
             <div className="bento-card__icon">
               <BsPersonCheck />
@@ -163,10 +179,45 @@ const AboutDetailed = () => {
             )) : (
               <span className="skill-tag">Loading...</span>
             )}
-            {softSkills.length > 10 && <span className="skill-tag skill-tag--soft">+{softSkills.length - 10} more</span>}
+            {softSkills.length > 10 && (
+              <button className="skill-tag skill-tag--soft skill-tag--more">
+                +{softSkills.length - 10} more <FaChevronRight size={10} />
+              </button>
+            )}
           </div>
         </motion.div>
       </div>
+
+      {/* Modals */}
+      <Modal 
+        isOpen={techModalOpen} 
+        onClose={() => setTechModalOpen(false)} 
+        title="Tools & Technologies"
+        size="lg"
+      >
+        <div className="skills-modal-content">
+          <div className="bento-card__tags">
+            {toolsAndTech.map(skill => (
+              <span key={skill} className="skill-tag">{skill}</span>
+            ))}
+          </div>
+        </div>
+      </Modal>
+
+      <Modal 
+        isOpen={softModalOpen} 
+        onClose={() => setSoftModalOpen(false)} 
+        title="Soft Skills"
+        size="lg"
+      >
+        <div className="skills-modal-content">
+          <div className="bento-card__tags">
+            {softSkills.map(skill => (
+              <span key={skill} className="skill-tag skill-tag--soft">{skill}</span>
+            ))}
+          </div>
+        </div>
+      </Modal>
 
       {/* Right Column */}
       <div className="about-detailed__col">
