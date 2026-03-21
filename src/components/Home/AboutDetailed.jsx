@@ -270,14 +270,13 @@ const AboutDetailed = () => {
             </li>
             <li>
               <PiChatCircleText className='promise-icon' />
-              <span>I can discuss your idea with you.</span>
+              <span>I can collaborate with you to discuss and develop your ideas.</span>
             </li>
-             <li>
-              <PiHandshakeLight className='promise-icon' />
-              <span>I can collaborate with you on your project.</span>
-            </li>
+             
           </ul>
-         
+          <a href="#contact" className="btn-primary btn-sm btn-block">
+            Hire Me!
+          </a>
         </motion.div>
       </div>
     </motion.div>

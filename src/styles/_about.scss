@@ -372,7 +372,22 @@
     color: var(--text-secondary);
     margin: 0;
   }
+  .promise-card{
+    position: relative;
+  }
+  .btn-primary{
+    position: absolute;
+    right: $sp-6;
+    top: $sp-6;
+    padding: $sp-3;
+    @media (max-width: $breakpoint-md) {
+      position: relative;
+      top: 0;
+      left: 0;
+      
+    }
 
+  }
   .promise-list {
     list-style: none;
     padding: 0;
