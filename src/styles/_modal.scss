@@ -24,7 +24,7 @@
   backdrop-filter: blur(20px);
 
   [data-theme='dark'] & {
-    background: linear-gradient(180deg, rgba(20, 20, 20, 0.9), rgba(10, 10, 10, 0.95));
+    background: linear-gradient(180deg, #181922a3, #221d2d0e);
     border-color: rgba(255, 255, 255, 0.1);
   }
 
@@ -66,7 +66,7 @@
     @include flex-center;
     width: 40px;
     height: 40px;
-    background: var(--bg-tertiary);
+    background: transparent;
     border: 1px solid var(--border);
     border-radius: $radius-md;
     cursor: pointer;

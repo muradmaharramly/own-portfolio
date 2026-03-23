@@ -16,10 +16,36 @@
     position: relative;
     text-decoration: none;
     font-weight: 500;
-    padding-bottom: $sp-2;
+   
     background: $gradient-primary;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  
+   @media (max-width: $breakpoint-md) {
+    overflow: hidden;
+  border: 1px solid var(--border);
+  background: black;
+  -webkit-background-clip: none;
+  -webkit-text-fill-color: var(--primary);
+  color: var(--primary);
+  padding: $sp-2 $sp-6;
+  width: 100%;
+  text-align: center;
+  border-radius: $radius-md;
+  -webkit-border-radius: $radius-md;
+  -moz-border-radius: $radius-md;
+  -ms-border-radius: $radius-md;
+  -o-border-radius: $radius-md;
+  backdrop-filter: blur(40px);
+  [data-theme='dark'] & {
+    background: linear-gradient(180deg, #18192200, #16151f2f);
+  }
+
+  [data-theme='light'] & {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.295), rgba(245, 245, 245, 0.95));
+  }
+}
+    
 
     &::after {
       content: "";
@@ -130,36 +156,74 @@
 
   &__menu {
     @include flex-start;
+    
     gap: $sp-8;
+    overflow: hidden;
+   
+    
 
     @media (max-width: $breakpoint-md) {
-      position: fixed;
-      z-index: 1001;
-      top: 66px;
-      right: -100%;
-      width: 250px;
-      height: 100vh;
-      background: linear-gradient(180deg, rgba(7, 7, 7, 0.701), rgba(0, 0, 0, 0.647));
-      backdrop-filter: blur(40px);
-      border-left: 1px solid var(--border);
-      flex-direction: column;
-      padding: $sp-10 $sp-6;
-      box-shadow: var(--shadow-xl);
-      transition: right $transition-base $ease-out;
-      align-items: flex-start;
-      gap: $sp-6;
+  position: fixed;
+  z-index: 1001;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  max-width: 400px;
+  height: auto;
+  top: 50%;
+  transform: translate(-50%, 10%) scale(0.9);
+  opacity: 0;
+  border-radius: 20px;
+  flex-direction: column;
+  padding: $sp-6;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+  align-items: center;
+  gap: $sp-2;
+  pointer-events: none;
+  -webkit-transform: translate(-50%, 10%) scale(0.9);
+  -moz-transform: translate(-50%, 10%) scale(0.9);
+  -ms-transform: translate(-50%, 10%) scale(0.9);
+  -o-transform: translate(-50%, 10%) scale(0.9);
 
-      [data-theme='light'] & {
-        background: linear-gradient(180deg, rgba(221, 221, 221, 0.768), rgba(255, 255, 255, 0.796));
-      }
-      [data-theme='dark'] & {
-        background: linear-gradient(180deg, rgba(7, 7, 7, 0.701), rgba(0, 0, 0, 0.647));
-      }
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    background-image: 
+      linear-gradient(var(--grid-pattern) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-pattern) 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-position: center top;
+    // Fade out towards bottom and edges to make it "partial" and "decreasing opacity"
+    -webkit-mask-image: radial-gradient(circle at 50% 0%, black 0%, transparent 80%);
+    mask-image: radial-gradient(circle at 50% 0%, black 0%, transparent 80%);
+  }
 
-      &.active {
-        right: 0;
-      }
-    }
+  [data-theme='dark'] &
+{
+    background: linear-gradient(180deg, #181922da, #16151F);
+  }
+
+  [data-theme='light'] & {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(245, 245, 245, 0.95));
+  }
+
+  &.active {
+    transform: translate(-50%, 10%) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+    -webkit-transform: translate(-50%, 10%) scale(1);
+    -moz-transform: translate(-50%, 10%) scale(1);
+    -ms-transform: translate(-50%, 10%) scale(1);
+    -o-transform: translate(-50%, 10%) scale(1);
+}
+}
   }
 
   &__actions {
@@ -237,10 +301,27 @@
       background: transparent;
       color: var(--primary);
     }
+    [data-theme='light'] & {
+             background: linear-gradient(180deg, rgba(229, 229, 229, 0.21), rgba(240, 240, 240, 0.275));
+        }
 
     @media (max-width: $breakpoint-md) {
       @include flex-center;
       z-index: 1002;
+    }
+  }
+  .footer__social{
+    display: none;
+    @media (max-width: $breakpoint-md) {
+      display: flex;
+      margin-top: $sp-4;
+    }
+
+  }
+  .footer__social-link.nav{
+    color: var(--primary);
+    &:hover{
+      color: white;
     }
   }
 }
