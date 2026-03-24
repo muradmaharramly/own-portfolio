@@ -37,12 +37,13 @@
   -ms-border-radius: $radius-md;
   -o-border-radius: $radius-md;
   backdrop-filter: blur(40px);
-  [data-theme='dark'] & {
-    background: linear-gradient(180deg, #18192200, #16151f2f);
+  [data-theme='dark'] &
+{
+    background: linear-gradient(180deg, #13121674, #13121675);
   }
 
   [data-theme='light'] & {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.295), rgba(245, 245, 245, 0.95));
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.13), rgba(245, 245, 245, 0.464));
   }
 }
     
@@ -205,13 +206,13 @@
     mask-image: radial-gradient(circle at 50% 0%, black 0%, transparent 80%);
   }
 
-  [data-theme='dark'] &
+ [data-theme='dark'] &
 {
-    background: linear-gradient(180deg, #181922da, #16151F);
+    background: linear-gradient(180deg, #131216e6, #100f12);
   }
 
   [data-theme='light'] & {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(245, 245, 245, 0.95));
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(249, 249, 249, 0.95));
   }
 
   &.active {
