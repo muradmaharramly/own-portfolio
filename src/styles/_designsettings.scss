@@ -96,7 +96,8 @@
 
   // Cards
   .settings-card {
-    @extend .glass-card;
+   @include bento-card;
+  @extend .glass-card;
     padding: $sp-6;
     border-radius: $sp-4;
     margin-bottom: $sp-8;
@@ -110,22 +111,16 @@
       gap: $sp-3;
 
       .icon-box {
-        width: 40px;
-        height: 40px;
-        border-radius: $sp-3;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        font-size: $fs-lg;
+         width: 48px;
+    height: 48px;
+    border-radius: $radius-lg;
+    @include flex-center;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(255,255,255,0.03));
+    border: 1px solid var(--border);
+    color: $primary;
+    font-size: $fs-2xl;
         
-        &.colors-icon {
-          background: linear-gradient(135deg, $primary, $secondary);
-        }
         
-        &.typography-icon {
-          background: linear-gradient(135deg, #6366f1, #a855f7);
-        }
       }
 
       h2 {

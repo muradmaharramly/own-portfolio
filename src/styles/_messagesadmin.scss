@@ -164,9 +164,7 @@
         width: 50px;
         height: 50px;
         border-radius: $radius-md;
-       
-        background: transparent;
-        border: 1px solid var(--border);
+     
         color: var(--text-secondary);
         transition: all $transition-fast;
         cursor: pointer;
@@ -174,6 +172,12 @@
         svg {
           width: 16px;
           height: 16px;
+        }
+        &.primary{
+          color: $primary;
+        }
+        &.danger{
+          color: $danger;
         }
 
         &:hover {
@@ -186,13 +190,13 @@
             color: var(--text-secondary);
             background:rgba(206, 206, 206, 0.092);
             border-color: var(--border);
-            transform: none;
-          
-            -webkit-transform: none;
-            -moz-transform: none;
-            -ms-transform: none;
-            -o-transform: none;
-              svg{
+            transform: translateY(-1px);
+            -webkit-transform: translateY(-1px);
+            -moz-transform: translateY(-1px);
+            -ms-transform: translateY(-1px);
+            -o-transform: translateY(-1px);
+            box-shadow: none;
+            svg{
               animation: spinBack 2s ease;
               -webkit-animation: spinBack 2s ease;
 }
@@ -218,6 +222,7 @@
   }
 
   .message-card {
+    @include bento-card;
     @extend .glass-card;
     flex: 0 0 calc(50% - #{$sp-2});
     border-radius: $radius-lg;

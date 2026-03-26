@@ -161,8 +161,8 @@
       transform: translateX(4px);
       border: 1px solid $dark-border;
        box-shadow: var(--shadow-sm);
-       [data-theme='light'] & {
-             background: linear-gradient(180deg, rgba(194, 194, 194, 0.21), rgba(240, 240, 240, 0.275));
+        [data-theme='light'] & {
+             background: linear-gradient(180deg, rgba(249, 249, 249, 0.471), rgba(240, 240, 240, 0.707));
              border: 1px solid #9898984e;
         }
     }
@@ -310,7 +310,7 @@
         }
 
         [data-theme='light'] & {
-          background: linear-gradient(180deg, rgba(229, 229, 229, 0.21), rgba(240, 240, 240, 0.275));
+          background: linear-gradient(180deg, rgba(255, 255, 255, 0.704), rgba(255, 255, 255, 0.633));
           border: 1px solid #c7c7c77c;
         }
 
@@ -490,7 +490,7 @@
         color: $danger-hover;
         border-color: rgba(var(--danger-rgb), 0.5);
         [data-theme='light'] & {
-             background: linear-gradient(180deg, rgba(255, 0, 0, 0.411), rgba(255, 47, 47, 0.159));
+             background: linear-gradient(180deg, rgba(255, 47, 47, 0.079), rgba(255, 0, 0, 0.233));
         }
     }
     @media (max-width: $breakpoint-sm) {
@@ -534,7 +534,7 @@
     position: relative;
     overflow: hidden;
     [data-theme='light'] & {
-             background: linear-gradient(180deg, rgba(229, 229, 229, 0.21), rgba(240, 240, 240, 0.275));
+             background: linear-gradient(180deg, rgba(249, 249, 249, 0.471), rgba(240, 240, 240, 0.707));
         }
 
     &:hover {
@@ -589,8 +589,8 @@
     transition: all $transition-base $ease-out;
     text-decoration: none;
     position: relative;
-    [data-theme='light'] & {
-             background: linear-gradient(180deg, rgba(229, 229, 229, 0.21), rgba(240, 240, 240, 0.275));
+   [data-theme='light'] & {
+             background: linear-gradient(180deg, rgba(249, 249, 249, 0.471), rgba(240, 240, 240, 0.707));
         }
 
     &:hover {
