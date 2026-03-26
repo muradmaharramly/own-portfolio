@@ -114,6 +114,9 @@
     width: 280px;
     height: 350px;
     z-index: 1;
+    @media (max-width: $breakpoint-sm) {
+      height: 250px;
+    }
 
     @include md {
       width: 320px;

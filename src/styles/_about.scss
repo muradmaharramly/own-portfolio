@@ -37,6 +37,9 @@
     width: 280px;
     height: 350px;
     z-index: 1;
+    @media (max-width: $breakpoint-sm) {
+      height: 250px;
+    }
 
     @include md {
       width: 320px;
@@ -129,6 +132,9 @@
     padding: $sp-3 $sp-6;
     border-radius: $radius-full;
     border: 1px solid rgba(var(--primary-rgb), 0.2);
+    @media (max-width: $breakpoint-sm) {
+      bottom: 5px;
+    }
     
     z-index: 2;
 
