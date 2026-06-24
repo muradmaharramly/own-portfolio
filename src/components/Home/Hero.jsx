@@ -99,7 +99,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Hi, I'm <span className="gradient-text">{profile?.full_name?.split(' ')[0] || 'Me'}</span>
+              Hi, I'm <span className="gradient-text">{profile?.full_name?.split(' ')[0] || 'Murad'}</span>
               
             </motion.h1>
 
